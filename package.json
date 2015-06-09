@@ -14,5 +14,8 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/suraj-bk/Blog/issues"
+  },
+  "dependencies": {
+    "jade": "~1.10.0"
   }
 }
