@@ -1,0 +1,38 @@
+body {
+  background: #EEEEEE;
+}
+.primary {
+  background:#DDDDDD;
+  padding-top: 20px;
+}
+.sections-wrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.section {
+  margin-bottom: 30px;
+}
+.section .section-inner {
+  //border: 3px solid #2F343A;
+  background:#FFFFFF;
+  padding: 30px;
+}
+.section .heading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #545e69;
+  font-size: 24px;
+}
+.section .content .more-link .fa {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+aside {
+  background:#DDDDDD;
+}
+
+/*tag buttons*/
+.tag-button{
+  margin-bottom: 5px;
+}
