@@ -32,5 +32,5 @@ app.use(express.static(__dirname + '/public'));
 app.get('/',function(req, res){
 	res.render('users/index',{title : 'suraj'});
 });
-app.listen(7777);
-console.log("Server running on port : " + '7777');
+app.listen(8000);
+console.log("Server running on port : " + '8000');

@@ -1,8 +1,11 @@
-include mixins
-doctype html
-html
-  include ./includes/head.jade
-  body
-    include ./includes/nav.jade
-    h1 My Site
-    include ./includes/footer.jade
+extends layout
+
+block header
+  h1 Hello World 
+block content
+  div(class="btn-group" role="group")
+    button(type="button" class="btn btn-primary") Left
+    button(type="button" class="btn btn-success") Middle
+    button(type="button" class="btn btn-info") Middle
+    button(type="button" class="btn btn-danger") Middle
+

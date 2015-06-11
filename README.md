@@ -1,2 +1,2 @@
 # Blog
-A blog built with nodejs, express.js, mongo and jade.
+A blog built using nodejs, express.js, mongo and jade.

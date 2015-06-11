@@ -1,15 +1,20 @@
+include mixins
+
 doctype html
 html
   head
-    title #{title} - My Site
-    link(rel='stylesheet', href='/css/out.css')
+    title= appTitle
+    script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
+    link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(type="text/javascript", src="/css/bootstrap/js/bootstrap.min.js")
+    script(type="text/javascript", src="/js/blog.js")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
   body
-    header
-      h1 My Site
-    .container
-      .main-content
+    #wrap
+      .container
+        h1.page-header= appTitle
+        block header
         block content
-      .sidebar
-        block sidebar
-    footer
-      p Running on node with Express, Jade and Stylus
+    block footer

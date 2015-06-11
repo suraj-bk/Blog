@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Admin Modify post</title>
+	<link rel="stylesheet" href="./../bootstrap/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="./../bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./../public/css/style.css" />
+	</head>
+	<body>
+        <header class="header">                      
+            <div class="profile-content">
+                <h1 class="name">My Blog Admin- Modify Post</h1>
+            </div>
+        </header><!--//header-->
+        <div class="container sections-wrapper">
+	        <div class="row">
+	            <div class="primary col-md-12">
+	                <section class="section">
+	                	<h2>Delete Post</h2>
+                    	<div class="section-inner">
+                    		<form role="form">
+	                        	<div class="form-group">
+								  <label for="post_title">Post Title</label>
+								  <input type="text" class="form-control" id="post_title">
+								</div>  
+								<button type="submit" class="btn btn-success">Delete</button>
+							</form>
+                    	</div><!--//section-inner-->                 
+                </section><!--//section-->
+
+                <h2>Update Post</h2>
+                <section class="section">
+                    	<div class="section-inner">
+                    		<form role="form">
+	                        	<div class="form-group">
+								  <label for="post_title">Post Title</label>
+								  <input type="text" class="form-control" id="post_title">
+								</div>
+								<div class="form-group">
+								  <label for="post_descr">Description</label>
+								  <textarea class="form-control" rows="10" id="post_descr"></textarea>
+								</div>
+								<div class="form-group">
+								  <label for="post_author">Author</label>
+								  <input type="text" class="form-control" id="post_author">
+								</div>
+								<div class="form-group">
+								  <label for="post_tags">Tags</label>
+								  <input type="text" class="form-control" id="post_tags">
+								</div>
+								<button type="submit" class="btn btn-success">Update</button>
+							</form>
+                    	</div><!--//section-inner-->                 
+                </section><!--//section-->
+                </div>
+            </div>
+        </div>        
+
+    </body>
+</html>                

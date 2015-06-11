@@ -1,0 +1,77 @@
+body {
+  background: #EEEEEE;
+}
+.primary {
+  background:#DDDDDD;
+  padding-top: 20px;
+}
+.secondary{
+  background:#111111;
+  padding-top: 20px;
+}
+.sections-wrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+ul {
+  padding-top: 10px;
+  border-top: 2px solid #888888;
+}
+
+#email{
+
+}
+/* HEADER */
+.header {
+  padding: 10px 0;
+  background: #2F343A;
+}
+.header .profile-content .name {
+  color: #FFFFFF;
+  font-size: 38px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+
+/* SECTION */
+.section {
+  margin-bottom: 30px;
+}
+.section .section-inner {
+  //border: 3px solid #2F343A;
+  background:#FFFFFF;
+  padding: 30px;
+}
+.section .heading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #545e69;
+  font-size: 24px;
+}
+.section .content .more-link .fa {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+aside {
+  background:#DDDDDD;
+}
+
+/*tag buttons*/
+.tag-button{
+  margin-bottom: 5px;
+}
+/* Footer */
+footer {
+  background: #32383e;
+  color: #fff;
+  padding: 10px 0;
+}
+footer .copyright {
+  line-height: 1.6;
+  color: #a1aab4;
+  font-size: 14px;
+}
