@@ -32,5 +32,22 @@ app.use(express.static(__dirname + '/public'));
 app.get('/',function(req, res){
 	res.render('users/index',{title : 'suraj'});
 });
+
+app.get('/admin/login',function(req, res){
+	res.render('admin/admin_login',{title : 'suraj'});
+});
+
+app.get('/admin/home',function(req, res){
+	res.render('admin/admin_home',{title : 'suraj'});
+});
+
+app.get('/admin/add_post',function(req, res){
+	res.render('admin/admin_add_post',{title : 'suraj'});
+});
+
+app.get('/admin/mod_post',function(req, res){
+	res.render('admin/admin_modify_post',{title : 'suraj'});
+});
+
 app.listen(8000);
 console.log("Server running on port : " + '8000');

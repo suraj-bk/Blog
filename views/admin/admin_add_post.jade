@@ -1,0 +1,24 @@
+extends layout
+
+block header
+  h1 Welcome to Admin Page - Add Post
+block content
+  div(class="container sections-wrapper")
+    div(class="row")
+      div(class="primary col-md-12")
+        section(class="section")
+          div(class="section-inner")
+            form(role="form")
+              div(class="form-group")
+                label(for="post_title") Post Title
+                input(type="text", class="form-control", id="post_title")
+              div(class="form-group")
+                label(for="post_descr") Description
+                textarea(rows="10", class="form-control", id="post_descr")  
+              div(class="form-group")
+                label(for="post_author") Author
+                input(type="text", class="form-control", id="post_author")
+              div(class="form-group")
+                label(for="post_tags") Tags
+                input(type="text", class="form-control", id="post_tags")
+              button(type="submit", class="btn btn-success")  Save   
