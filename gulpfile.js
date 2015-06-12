@@ -13,21 +13,22 @@ var nib = require('nib');
 
 //Defining the tasks..
 
-gulp.task('default',function(){
-	return gutil.log('Gulp is running');
+gulp.task('default',['watch']);
+
+
+
+gulp.task('watch',[],function(){
+	return gulp.watch(['./src/stylus/**/*.styl'],['build-css']);
 });
 
 gulp.task('build-css',function(){
 
-	gulp.src('./src/stylus/main.styl')
+	gulp.src('./src/stylus/**.styl')
+	.pipe(concat('main.styl'))
     .pipe(stylus({ use: nib(), compress: true }))
     .pipe(autoprefixer())
     .pipe(minifyCSS())
     .pipe(rename('out.css'))
 	.pipe(gulp.dest('./public/css'))
 	.pipe(size());
-});
-
-gulp.task('watch',function(){
-	gulp.watch('src/styles/**/*.styl',['build-css']);
 });
