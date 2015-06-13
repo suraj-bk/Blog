@@ -1,0 +1,103 @@
+extends layout
+
+block header
+  h1 My Blog
+block content
+  a(href="/admin/login") Login
+  a(href="/admin/home") Admin
+
+  //container for content
+  div(class="container sections-wrapper")
+    div(class="row")
+      //container for posts
+      div(class="primary col-md-8 col-sm-12 col-xs-12")
+        section(class="section")
+          div(class="section-inner")
+            h2 Post Title 1
+            ul(class="list-inline")
+              li 30
+              li Comments
+              li Deekshith
+              li 10th June 2015
+            img(height=200, width="100%")
+            h3 Summary
+            p
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+            a Read More
+
+        section(class="section")
+          div(class="section-inner")
+            h2 Post Title 1
+            ul(class="list-inline")
+              li 20
+              li Comments
+              li Suraj
+              li 10th June 2015
+            img(height=200, width="100%")
+            h3 Summary
+            p
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
+            a Read More
+
+        - for(var i=0 ; i< posts.length ; i++) {
+            section(class="section")
+              div(class="section-inner")
+                h2= posts[i].title
+                ul(class="list-inline")
+                  li 20
+                  li Comments
+                  li= posts[i].author_name
+                  li 10th June 2015
+                img(height=200, width="100%")
+                h3 Summary
+                p= posts[i].body
+                a Read More
+        - };
+
+        section(class="section")
+          div(class="section-inner")
+            h5 Page
+            ul(class="list-inline")
+              li 
+                a(href="/home/1") 1
+              li .
+              li .
+              li
+                a(href="/home/3") 3 
+              li 
+                - var count = pageNo;
+                - count++;
+                - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
+                  a(href="/home/" + encodeURIComponent(count)) Next>>  
+
+                  
+
+      //container for aside contents
+      div(class="secondary col-md-4 col-sm-12 col-xs-12")
+        //Subscribe box
+        aside(class="aside section")
+          div(class="section-inner text-center")
+            img(height=100,width=100)
+            h4 Deekshith Shetty
+            h6 Udupi
+            a https://github.com
+            h5 Subscribe - No spamming
+            div(class="form-group")
+              label(for=email) Email
+              input(type=text, class="form-control", id=email, placeholder="Email")
+            button(type=button, class="btn btn-success") Subscribe 
+              
+        //Tag Box
+        aside(class="aside section")
+          div(class="section-inner")
+            h4 Tags
+            button(type=button, class="btn btn-info tag-button") MongoDB
+            button(type=button, class="btn btn-info tag-button") Node.js
+            button(type=button, class="btn btn-info tag-button") Express
+            button(type=button, class="btn btn-info tag-button") Android
+            button(type=button, class="btn btn-info tag-button") Java
+            button(type=button, class="btn btn-info tag-button") Bootstrap    

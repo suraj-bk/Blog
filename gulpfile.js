@@ -28,7 +28,7 @@ gulp.task('build-css',function(){
     .pipe(stylus({ use: nib(), compress: true }))
     .pipe(autoprefixer())
     .pipe(minifyCSS())
-    .pipe(rename('out.css'))
+    .pipe(rename('build.css'))
 	.pipe(gulp.dest('./public/css'))
 	.pipe(size());
 });

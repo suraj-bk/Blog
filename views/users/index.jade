@@ -1,103 +1,68 @@
 extends layout
 
-block header
-  h1 My Blog
 block content
-  a(href="/admin/login") Login
-  a(href="/admin/home") Admin
-
-  //container for content
-  div(class="container sections-wrapper")
-    div(class="row")
-      //container for posts
-      div(class="primary col-md-8 col-sm-12 col-xs-12")
-        section(class="section")
-          div(class="section-inner")
-            h2 Post Title 1
-            ul(class="list-inline")
-              li 30
-              li Comments
-              li Deekshith
-              li 10th June 2015
-            img(height=200, width="100%")
-            h3 Summary
-            p
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-            a Read More
-
-        section(class="section")
-          div(class="section-inner")
-            h2 Post Title 1
-            ul(class="list-inline")
-              li 20
-              li Comments
-              li Suraj
-              li 10th June 2015
-            img(height=200, width="100%")
-            h3 Summary
-            p
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-              | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
-            a Read More
-
+  .row
+    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+      ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
-            section(class="section")
-              div(class="section-inner")
-                h2= posts[i].title
-                ul(class="list-inline")
-                  li 20
-                  li Comments
-                  li= posts[i].author_name
-                  li 10th June 2015
-                img(height=200, width="100%")
-                h3 Summary
-                p= posts[i].body
-                a Read More
+            article(class="flex-item col-md-12")
+              h2= posts[i].title
+              ul(class="list-inline subhead")
+                li ⌘ 30 Comments
+                li
+                  ul(class="list-inline")
+                    li
+                      img(src="/img/clock.png") 
+                    li
+                      p JUNE 12, 2015
+                li
+                  ul(class="list-inline")
+                    li
+                      img(src="/img/author.png") 
+                    li= posts[i].author_name               
+              .post-body.col-md-12
+                .pic.col-md-3
+                .post-content.col-md-9
+                  p= posts[i].body
+                  .readmore Read more ⬈
+              .tag-body.col-md-12.list-inline
+                p(class="tag-item") Tags : 
+                p(class="tag-item") Node.js
+                p(class="tag-item") Nginx
+                p(class="tag-item") All other tags
         - };
 
-        section(class="section")
-          div(class="section-inner")
-            h5 Page
-            ul(class="list-inline")
-              li 
-                a(href="/home/1") 1
-              li .
-              li .
-              li
-                a(href="/home/3") 3 
-              li 
-                - var count = pageNo;
-                - count++;
-                - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
-                  a(href="/home/" + encodeURIComponent(count)) Next>>  
+      article(class="flex-item col-md-12")
+        h5 Page
+        ul(class="list-inline")
+          li 
+            a(href="/home/1") 1
+          li .
+          li .
+          li
+            a(href="/home/3") 3 
+          li 
+            - var count = pageNo;
+            - count++;
+            - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
+              a(href="/home/" + encodeURIComponent(count)) Next ⬈ 
 
-                  
 
-      //container for aside contents
-      div(class="secondary col-md-4 col-sm-12 col-xs-12")
-        //Subscribe box
-        aside(class="aside section")
-          div(class="section-inner text-center")
-            img(height=100,width=100)
-            h4 Deekshith Shetty
-            h6 Udupi
-            a https://github.com
-            h5 Subscribe - No spamming
-            div(class="form-group")
-              label(for=email) Email
-              input(type=text, class="form-control", id=email, placeholder="Email")
-            button(type=button, class="btn btn-success") Subscribe 
-              
-        //Tag Box
-        aside(class="aside section")
-          div(class="section-inner")
-            h4 Tags
-            button(type=button, class="btn btn-info tag-button") MongoDB
-            button(type=button, class="btn btn-info tag-button") Node.js
-            button(type=button, class="btn btn-info tag-button") Express
-            button(type=button, class="btn btn-info tag-button") Android
-            button(type=button, class="btn btn-info tag-button") Java
-            button(type=button, class="btn btn-info tag-button") Bootstrap    
+    div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
+      .connect
+        .heading
+          h3 Connect With Us
+        .social
+          a(class="social-btn")
+            img(src="/img/social/64x64/64-twitter.png")
+          a(class="social-btn")
+            img(src="/img/social/64x64/64-facebook.png")
+          a(class="social-btn")
+            img(src="/img/social/64x64/64-googleplus.png")
+          a(class="social-btn")
+            img(src="/img/social/64x64/64-rss.png")
+          a(class="social-btn")
+            img(src="/img/social/64x64/64-youtube.png")
+      .subscribe
+        .heading
+          h3 Email Subscription

@@ -71,7 +71,7 @@ app.get('/home/:pageNo',function(req, res){
 	    var pageNo = req.params.pageNo;
 	    var options = {
 	    	'skip' : (pageNo-1) * 2,
-	    	'limit' : 2
+	    	'limit' : 4
 	    };
 
 	    db.collection('articles').find({}).toArray(function(err,docs){
