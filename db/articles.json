@@ -17,4 +17,34 @@
   "tags":['tag1','tag2','tag3'],
   "category":"programming",
   "disqus_url":""
+},
+{
+  "title": "Game Of Thrones",
+  "author_name":"Deekshith",
+  "published": false,
+  "created_at": {"month":"06","day":"11","year":"2015"}, 
+  "body": "Game of Thrones is an American fantasy drama television series.",  
+  "tags":['TV','18'],
+  "category":"TV",
+  "disqus_url":""
+},
+{
+  "title": "Dexter",
+  "author_name":"Suraj",
+  "published": false,
+  "created_at": {"month":"06","day":"11","year":"2015"}, 
+  "body": "Dexter is an American television drama series.",  
+  "tags":['tag1','tag2','tag3'],
+  "category":"programming",
+  "disqus_url":""
+},
+{
+  "title": "Dexter2",
+  "author_name":"Deekshith",
+  "published": false,
+  "created_at": {"month":"06","day":"11","year":"2015"}, 
+  "body": "Dexter is an American television drama series.",  
+  "tags":['tag1','tag2','tag3'],
+  "category":"programming",
+  "disqus_url":""
 }]

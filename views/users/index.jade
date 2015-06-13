@@ -19,7 +19,7 @@ block content
               li Comments
               li Deekshith
               li 10th June 2015
-            img(height=200, width=200)
+            img(height=200, width="100%")
             h3 Summary
             p
               | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
@@ -35,13 +35,46 @@ block content
               li Comments
               li Suraj
               li 10th June 2015
-            img(height=200, width=200)
+            img(height=200, width="100%")
             h3 Summary
             p
               | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
               | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
               | hashasjhasadasdasdasfsfsdadddddddddddddddddddd
             a Read More
+
+        - for(var i=0 ; i< posts.length ; i++) {
+            section(class="section")
+              div(class="section-inner")
+                h2= posts[i].title
+                ul(class="list-inline")
+                  li 20
+                  li Comments
+                  li= posts[i].author_name
+                  li 10th June 2015
+                img(height=200, width="100%")
+                h3 Summary
+                p= posts[i].body
+                a Read More
+        - };
+
+        section(class="section")
+          div(class="section-inner")
+            h5 Page
+            ul(class="list-inline")
+              li 
+                a(href="/home/1") 1
+              li .
+              li .
+              li
+                a(href="/home/3") 3 
+              li 
+                - var count = pageNo;
+                - count++;
+                - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
+                  a(href="/home/" + encodeURIComponent(count)) Next>>  
+
+                  
 
       //container for aside contents
       div(class="secondary col-md-4 col-sm-12 col-xs-12")

@@ -3,22 +3,27 @@ extends layout
 block header
   h1 Welcome to Admin Page - Add Post
 block content
+  div(id="message")
+  
   div(class="container sections-wrapper")
     div(class="row")
       div(class="primary col-md-12")
         section(class="section")
           div(class="section-inner")
-            form(role="form")
+            form(role="form", method="post", action="/admin/add_post")
               div(class="form-group")
                 label(for="post_title") Post Title
-                input(type="text", class="form-control", id="post_title")
+                input(type="text", class="form-control",name="post_title", id="post_title")
               div(class="form-group")
                 label(for="post_descr") Description
-                textarea(rows="10", class="form-control", id="post_descr")  
+                textarea(rows="10", class="form-control",name="post_descr", id="post_descr")  
               div(class="form-group")
                 label(for="post_author") Author
-                input(type="text", class="form-control", id="post_author")
+                input(type="text", class="form-control",name="post_author", id="post_author")
+              div(class="form-group")
+                label(for="post_category") Category
+                input(type="text", class="form-control",name="post_category", id="post_category")  
               div(class="form-group")
                 label(for="post_tags") Tags
-                input(type="text", class="form-control", id="post_tags")
+                input(type="text", class="form-control",name="post_tags" id="post_tags")
               button(type="submit", class="btn btn-success")  Save   
