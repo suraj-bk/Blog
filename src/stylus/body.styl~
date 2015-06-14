@@ -2,16 +2,10 @@ body
   background #fff
   font-family 'Martel Sans', sans-serif
 
-@media screen and (max-width : 760px )
-  .row
-    margin-top 50px
-
-.row
-    margin-top 140px
 
 .main-container
 	height auto
-	margin-top 10px
+	margin-top 80px
 	
 .main-container .flex-container 
   padding-left 10px
@@ -97,7 +91,7 @@ body
 
 
 .aside-container
-	margin-top 20px
+	margin-top 80px
 	border-left 1px solid #e7e7e7
 	height 500px;
  
@@ -158,7 +152,7 @@ body
   width 100%
 
 .aside-container .tagbox
-  height 240px
+  height 140px
   background #fff
   margin-top 30px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -171,17 +165,4 @@ body
   background #3b4a5a
   float left
   color #fff
-  width 100% 
-
-.aside-container .tagbox .tags
-  padding-top 10px
-  padding-left 10px
-  margin 0
-  list-style none
-  display -webkit-box
-  display -moz-box
-  display -ms-flexbox
-  display -webkit-flex
-  display flex
-  -webkit-flex-flow row wrap
-  justify-content space-around   
+  width 100%  

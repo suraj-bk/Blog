@@ -6,7 +6,6 @@ html
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
-    link(rel='stylesheet', href='/css/navbar.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Martel+Sans')
     link(rel='stylesheet', href='/css/build.css')
     script(type="text/javascript", src="/css/bootstrap/js/bootstrap.min.js")
@@ -17,8 +16,6 @@ html
       .container-fluid
         block header
             include ./header.jade
-        block navbar
-            include ./navbar.jade       
         block content
         block sidebar
             include ./sidebar.jade
