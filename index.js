@@ -1,13 +1,25 @@
-var express = require('express')
+/*var express = require('express')
 	,stylus = require('stylus')
 	,nib = require('nib')
 	,bodyParser = require('body-parser')
 	,urlencodedParser = bodyParser.urlencoded({ extended : false })
-	,MongoClient = require('mongodb').MongoClient // Driver for connecting to MongoDB;
+	,MongoClient = require('mongodb').MongoClient
+	,passport = require('passport')
+	,expressSession = require('express-session');
 
 
+var dbConfig = require('./db');
+var mongoose = require('mongoose');
+// Connect to DB
+mongoose.connect(dbConfig.url);
 
 var app = express();
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+var flash = require('connect-flash');
+app.use(flash());
 function compile(str,path){
 	return stylus(str)
 	.set('filename',path)
@@ -30,8 +42,11 @@ app.use(stylus.middleware({
 app.use(express.static(__dirname + '/public'));
 
 
-
-
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+var routes = require('./routes/admin')(passport);
+app.use('/', routes);
 
 //Defining the routes
 app.get('/',function(req, res){
@@ -90,8 +105,8 @@ app.get('/home/:pageNo',function(req, res){
 	  
 	    });
 	});	
-});
-
+});*/
+/*
 app.get('/admin/login',function(req, res){
 	res.render('admin/admin_login',{title : 'suraj'});
 });
@@ -197,7 +212,77 @@ app.post('/admin/upd_post',function(req, res){
 
 	});	
 
+});*/
+/*
+app.listen(8000);
+console.log("Server running on port : " + '8000');*/
+
+var express = require('express');
+var path = require('path');
+var favicon = require('static-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var	urlencodedParser = bodyParser.urlencoded({ extended : false });
+var dbConfig = require('./db');
+var mongoose = require('mongoose');
+// Connect to DB
+mongoose.connect(dbConfig.url);
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(favicon());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+ // Using the flash middleware provided by connect-flash to store messages in session
+ // and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+var routes = require('./routes/admin')(passport,urlencodedParser);
+app.use('/admin', routes);
+
+var routes = require('./routes/users')();
+app.use('/', routes);
+
+/// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
-app.listen(8000);
-console.log("Server running on port : " + '8000');
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+module.exports = app;
+app.listen(8001);
