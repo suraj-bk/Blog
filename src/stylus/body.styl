@@ -4,10 +4,11 @@ body
 
 @media screen and (max-width : 760px )
   .row
-    margin-top 50px
+    margin-top 0px
 
 .row
-    margin-top 140px
+    margin-top 0px
+    margin-bottom 30px
 
 .main-container
 	height auto
@@ -39,10 +40,12 @@ body
 
 
 .flex-container h2
+  margin-left 20px
 	color #2275b4
 	text-decoration none
 	
 .flex-container .subhead
+  margin-left 20px
 	color #404040
 	font-size 15px
 	
@@ -50,16 +53,114 @@ body
 .flex-container .post-body
   float left
   margin-top 15px 
- 
   
 .flex-container .post-body .pic
   height 150px
-  background #FF0000
+  background #B6A78A
+
+.flex-container .post-body .pic2
+  height 350px
+  margin-bottom 20px
+  background #B6A78A    
 
 .flex-container .post-body .post-content
   background #fff
   font-size 15px
+
+.flex-container .about-body
+  float left
+  margin-bottom 20px 
+
+.flex-container .about-body .about-head
+  margin-top 10px  
+
+.flex-container .about-body .dev-pic
+  height 150px
+  width 150px
+  background #B6A78A
+
+.flex-container .about-body .about-content
+  background #fff
+  font-size 15px 
+
+.flex-container .editor-body
+  padding 20px
+  float left
+  margin-bottom 20px
+  margin-right 20px  
+
+.flex-container .editor-body .dev-pic
+  height 150px
+  width 150px
+  background #B6A78A     
   
+
+ul.tags 
+  list-style: none;
+  margin-top: 20px;
+  overflow: hidden; 
+  padding: 0;
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+  padding-left 10px;
+  justify-content right
+
+
+.tags li 
+  float: left; 
+
+.tags li a 
+  text-decoration: none !important
+
+.tag 
+  background: #7E858D;
+  border-radius: 3px 0 0 3px;
+  color: #fff;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+
+
+.tag::before 
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+
+.tag::after 
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #7E858D;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+
+
+.tag:hover 
+  background-color: #2AA4CF;
+  color: white;
+
+
+.tag:hover::after 
+   border-left-color: #2AA4CF; 
+
+
 .flex-container .tag-body
   margin-top 20px;
   padding 0
@@ -72,7 +173,7 @@ body
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  padding-left 40px;
+  padding-left 10px;
   justify-content right
 
   
@@ -80,7 +181,7 @@ body
   padding 5px
   margin-top 10px
   color #fff
-  background #33691e
+  background #288288
   margin-right 8px
   border-radius 5px
   
@@ -105,7 +206,7 @@ body
 
 
 .aside-container .connect
-  height 140px
+  height auto
   background #fff
   margin-top 20px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -115,7 +216,7 @@ body
 .aside-container .connect .heading
   height auto
   text-align center
-  background #3b4a5a
+  background #2f3036
   float left
   color #fff
   width 100%
@@ -145,20 +246,38 @@ body
   height 140px
   background #fff
   margin-top 30px
-  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  padding-left 50px
+  padding-right 50px
   
-.aside-container .subscribe .heading
-  height auto
-  text-align center
-  background #3b4a5a
+.aside-container .subscribe .email-box
+  margin-top 10px
+
+.aside-container .subscribe .email
+  width 200px
   float left
+  margin-right 5px
+
+.aside-container .subscribe .email-btn
   color #fff
-  width 100%
+  padding 8px
+  background #2AA4CF
+  border-radius 5px
+  border 0px
+
+.aside-container .subscribe .email-btn2
+  color #fff
+  padding 8px
+  background #2AA4CF
+  margin-top 10px
+  border-radius 5px
+  border 0px  
+
+.aside-container .subscribe .email-btn:hover
+  color #fff
+  background #288288     
 
 .aside-container .tagbox
-  height 240px
+  height auto
   background #fff
   margin-top 30px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -168,7 +287,7 @@ body
 .aside-container .tagbox .heading
   height auto
   text-align center
-  background #3b4a5a
+  background #2f3036
   float left
   color #fff
   width 100% 

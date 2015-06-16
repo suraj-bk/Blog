@@ -34,6 +34,35 @@ module.exports = function(){
 		});	
 	});
 
+	router.get('/home/article',function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+		    db.collection('articles').find({}).toArray(function(err,docs){
+		    	if(err) throw err;
+
+			    res.render('users/post_article',{title : 'suraj', posts : docs });
+
+		    	return db.close();
+		    		
+		    });
+		});	 
+
+	});
+
+	router.get('/home/about',function(req, res){
+
+		res.render('users/about',{title : 'suraj'});
+
+	});
+
+	router.get('/home/contact_us',function(req, res){
+
+		res.render('users/contact_us',{title : 'suraj'});
+
+	});
+
 	router.get('/home/:pageNo',function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 	    	"use strict";

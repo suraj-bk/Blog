@@ -1,7 +1,16 @@
 /*Strip the ul of padding and list styling*/
+div.navdiv{
+	margin-top: 78px;
+	margin-left: -15px;
+	margin-bottom: 0;
+	height: 60px;
+	padding: 5px;
+	width: 102.3%;
+	background-color: #2AA4CF;
+}
+
 ul.nb-ul {
 	list-style-type:none;
-	margin-top: 100px;
 	margin-left:0;
 	margin-right: 0;
 	margin-bottom: 0;
@@ -19,19 +28,20 @@ li.nb-li {
 /*Style for menu links*/
 li.nb-li a {
 	display:block;
-	min-width:140px;
-	height: 50px;
+	min-width:100px;
+	height: 40px;
 	text-align: center;
-	line-height: 50px;
+	line-height: 40px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #fff;
-	background: #2f3036;
+	background: #2AA4CF;
 	text-decoration: none;
 }
 
 /*Hover state for top level links*/
 li.nb-li:hover a {
-	background: #19c589;
+	color: #2AA4CF;
+	background: #fff;
 }
 
 /*Style for dropdown links*/
@@ -82,6 +92,10 @@ ul.nb-ul li.nb-li a:hover + .hidden, .hidden:hover {
 
 @media screen and (max-width : 760px){
 	/*Make dropdown links appear inline*/
+	div.navdiv{
+		height: 220px;
+		width: 106%;
+	}
 	ul.nb-ul {
 		position: static;
 		display: none;

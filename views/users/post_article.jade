@@ -2,32 +2,25 @@ extends layout
 
 block content
   .row
-    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
-        - for(var i=0 ; i< posts.length ; i++) {
-            article(class="flex-item col-md-12")
-              a(href="/home/article")
-                h2= posts[i].title
-              ul(class="list-inline subhead")
-                li ⌘ 30 Comments
+        article(class="flex-item col-md-12")
+          h2= posts[3].title
+          ul(class="list-inline subhead")
+            li ⌘ 30 Comments
+            li
+              ul(class="list-inline")
                 li
-                  ul(class="list-inline")
-                    li
-                      img(src="/img/clock.png") 
-                    li
-                      p JUNE 12, 2015
+                  img(src="/img/clock.png") 
                 li
-                  ul(class="list-inline")
-                    li
-                      img(src="/img/author.png") 
-                    li= posts[i].author_name               
-              .post-body.col-md-12
-                .pic.col-md-4
-                .post-content.col-md-8
-                  p= posts[i].body
-                  .readmore Read more ⬈
+                  p JUNE 12, 2015
+            li
+              ul(class="list-inline")
+                li
+                  img(src="/img/author.png") 
+                li= posts[3].author_name
 
-              .tag-body.col-md-12.list-inline
+          .tag-body.col-md-12.list-inline
                 p(class="tag-item") Tags :  
                 ul(class="tags")
                   li
@@ -35,26 +28,15 @@ block content
                   li
                     a(href="#", class="tag") Nginx
                   li
-                    a(href="#", class="tag") All other tags     
-        - };
-
-      article(class="flex-item col-md-12")
-        h5 Page
-        ul(class="list-inline")
-          li 
-            a(href="/home/1") 1
-          li .
-          li .
-          li
-            a(href="/home/3") 3 
-          li 
-            - var count = pageNo;
-            - count++;
-            - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
-              a(href="/home/" + encodeURIComponent(count)) Next ⬈ 
+                    a(href="#", class="tag") All other tags
+                                 
+          .post-body.col-md-12
+            .pic2.col-md-12
+            .post-content.col-md-12
+              p= posts[3].body
 
 
-    div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
+    div(class="secondary col-md-3 col-sm-12 col-xs-12 aside-container")
       .connect
         .heading
           h4 Connect With Us
@@ -75,7 +57,7 @@ block content
             h5 Subscribe - We dont spam
               div(class="form-group email-box")
                 input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="email-btn") Subscribe 
+                button(type=submit, class="email-btn2") Subscribe 
               
       .tagbox
         .heading
@@ -95,6 +77,10 @@ block content
             li
               a(href="#", class="tag") Java
             li
+              a(href="#", class="tag") Android
+            li
+              a(href="#", class="tag") C/C++
+            li
               a(href="#", class="tag") HTML
             li
               a(href="#", class="tag") Nginx
@@ -109,12 +95,4 @@ block content
             li
               a(href="#", class="tag") Android
             li
-              a(href="#", class="tag") C/C++  
-            li
-              a(href="#", class="tag") Aandroid
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") C/C++           
+              a(href="#", class="tag") C/C++       
