@@ -19,6 +19,14 @@ block content
                 li
                   img(src="/img/author.png") 
                 li= posts[3].author_name
+            li
+              a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[3].title, data-size="default") Tweet
+            li
+              div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
+            li
+              div(class="fb-like", data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count", data-action="like", data-show-faces="true", data-share="false", data-width="450", style="width:87px; overflow:hidden; top:-1px; left: 0px;")
+            li
+              div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", data-width="450", style="width:97px; overflow:hidden; top:-1px; left: 0px;")      
 
           .tag-body.col-md-12.list-inline
                 p(class="tag-item") Tags :  
@@ -34,6 +42,9 @@ block content
             .pic2.col-md-12
             .post-content.col-md-12
               p= posts[3].body
+
+        article(class="flex-item col-md-12 col-sm-12 col-xs-12")
+          div(class="disqus", id="disqus_thread")      
 
 
     div(class="secondary col-md-3 col-sm-12 col-xs-12 aside-container")

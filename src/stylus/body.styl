@@ -1,14 +1,17 @@
 body 
-  background #fff
+  background #EEEEEE
   font-family 'Martel Sans', sans-serif
 
 @media screen and (max-width : 760px )
   .row
     margin-top 0px
+    margin-bottom 130px
+  .secondary
+    margin-bottom 250px  
 
 .row
     margin-top 0px
-    margin-bottom 30px
+    margin-bottom 100px
 
 .main-container
 	height auto
@@ -94,7 +97,6 @@ body
   width 150px
   background #B6A78A     
   
-
 ul.tags 
   list-style: none;
   margin-top: 20px;
@@ -119,7 +121,7 @@ ul.tags
 .tag 
   background: #7E858D;
   border-radius: 3px 0 0 3px;
-  color: #fff;
+  color: #eaeaea;
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -131,7 +133,7 @@ ul.tags
 
 
 .tag::before 
-  background: #fff;
+  background: #eaeaea;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -142,7 +144,7 @@ ul.tags
   top: 10px;
 
 .tag::after 
-  background: #fff;
+  background: #eaeaea;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #7E858D;
   border-top: 13px solid transparent;
@@ -207,7 +209,7 @@ ul.tags
 
 .aside-container .connect
   height auto
-  background #fff
+  background #eaeaea
   margin-top 20px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -244,7 +246,7 @@ ul.tags
   
 .aside-container .subscribe
   height 140px
-  background #fff
+  background #eaeaea
   margin-top 30px
   padding-left 50px
   padding-right 50px
@@ -278,7 +280,7 @@ ul.tags
 
 .aside-container .tagbox
   height auto
-  background #fff
+  background #eaeaea
   margin-top 30px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -303,4 +305,39 @@ ul.tags
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  justify-content space-around   
+  justify-content space-around 
+
+.aside-container .facebook
+  height 285px
+  background #eaeaea
+  margin-top 30px
+  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+
+.aside-container .facebook .heading
+  height auto
+  text-align center
+  background #2f3036
+  float left
+  color #fff
+  width 100%
+
+.aside-container .facebook .plugin
+  padding-top 50px
+  text-align center       
+
+.share 
+    width 350px
+    height 30px
+    background #DDD
+    float right
+    white-space nowrap
+    padding-top 5px
+    padding-bottom 5px
+    padding-left 3px
+    border-bottom-left-radius 5px
+    vertical-align top
+
+.disqus
+  padding 30px    
