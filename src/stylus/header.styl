@@ -1,6 +1,11 @@
-/* HEADER */
+@font-face 
+  font-family Ninja
+  src url(/public/css/fonts/ninja.ttf)
 
-header-background-color = #2f3036
+
+/* HEADER  #6CC201 */
+
+header-background-color = #84A3C2
 
 .top
   position fixed
@@ -12,19 +17,25 @@ header
   background header-background-color
   height auto
   padding 5px
+  border-bottom 6px solid #000
 
 
 header #logo
 	height 70px;
 	width 70px
-	background #B6A78A
+	background #2f3036
 	float left
 	background-image url("/public/img/dp.jpeg")
 	margin-right 20px
 	
 header .appTitle
     color #FFFFFF
-	font-family 'Ubuntu Light'
+    padding 10px
+    background #000
+    margin-top 5px
+    margin-left 90px
+    width 250px
+	font-family 'Ninja', sans-serif
 	float left
 
 nav .navbar

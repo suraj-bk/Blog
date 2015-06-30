@@ -42,31 +42,64 @@ block content
               .tag-body.col-md-12.list-inline
                 p(class="tag-item") Tags :  
                 ul(class="tags")
-                  li
-                    a(href="#", class="tag") HTML
-                  li
-                    a(href="#", class="tag") Nginx
-                  li
-                    a(href="#", class="tag") All other tags     
+                  - for(var j=0 ; j< posts[i].tags.length ; j++) {
+                      li
+                        a(href="/tags/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
+                  - };         
         - };
         
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          - var count = pageNo;
-          - count++;
-          - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
-          h5= "Page " + pageNo + " of "  + Math.ceil(totPage/limit)
-          ul(class="list-inline")
-            li 
-              a(href="/home/1") 1
-            li .
-            li .
-            li
-              a(href="/home/3") 3 
-            li 
-              a(href="/home/" + encodeURIComponent(count)) Next ⬈ 
+          div(class="page-box")
+            - var countNext = pageNo;
+            - var countPrev = pageNo;
+            - countNext++;
+            - countPrev--;
+            - if(countNext > (totPage/limit)) countNext = Math.ceil(totPage/limit);
+            - if(countPrev < 1) countPrev = 1;
+  
+            h5= "Page " + pageNo + " of "  + Math.ceil(totPage/limit)
+            ul(class="list-inline")
+              li 
+                a(href="/home/" + encodeURIComponent(countPrev)) << 
+              li 
+                a(id="1", class="page-no", href="/home/1") 1
+              li
+                a(id="2", class="page-no", href="/home/2") 2
+              li
+                span(class="extend") ...
+              li
+                a(id="3", class="page-no", href="/home/3") 3 
+              li 
+                a(href="/home/" + encodeURIComponent(countNext)) »
+            script.
+              - document.getElementById(pageNo).setAttribute("class", "page-active");
 
 
     div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
+      .category
+        .heading
+          h4 Category
+        .list
+          ul(class="categories")
+            li
+              a(href="#", class="cat-list") Graphic Design        
+            li
+              a(href="#", class="cat-list") Logo Design
+            li
+              a(href="#", class="cat-list") Functional Programming        
+            li
+              a(href="#", class="cat-list") UI/UX Design
+            li
+              a(href="#", class="cat-list") Mobile App Development
+            li
+              a(href="#", class="cat-list") Web Design  
+            li
+              a(href="#", class="cat-list") Photography  
+            li
+              a(href="#", class="cat-list") Front-End Development
+            li
+              a(href="#", class="cat-list") Back-End Development           
+
       .connect
         .heading
           h4 Connect With Us
@@ -91,13 +124,13 @@ block content
 
       .facebook
         .heading
-          h4 Facebook 
+          h4 Find us on Facebook 
         .plugin          
           div(class="fb-page", data-href="https://www.facebook.com/WWE", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")
               blockquote(cite="https://www.facebook.com/WWE")
                 a(href="https://www.facebook.com/facebook") WWE          
-              
+             
       .tagbox
         .heading
           h4 Tags

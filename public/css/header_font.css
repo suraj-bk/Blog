@@ -1,0 +1,8 @@
+@font-face {
+	font-family: Ninja;
+    src: url("/public/css/fonts/AmericanCaptain.ttf");
+}
+
+.appTitle {
+	font-family: Ninja;
+}  

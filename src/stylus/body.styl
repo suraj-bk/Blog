@@ -96,6 +96,61 @@ body
   height 150px
   width 150px
   background #B6A78A     
+
+ul.categories 
+  list-style: none;
+  margin-top: 20px;
+  overflow: hidden; 
+  padding: 0;
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+  padding-left 10px;
+  justify-content right
+
+
+.categories li 
+  float: left; 
+
+.categories li a 
+  text-decoration: none !important
+
+.cat-list 
+  background: #5E656D;
+  border-radius: 3px 0 0 3px;
+  color: #eaeaea;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+
+
+.cat-list::before 
+  background: #eaeaea;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+
+.cat-list:hover 
+  background-color: #2AA4CF;
+  color: white;
+
+
+.cat-list:hover::after 
+   border-left-color: #2AA4CF; 
+
   
 ul.tags 
   list-style: none;
@@ -119,9 +174,9 @@ ul.tags
   text-decoration: none !important
 
 .tag 
-  background: #7E858D;
+  background: #9EA5AD;
   border-radius: 3px 0 0 3px;
-  color: #eaeaea;
+  color: #fff;
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -133,7 +188,7 @@ ul.tags
 
 
 .tag::before 
-  background: #eaeaea;
+  background: #fff;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -146,7 +201,7 @@ ul.tags
 .tag::after 
   background: #eaeaea;
   border-bottom: 13px solid transparent;
-  border-left: 10px solid #7E858D;
+  border-left: 10px solid #9EA5AD;
   border-top: 13px solid transparent;
   content: '';
   position: absolute;
@@ -204,8 +259,33 @@ ul.tags
 	border-left 1px solid #e7e7e7
 	height 500px;
  
+.aside-container .category
+  height 300px
+  background #eaeaea
+  margin-top 20px
+  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51) 
 
+.aside-container .category .heading
+  height auto
+  text-align center
+  background #2f3036
+  float left
+  color #fff
+  width 100%
 
+.aside-container .category .list
+  padding-left 10px
+  margin 0
+  list-style none
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+  justify-content space-around
 
 .aside-container .connect
   height auto
@@ -308,7 +388,7 @@ ul.tags
   justify-content space-around 
 
 .aside-container .facebook
-  height 285px
+  height 300px
   background #eaeaea
   margin-top 30px
   -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -325,7 +405,20 @@ ul.tags
 
 .aside-container .facebook .plugin
   padding-top 50px
-  text-align center       
+  text-align center 
+
+.page-box
+  padding 5px
+
+.page-no
+  border 1px solid #999
+  background #eee
+  padding 1px 8px 1px 8px
+
+.page-active
+  border 1px solid #999
+  background #f00
+  padding 1px 8px 1px 8px          
 
 .share 
     width 350px

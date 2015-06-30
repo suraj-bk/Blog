@@ -6,7 +6,7 @@ div.navdiv{
 	height: 60px;
 	padding: 5px;
 	width: 102.3%;
-	background-color: #2AA4CF;
+	background-color: #000;
 }
 
 ul.nb-ul {
@@ -25,7 +25,7 @@ li.nb-li {
 	margin-right: 1px;
 }
 
-/*Style for menu links*/
+/*Style for menu links #2AA4CF  */
 li.nb-li a {
 	display:block;
 	min-width:100px;
@@ -34,20 +34,20 @@ li.nb-li a {
 	line-height: 40px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #fff;
-	background: #2AA4CF;
+	background: #000;
 	text-decoration: none;
 }
 
 /*Hover state for top level links*/
 li.nb-li:hover a {
-	color: #2AA4CF;
-	background: #fff;
+	color: #000;
+	background: #ddd;
 }
 
 /*Style for dropdown links*/
 li.nb-li:hover ul a {
 	background: #f3f3f3;
-	color: #2f3036;
+	color: #000;
 	height: 40px;
 	line-height: 40px;
 }
@@ -61,6 +61,9 @@ li.nb-li:hover ul.nb-ul a:hover {
 /*Hide dropdown links until they are needed*/
 li.nb-li ul.nb-ul {
 	display: none;
+	min-width:100%;
+	clear: both;
+	margin-left: 0;
 }
 
 /*Make dropdown links vertical*/
@@ -78,7 +81,7 @@ li.nb-li ul.nb-ul li.nb-li a {
 
 /*Display the dropdown on hover*/
 ul.nb-ul li.nb-li a:hover + .hidden, .hidden:hover {
-	display: block;
+	display: inline-block;
 }
 
 
@@ -94,7 +97,7 @@ ul.nb-ul li.nb-li a:hover + .hidden, .hidden:hover {
 	/*Make dropdown links appear inline*/
 	div.navdiv{
 		height: 220px;
-		width: 106%;
+		width: 106.5%;
 	}
 	ul.nb-ul {
 		position: static;

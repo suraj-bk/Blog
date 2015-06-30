@@ -51,6 +51,30 @@ module.exports = function(){
 
 	});
 
+	router.get('/tags/:tagname',function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+		    var tagName = req.params.tagName;
+			var query = {};
+			var asa = {};
+			asa['in'] = [tagName];
+			query['tags'] = asa;
+		    //var query = { tags : { $in : [ tagName ] } }
+
+		    db.collection('articles').find(query).toArray(function(err,docs){
+		    	if(err) throw err;
+
+			    res.render('users/index',{title : 'suraj', posts : docs, pageNo : 1, totPage : 3,  limit : 4 });
+
+		    	return db.close();
+		    		
+		    });
+		});	 
+
+	});
+
 	router.get('/home/about',function(req, res){
 
 		res.render('users/about',{title : 'suraj'});
