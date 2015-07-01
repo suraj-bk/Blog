@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-
-module.exports = function(){
-
+module.exports = function(db){
+	//router.get('/', contentHandler.displayMainPage);
 	router.get('/',function(req, res){
+		//res.write("gfjh");
+		//res.end();
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
@@ -43,30 +44,6 @@ module.exports = function(){
 		    	if(err) throw err;
 
 			    res.render('users/post_article',{title : 'suraj', posts : docs });
-
-		    	return db.close();
-		    		
-		    });
-		});	 
-
-	});
-
-	router.get('/tags/:tagname',function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
-		    "use strict";
-		    if(err) throw err;
-
-		    var tagName = req.params.tagName;
-			var query = {};
-			var asa = {};
-			asa['in'] = [tagName];
-			query['tags'] = asa;
-		    //var query = { tags : { $in : [ tagName ] } }
-
-		    db.collection('articles').find(query).toArray(function(err,docs){
-		    	if(err) throw err;
-
-			    res.render('users/index',{title : 'suraj', posts : docs, pageNo : 1, totPage : 3,  limit : 4 });
 
 		    	return db.close();
 		    		

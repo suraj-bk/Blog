@@ -1,0 +1,119 @@
+/*Strip the ul of padding and list styling*/
+.top
+  position fixed
+  left 0
+  z-index 999
+
+div.navdiv
+	//margin-top 78px
+	//margin-left -15px
+	//margin-bottom 0
+	height  60px
+	//padding  5px
+	//width  102.3%
+	background-color  #2AA4CF
+
+ul.nb-ul 
+	list-style-type none
+	margin-left 0
+	margin-right  0
+	margin-bottom  0
+	padding 0
+	position  absolute
+
+
+/*Create a horizontal list with spacing*/
+li.nb-li 
+	display inline-block
+	float  left
+	margin-right  1px
+
+
+/*Style for menu links*/
+li.nb-li a 
+	display block
+	min-width 100px
+	height  40px
+	text-align  center
+	line-height  40px
+	font-family  "Helvetica Neue", Helvetica, Arial, sans-serif
+	color  #fff
+	background  #2AA4CF
+	text-decoration  none
+
+
+/*Hover state for top level links*/
+li.nb-li hover a 
+	color  #2AA4CF
+	background  #fff
+
+
+/*Style for dropdown links*/
+li.nb-li hover ul a 
+	background  #f3f3f3
+	color  #2f3036
+	height  40px
+	line-height  40px
+
+
+/*Hover state for dropdown links*/
+li.nb-li hover ul.nb-ul a hover 
+	background  #19c589
+	color  #fff
+
+
+/*Hide dropdown links until they are needed*/
+li.nb-li ul.nb-ul 
+	display  none
+
+
+/*Make dropdown links vertical*/
+li.nb-li ul.nb-ul li.nb-li 
+	display  block
+	float  none
+
+
+/*Prevent text wrapping*/
+li.nb-li ul.nb-ul li.nb-li a 
+	width  auto
+	min-width  100px
+	padding  0 20px
+
+
+/*Display the dropdown on hover*/
+ul.nb-ul li.nb-li a hover + .hidden, .hidden hover 
+	display  block
+
+
+
+/*Show menu when invisible checkbox is checked*/
+#menu
+    display  block
+
+
+
+/*Responsive Styles*/
+
+@media screen and (max-width   760px)
+	/*Make dropdown links appear inline*/
+	div.navdiv
+		height  220px
+		width  106%
+	
+	ul.nb-ul 
+		position  static
+		display  none
+	
+	/*Create vertical spacing*/
+	li.nb-li 
+		margin-bottom  1px
+	
+	/*Make all menu links full width*/
+	ul.nb-ul li.nb-li, li.nb-li a 
+		width  100%
+	
+	/*Display 'show menu' link*/
+	.show-menu 
+		margin-top  100px
+		display block
+	

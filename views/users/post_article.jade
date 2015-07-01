@@ -5,7 +5,7 @@ block content
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-          h2= posts[3].title
+          h2= post_title
           ul(class="list-inline subhead")
             li ⌘ 30 Comments
             li
@@ -18,8 +18,8 @@ block content
               ul(class="list-inline")
                 li
                   img(src="/img/author.png") 
-                li= posts[3].author_name
-            li
+                li= author_name
+            //li
               a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[3].title, data-size="default") Tweet
             li
               div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
@@ -41,7 +41,7 @@ block content
           .post-body.col-md-12
             .pic2.col-md-12
             .post-content.col-md-12
-              p= posts[3].body
+              p= post_body
 
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
           div(class="disqus", id="disqus_thread")      

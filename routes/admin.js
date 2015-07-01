@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var	urlencodedParser = bodyParser.urlencoded({ extended : false });
 var MongoClient = require('mongodb').MongoClient;
+var nodemailer = require("nodemailer");
 
 
 var isAuthenticated = function (req, res, next) {
@@ -145,6 +146,10 @@ module.exports = function(passport,urlencodedParser){
 
 		});	
 
+	});
+
+	router.get('/email_snd',function(req,res){
+		res.render('emailer/index');
 	});
 
 	return router;

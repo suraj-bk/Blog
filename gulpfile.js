@@ -23,7 +23,7 @@ gulp.task('watch',[],function(){
 
 gulp.task('build-css',function(){
 
-	gulp.src('./src/stylus/**.styl')
+	gulp.src(['./src/stylus/**.styl','./src/stylus/admin/**.styl'])
 	.pipe(concat('main.styl'))
     .pipe(stylus({ use: nib(), compress: true }))
     .pipe(autoprefixer())
