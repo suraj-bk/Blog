@@ -2,6 +2,7 @@ doctype html
 html
   head
     title= appTitle
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
@@ -14,13 +15,14 @@ html
     script(type="text/javascript", src="/js/facebook.js")
     script(src="https://apis.google.com/js/platform.js", async defer)
     script(type="text/javascript", src="/js/disqus.js")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+
   body
     #wrap
       .container-fluid
         block header
             include ./header.jade
-        block navbar
+        //block navbar
             include ./navbar.jade       
         block content
         block sidebar
@@ -29,3 +31,4 @@ html
             include ./creators.jade
         block footer
             include ./footer.jade
+
