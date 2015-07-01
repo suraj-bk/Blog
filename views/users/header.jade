@@ -2,11 +2,19 @@ script(type="text/javascript", src="/js/classie.js")
 script(type="text/javascript", src="/js/navbar.js")
 header
 	.container-fluid.clearfix
-		h1(id="logo") LOGO
+		a(href="/")
+			div(id="logoImg")
+		h1(id="logoTitle") 忍者コーダー
 		nav
-			a(href="") Lorem
-			a(href="") Ipsum
-			a(href="") Dolor
+			a(href="/") HOME
+			a(href="/home/about") ABOUT
+			a(href="/home/contact_us") CONTACT
+			div(class="searchBox")
+				form(class="search-container", action="")
+					input(id="search-box", type="text", class="search-box", name="q")
+					label(for="search-box")
+						span(class="glyphicon glyphicon-search search-icon")
+					input(type="submit", id="search-submit")
 
 //header(class="col-md-12 col-sm-12 col-xs-12")
 	a(href="/")

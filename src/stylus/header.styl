@@ -17,15 +17,6 @@ header
   height auto
   padding 5px
   border-bottom 6px solid #000
-
-
-header #logo
-	height 70px
-	width 70px
-	background #2f3036
-	float left
-	background-image url("/public/img/dp.jpeg")
-	margin-right 20px
 	
 header .appTitle
     color #FFFFFF
@@ -49,22 +40,39 @@ nav .navbar
     top  0
     left  0
     z-index  999
-    background-color  #0683c9
+    background-color  #446382
     -webkit-transition  height 0.3s
     -moz-transition  height 0.3s
     -ms-transition  height 0.3s
     -o-transition  height 0.3s
     transition  height 0.3s
 
-header h1#logo 
+header div#logoImg
+    padding 0
+    height 70px
+    width 70px
+    margin-top 15px
+    margin-left 10px
+    background #446382
+    float left
+    background-image url("/img/logo.png")
+    -webkit-transition  all 0.3s
+    -moz-transition  all 0.3s
+    -ms-transition  all 0.3s
+    -o-transition  all 0.3s
+    transition  all 0.3s
+    border 0
+
+header h1#logoTitle 
     display  inline-block
     height  100px
-    line-height  100px
+    line-height  80px
     float  left
     font-family  "Oswald", sans-serif
-    font-size  60px
-    color  white
+    font-size  50px
+    color  #fff
     font-weight  400
+    margin-left 20px
     -webkit-transition  all 0.3s
     -moz-transition  all 0.3s
     -ms-transition  all 0.3s
@@ -78,7 +86,7 @@ header nav
 header nav a 
     line-height  100px
     margin-left  20px
-    color  #9fdbfc
+    color  #bec9d3
     font-weight  700
     font-size  18px
     -webkit-transition  all 0.3s
@@ -87,20 +95,40 @@ header nav a
     -o-transition  all 0.3s
     transition  all 0.3s
 
-header nav a hover 
+header nav div
+    visibility visible
+    float right
+    margin-top 30px
+    margin-left  20px
+    color  #fff
+    -webkit-transition  all 0.3s
+    -moz-transition  all 0.3s
+    -ms-transition  all 0.3s
+    -o-transition  all 0.3s
+    transition  all 0.3s    
+
+header nav a:hover
+    text-decoration none !important 
     color  white
 
 header.smaller 
     height  75px
 
-header.smaller h1#logo 
-    width  150px
+header.smaller div#logoImg 
+    height 50px
+    width 50px
+    background-image url("/img/logo_small.png")
+
+header.smaller h1#logoTitle
     height  75px
-    line-height  75px
+    line-height  50px
     font-size  30px
 
 header.smaller nav a 
     line-height  75px
+
+header.smaller nav div
+    visibility hidden
 
 .clearfix:after 
   visibility hidden
@@ -109,8 +137,9 @@ header.smaller nav a
   clear both
   height 0 
   
-@media all and (max-width : 660px) 
-    header h1#logo 
+@media all and (max-width : 660px)
+
+    header h1#logoTitle 
         display  block
         float  none
         margin  0 auto
@@ -128,11 +157,14 @@ header.smaller nav a
     header nav a 
         line-height  50px
         margin  0 10px
+
+    header nav div
+        visibility hidden    
     
     header.smaller 
-        height  75px
+        height  110px
     
-    header.smaller h1#logo 
+    header.smaller h1#logoTitle 
         height  40px
         line-height  40px
         font-size  30px
@@ -142,5 +174,18 @@ header.smaller nav a
     
     header.smaller nav a 
         line-height  35px
+
+    header.smaller nav div
+        visibility visible
+        text-align  center
+        float none
+        margin-top 5px
+        margin-left  115px
+        color  #fff
+        -webkit-transition  all 0.3s
+        -moz-transition  all 0.3s
+        -ms-transition  all 0.3s
+        -o-transition  all 0.3s
+        transition  all 0.3s    
     
 
