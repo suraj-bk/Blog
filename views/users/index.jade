@@ -2,14 +2,16 @@ extends layout
 
 block content
   .row
-    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
-            article(class="flex-item col-md-12")
-              a(href="/post/"+posts[i].title)
+            article(class="flex-item")
+              a(class="col-md-12" href="/post/"+posts[i].title)
                 h2= posts[i].title
-              ul(class="list-inline subhead")
-                li ⌘ 30 Comments
+              ul(class="list-inline subhead col-md-12")
+                li
+                  img(src="/img/comment.png") 
+                  li= "30 Comments"
                 li
                   ul(class="list-inline")
                     li
@@ -21,13 +23,25 @@ block content
                     li
                       img(src="/img/author.png") 
                     li= posts[i].author_name
-                li
-                  div(class="share")  
+              .post-social-icons.col-md-12
+                ul(class="list-inline")
+                    li
+                      img(src="/img/twitter.png")
+                    li
+                      img(src="/img/google.png")
+                    li
+                      img(src="/img/git.png")
+                    li
+                      img(src="/img/facebook.png")
+                    li
+                      img(src="/img/lin.png")
+                    li
+                      img(src="/img/em.png")
+
+                  //div(class="share")  
                     a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
 
                     div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
-
-                    div(class="fb-like", data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count", data-action="like", data-show-faces="true", data-share="false", data-width="450", style="width:87px; overflow:hidden; top:-1px; left: 0px;")
 
                     div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:97px; overflow:hidden; top:-1px;")
                   
@@ -36,90 +50,66 @@ block content
               .post-body.col-md-12
                 .pic.col-md-4
                 .post-content.col-md-8
-                  p= posts[i].body
+                  span= posts[i].body
                   .readmore 
                     a(href="/post/"+posts[i].title) Read more ⬈
-
-              .tag-body.col-md-12.list-inline
-                p(class="tag-item") Tags :  
-                ul(class="tags")
-                  - for(var j=0 ; j< posts[i].tags.length ; j++) {
-                      li
-                        a(href="/tags/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
-                  - };    
+              br
+              h4(class="col-md-12") Tagged with :
+              .tag-body.col-md-12
+                - for(var j=0 ; j< posts[i].tags.length ; j++) {
+                li
+                  a(href="/tag/" + posts[i].tags[j], class="tag-item")= posts[i].tags[j]
+                - };       
         - };
-
+        
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          div(class="page-box")
-            - var countNext = pageNo;
-            - var countPrev = pageNo;
-            - countNext++;
-            - countPrev--;
-            - if(countNext > (totPage/limit)) countNext = Math.ceil(totPage/limit);
-            - if(countPrev < 1) countPrev = 1;
-  
-            h5= "Page " + pageNo + " of "  + Math.ceil(totPage/limit)
+          - for(var i=0 ; i< totPages ; i++) {
+            - var c = i+1;
             ul(class="list-inline")
-              li 
-                a(href="/home/" + encodeURIComponent(countPrev)) << 
-              li 
-                a(id="1", class="page-no", href="/home/1") 1
               li
-                a(id="2", class="page-no", href="/home/2") 2
-              li
-                span(class="extend") ...
-              li
-                a(id="3", class="page-no", href="/home/3") 3 
+                a(href="/home/" + encodeURIComponent(c))= c
+          -}
               li 
-                a(href="/home/" + encodeURIComponent(countNext)) »
-            script.
-              - document.getElementById(pageNo).setAttribute("class", "page-active");
+                a(href="/home/" + encodeURIComponent(count)) Next ⬈
+
+        //article(class="flex-item col-md-12 col-sm-12 col-xs-12")
+          - var count = pageNo;
+          - count++;
+          - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
+          h5= "Page " + pageNo + " of "  + Math.ceil(totPage/limit)
+          ul(class="list-inline")
+            li 
+              a(href="/home/1") 1
+            li .
+            li .
+            li
+              a(href="/home/3") 3 
+            li 
+              a(href="/home/" + encodeURIComponent(count)) Next ⬈ 
 
 
-    div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
-      .category
-        .heading
-          h4 Category
-        .list
-          ul(class="categories")
-            li
-              a(href="#", class="cat-list") Graphic Design        
-            li
-              a(href="#", class="cat-list") Logo Design
-            li
-              a(href="#", class="cat-list") Functional Programming        
-            li
-              a(href="#", class="cat-list") UI/UX Design
-            li
-              a(href="#", class="cat-list") Mobile App Development
-            li
-              a(href="#", class="cat-list") Web Design  
-            li
-              a(href="#", class="cat-list") Photography  
-            li
-              a(href="#", class="cat-list") Front-End Development
-            li
-              a(href="#", class="cat-list") Back-End Development 
-
-
+    div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
       .connect
         .heading
           h4 Connect With Us
-        .social
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-twitter.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-facebook.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-googleplus.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-rss.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-youtube.png")
+        .social-ico
+          ul(class="list-inline")
+            li
+              img(src="/img/twitter.png")
+            li
+              img(src="/img/google.png")
+            li
+              img(src="/img/git.png")
+            li
+              img(src="/img/facebook.png")
+            li
+              img(src="/img/lin.png")
+            li
+              img(src="/img/em.png")
 
         .subscribe
-          div(class="section-inner text-center")  
-            h5 Subscribe - We dont spam
+          .heading  
+            h4 Subscribe - We dont spam
               div(class="form-group email-box")
                 input(type=text, class="form-control email", id=email, placeholder="Email")
                 button(type=submit, class="email-btn", onClick="subscribeButton()") Subscribe
@@ -151,10 +141,9 @@ block content
                         return alert(error);
                       }
                       alert("Email has been sent");
-                      console.log('Message sent: ' + info.response);
+                      console.log('Message sent: '  info.response);
                     });
                   }
-
       .facebook
         .heading
           h4 Facebook 
@@ -162,19 +151,37 @@ block content
           div(class="fb-page", data-href="https://www.facebook.com/WWE", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")
               blockquote(cite="https://www.facebook.com/WWE")
-                a(href="https://www.facebook.com/facebook") WWE         
+                a(href="https://www.facebook.com/facebook") WWE  
+
+      .category
+        .heading
+          h4 Category
+        .list
+          ul(class="categories")
+            li
+              a(href="#", class="cat-list") Graphic Design        
+            li
+              a(href="#", class="cat-list") Logo Design
+            li
+              a(href="#", class="cat-list") Functional Programming        
+            li
+              a(href="#", class="cat-list") UI/UX Design
+            li
+              a(href="#", class="cat-list") Mobile App Development
+            li
+              a(href="#", class="cat-list") Web Design  
+            li
+              a(href="#", class="cat-list") Photography  
+            li
+              a(href="#", class="cat-list") Front-End Development
+            li
+              a(href="#", class="cat-list") Back-End Development        
               
       .tagbox
         .heading
           h4 Tags
         .tags
           ul(class="tags")
-            - for(var i=0 ; i< posts.length ; i++) {
-                - for(var j=0 ; j< posts[i].tags.length ; j++) {
-                    li
-                      a(href="/tags/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
-                - };
-            - };
             li
               a(href="#", class="tag") HTML
             li
@@ -202,4 +209,4 @@ block content
             li
               a(href="#", class="tag") Android
             li
-              a(href="#", class="tag") C/C++            
+              a(href="#", class="tag") C/C++           

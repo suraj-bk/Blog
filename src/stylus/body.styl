@@ -20,7 +20,7 @@ body
 	height auto
 	
 .main-container .flex-container 
-  padding-left 10px
+  padding-left 0px
   margin 0
   list-style none
   display -webkit-box
@@ -45,12 +45,10 @@ body
 
 
 .flex-container h2
-  margin-left 20px
 	color #2275b4
 	text-decoration none
 	
 .flex-container .subhead
-  margin-left 20px
 	color #404040
 	font-size 15px
 	
@@ -71,6 +69,15 @@ body
 .flex-container .post-body .post-content
   background #fff
   font-size 15px
+  
+.truncate 
+  height 120px
+  white-space normal
+  overflow hidden
+  text-overflow ellipsis
+
+
+
 
 .flex-container .about-body
   float left
@@ -101,7 +108,7 @@ body
 
 ul.categories 
   list-style: none;
-  margin-top: 20px;
+  margin-top: 40px;
   overflow: hidden; 
   padding: 0;
   display -webkit-box
@@ -113,6 +120,10 @@ ul.categories
   padding-left 10px;
   justify-content right
 
+.post-social-icons
+  width auto
+  float left
+  background #fff
 
 .categories li 
   float: left; 
@@ -121,7 +132,7 @@ ul.categories
   text-decoration: none !important
 
 .cat-list 
-  background: #5E656D;
+  background: #1E824C;
   border-radius: 3px 0 0 3px;
   color: #eaeaea;
   display: inline-block;
@@ -146,7 +157,8 @@ ul.categories
   top: 10px;
 
 .cat-list:hover 
-  background-color: #2AA4CF;
+  background-color: #1E824C;
+  opacity 0.8
   color: white;
 
 
@@ -175,8 +187,11 @@ ul.tags
 .tags li a 
   text-decoration: none !important
 
+.white
+  background #fff
+
 .tag 
-  background: #9EA5AD;
+  background: #1E824C;
   border-radius: 3px 0 0 3px;
   color: #fff;
   display: inline-block;
@@ -199,9 +214,20 @@ ul.tags
   position: absolute;
   width: 6px;
   top: 10px;
-
+  
 .tag::after 
-  background: #eaeaea;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+
+/*.tag::after 
+  background: #fff;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #9EA5AD;
   border-top: 13px solid transparent;
@@ -209,22 +235,21 @@ ul.tags
   position: absolute;
   right: 0;
   top: 0;
-
+*/
 
 .tag:hover 
   background-color: #2AA4CF;
   color: white;
 
 
-.tag:hover::after 
-   border-left-color: #2AA4CF; 
+//.tag:hover::after 
+   //border-left-color: #2AA4CF; 
 
 
 .flex-container .tag-body
-  margin-top 20px;
+  margin-top 10px;
   padding 0
   margin 0
-  float left
   list-style none
   display -webkit-box
   display -moz-box
@@ -232,24 +257,18 @@ ul.tags
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  padding-left 10px;
+  margin-left 20px
   justify-content right
 
   
 .flex-container .tag-body .tag-item
-  padding 5px
-  margin-top 10px
+  padding-left 7px
+  padding-right 7px
   color #fff
   background #288288
   margin-right 8px
-  border-radius 5px
+  font-size 14px
   
-.flex-container .tag-body .tag-item:first-child
-  padding 5px
-  margin-top 10px
-  color #000
-  background #fff
-  margin-right 10px 
 
 .readmore
   font-size 20px
@@ -258,15 +277,14 @@ ul.tags
 
 .aside-container
 	border-left 1px solid #e7e7e7
-	height 500px;
+	height auto
  
 .aside-container .category
-  height 300px
-  background #eaeaea
+  background #f1f4f9
   margin-top 20px
-  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51) 
+  //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51) 
 
 .aside-container .category .heading
   height auto
@@ -289,12 +307,13 @@ ul.tags
   justify-content space-around
 
 .aside-container .connect
-  height auto
-  background #eaeaea
+  background #f1f4f9
   margin-top 20px
-  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  padding-bottom 10px
+
+  //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   
 .aside-container .connect .heading
   height auto
@@ -302,11 +321,18 @@ ul.tags
   background #2f3036
   float left
   color #fff
+  margin-bottom 10px
   width 100%
   
+.aside-container .connect .social-ico
+  text-align center
+  background #f1f4f9
+  color #fff
+  
 .aside-container .connect .social
+  height auto
   padding-left 10px
-  margin 0
+  margin-top 20px
   list-style none
   display -webkit-box
   display -moz-box
@@ -361,11 +387,11 @@ ul.tags
 
 .aside-container .tagbox
   height auto
-  background #eaeaea
+  background #f1f4f9
   margin-top 30px
-  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   
 .aside-container .tagbox .heading
   height auto
@@ -392,9 +418,9 @@ ul.tags
   height 300px
   background #eaeaea
   margin-top 30px
-  -webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  -moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
-  box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
+  //box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
 
 .aside-container .facebook .heading
   height auto
