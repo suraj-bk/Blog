@@ -25,14 +25,14 @@ block content
                     li
                       img(src="/img/author.png") 
                     li= posts[i].author_name
-              .post-social-icons.col-md-12.subhead
-                ul(class="list-inline share")
-                    li
-                      a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
-                    li
-                      div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
-                    li
-                      div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:97px; overflow:hidden; top:-1px;")
+              .post-social-icons
+                ul(class="list-inline")
+                  li
+                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
+                  li
+                    div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
+                  li
+                    div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
                   
 
                   //div(class="share")  
