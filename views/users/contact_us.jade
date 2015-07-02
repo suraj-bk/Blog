@@ -5,7 +5,7 @@ block content
     div(class="col-md-8 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-          h2 Contact
+          h2.main-titles Contact
 
           .about-body.col-md-12
             p 
@@ -36,7 +36,7 @@ block content
                   label(for="cont_descr") Description
                   textarea(rows="10", class="form-control",name="cont_descr", id="cont_descr")  
                   h5 Enter your desired message/feedback or complaint.
-                button(type=submit) Submit    
+                button(type=submit, class="mycustom-btn") Submit    
     
     
 
@@ -44,24 +44,27 @@ block content
       .connect
         .heading
           h4 Connect With Us
-        .social
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-twitter.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-facebook.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-googleplus.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-rss.png")
-          a(class="social-btn")
-            img(src="/img/social/32x32/32-youtube.png")
+        .social-ico
+          ul(class="list-inline")
+            li
+              img(src="/img/twitter.png")
+            li
+              img(src="/img/google.png")
+            li
+              img(src="/img/git.png")
+            li
+              img(src="/img/facebook.png")
+            li
+              img(src="/img/lin.png")
+            li
+              img(src="/img/em.png")
 
         .subscribe
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
               div(class="form-group email-box")
                 input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="email-btn") Subscribe  
+                button(type=submit, class="mycustom-btn2") Subscribe  
               
       .tagbox
         .heading

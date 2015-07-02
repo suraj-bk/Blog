@@ -5,13 +5,15 @@ block content
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
-            article(class="flex-item")
-              a(class="col-md-12" href="/post/"+posts[i].title)
-                h2= posts[i].title
+            article(class="flex-item col-md-12 col-sm-12 col-xs-12")
+              a(class="col-md-12 post-title-link" href="/post/"+posts[i].title)
+                h2(class="post-title")= posts[i].title
               ul(class="list-inline subhead col-md-12")
                 li
-                  img(src="/img/comment.png") 
-                  li= "30 Comments"
+                  ul(class="list-inline")
+                    li
+                      img(src="/img/comment.png") 
+                    li= "30 Comments"
                 li
                   ul(class="list-inline")
                     li
@@ -23,20 +25,15 @@ block content
                     li
                       img(src="/img/author.png") 
                     li= posts[i].author_name
-              .post-social-icons.col-md-12
-                ul(class="list-inline")
+              .post-social-icons.col-md-12.subhead
+                ul(class="list-inline share")
                     li
-                      img(src="/img/twitter.png")
+                      a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
                     li
-                      img(src="/img/google.png")
+                      div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
                     li
-                      img(src="/img/git.png")
-                    li
-                      img(src="/img/facebook.png")
-                    li
-                      img(src="/img/lin.png")
-                    li
-                      img(src="/img/em.png")
+                      div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:97px; overflow:hidden; top:-1px;")
+                  
 
                   //div(class="share")  
                     a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
@@ -55,10 +52,10 @@ block content
                     a(href="/post/"+posts[i].title) Read more ⬈
               br
               h4(class="col-md-12") Tagged with :
-              .tag-body.col-md-12
+              .tag-body.tags.col-md-12
                 - for(var j=0 ; j< posts[i].tags.length ; j++) {
-                li
-                  a(href="/tag/" + posts[i].tags[j], class="tag-item")= posts[i].tags[j]
+                  li
+                    a(href="/tag/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
                 - };       
         - };
         
@@ -108,11 +105,12 @@ block content
               img(src="/img/em.png")
 
         .subscribe
-          .heading  
-            h4 Subscribe - We dont spam
+          div(class="section-inner text-center")  
+            h5 Subscribe - We dont spam
               div(class="form-group email-box")
                 input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="email-btn", onClick="subscribeButton()") Subscribe
+                button(type=submit, class="mycustom-btn") Subscribe 
+              
 
                 script.
                   var nodemailer = require('nodemailer');
@@ -146,7 +144,7 @@ block content
                   }
       .facebook
         .heading
-          h4 Facebook 
+          h4 Find us on Facebook 
         .plugin          
           div(class="fb-page", data-href="https://www.facebook.com/WWE", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")

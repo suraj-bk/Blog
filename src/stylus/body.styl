@@ -44,21 +44,42 @@ body
   box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
 
 
-.flex-container h2
-	color #2275b4
-	text-decoration none
-	
+.flex-container h2.main-titles
+  margin-left 20px
+  color #2275b4
+
+.flex-container a.post-title-link
+  color #2275b4  
+  text-decoration none
+
+.flex-container a.post-title-link:hover 
+  color #2265A4
+  text-shadow: 0 0 3px #2275b4; 
+
+.flex-container a
+  text-decoration none   
+
+.flex-container h2.post-title
+  margin-left 5px
+  text-decoration none  
+
+@media all and (max-width : 660px)
+  .flex-container h2.post-title
+    margin-left 15px
+    text-decoration none
+
 .flex-container .subhead
 	color #404040
 	font-size 15px
 	
 	
 .flex-container .post-body
-  float left
+  clear left
   margin-top 15px 
   
 .flex-container .post-body .pic
   height 150px
+  margin-bottom 20px
   background #B6A78A
 
 .flex-container .post-body .pic2
@@ -67,8 +88,17 @@ body
   background #B6A78A    
 
 .flex-container .post-body .post-content
+  padding-left 10px
+  margin-bottom 20px
   background #fff
   font-size 15px
+
+@media all and (max-width : 660px)
+  .flex-container .post-body .post-content
+    padding 0
+    margin-bottom 20px
+    background #fff
+    font-size 15px
   
 .truncate 
   height 120px
@@ -81,6 +111,7 @@ body
 
 .flex-container .about-body
   float left
+  margin-left 5px
   margin-bottom 20px 
 
 .flex-container .about-body .about-head
@@ -353,7 +384,7 @@ ul.tags
   
 .aside-container .subscribe
   height 140px
-  background #eaeaea
+  background #f1f4f9
   margin-top 30px
   padding-left 50px
   padding-right 50px
@@ -366,22 +397,22 @@ ul.tags
   float left
   margin-right 5px
 
-.aside-container .subscribe .email-btn
+.mycustom-btn
   color #fff
   padding 8px
   background #2AA4CF
+  margin-top 20px
   border-radius 5px
   border 0px
 
-.aside-container .subscribe .email-btn2
+.aside-container .subscribe .mycustom-btn2
   color #fff
   padding 8px
   background #2AA4CF
-  margin-top 10px
   border-radius 5px
   border 0px  
 
-.aside-container .subscribe .email-btn:hover
+.mycustom-btn:hover
   color #fff
   background #288288     
 
@@ -448,16 +479,24 @@ ul.tags
   padding 1px 8px 1px 8px          
 
 .share 
-    width 350px
-    height 30px
-    background #DDD
-    float right
-    white-space nowrap
-    padding-top 5px
-    padding-bottom 5px
-    padding-left 3px
-    border-bottom-left-radius 5px
-    vertical-align top
+  width 290px
+  height 30px
+  background #DDD
+  float right
+  white-space nowrap
+  margin-top 10px
+  margin-bottom 10px
+  padding-top 5px
+  padding-bottom 5px
+  margin-left 2px
+  border-radius 5px
+  vertical-align top
+
+@media all and (max-width : 660px)
+  .fb-share-button
+    top -10px
+
+
 
 .disqus
   padding 30px    
