@@ -1,5 +1,7 @@
 var ContentHandler = require('./content')
   , ErrorHandler = require('./error').errorHandler;
+ var nodemailer = require('nodemailer');
+ var smtpTransport = require('nodemailer-smtp-transport');
 
 module.exports = exports = function(app, db) {
 
@@ -22,6 +24,48 @@ module.exports = exports = function(app, db) {
 	});
 
 	app.get('/home/:pageNo',contentHandler.displayPostsByPage);
+
+	app.post('/contact', function(req, res) {
+	  var mailOpts, smtpTrans;
+
+	 var transporter = nodemailer.createTransport(smtpTransport({
+	  service: 'Gmail',
+	  auth: { 
+	  		user: 'ravishetty150@gmail.com',
+	        pass: 'nmamitsucks' 
+	    }
+	  }));
+
+	  //Mail options
+	var mailOptions = {
+      from: 'Ravi shetty <ravishetty150@gmail.com>',
+      to: "<bksuraj1994@gmail.com>",
+      subject: 'Hello',
+      text: 'Hello world',
+      html: '<b>Hello world</b>'
+     };
+
+	transporter.sendMail({
+      from: 'Ravi shetty <ravishetty150@gmail.com>',
+      to: "<bksuraj1994@gmail.com>",
+      subject: 'Hello',
+      text: 'Hello world',
+      html: '<b>Hello world</b>'
+     }, function(error, info) {
+	      //Email not sent
+	      if (error) {
+	      	console.log(error);
+			  //res.write('error');
+	          res.redirect('/')	      
+	      }
+	      //Yay!! Email sent
+	      else {
+	      	  console.log("djhkwdj" + info);
+	          //res.write('email sent.. ');
+	          res.redirect('/')
+	      }
+	  });
+	});
 
     app.use(ErrorHandler);
 }

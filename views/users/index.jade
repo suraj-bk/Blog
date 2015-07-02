@@ -108,40 +108,10 @@ block content
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
               div(class="form-group email-box")
-                input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="mycustom-btn") Subscribe 
-              
+                form(action='/contact', name='contactus', id='contactus', method='post')
+                  input(type=text, class="form-control email", id=email, placeholder="Email")
+                  input(type="submit", class="email-btn", value="Subscribe") 
 
-                script.
-                  var nodemailer = require('nodemailer');
-                  
-                  function subscribeButton(){
-                    alert("Testing..... 1");
-
-                    var transporter = nodemailer.createTransport({
-                      service: 'Gmail',
-                      auth: {
-                        user: 'ravishetty150@gmail.com',
-                        pass: 'nmamitsucks'
-                      }
-                    });
-
-                    var mailOptions = {
-                      from: 'Ravi shetty <ravishetty150@gmail.com>',
-                      to: 'dkshthshetty7@gmail.com',
-                      subject: 'Hello',
-                      text: 'Hello world',
-                      html: '<b>Hello world</b>'
-                    };
-
-                    transporter.sendMail(mailOptions, function(error, info){
-                      if(error){
-                        return alert(error);
-                      }
-                      alert("Email has been sent");
-                      console.log('Message sent: '  info.response);
-                    });
-                  }
       .facebook
         .heading
           h4 Find us on Facebook 
