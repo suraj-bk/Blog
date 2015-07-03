@@ -66,7 +66,58 @@ function PostsDAO(db) {
         });
     }
 
-    
+    this.getHotPosts = function(num, skip, callback) {
+        "use strict";
+
+        posts.find().sort({'created_at.year':1}).limit(num).skip(skip).toArray(function(err, items) {
+            "use strict";
+
+            if (err) return callback(err, null);
+
+            console.log("Found " + items.length + " posts");
+
+            callback(err, items);
+        });
+    }
+
+    this.getAllCategories = function(callback) {
+        "use strict";
+
+        posts.aggregate([
+            {   $group: 
+                    { "_id": "$category", "count": { $sum: 1 } }
+            }
+        ]).toArray(function(err, result) {
+            if (err) return callback(err, null);
+
+            console.log("Found " + result.length + " posts");
+
+            callback(err, result);
+        });
+    }
+
+    this.getAllTags = function(callback) {
+        "use strict";
+
+        posts.aggregate([
+            {   $unwind : "$tags"},
+            {   $group: 
+                    { "_id": "$tags", "count": { $sum: 1 } }
+            }
+            /*{
+                $project : 
+                    {   "_id": 0, "tag" : $_id, "count": 1 }
+            }*/
+        ]).toArray(function(err, result) {
+            if (err) return callback(err, null);
+
+            console.log("Found " + result.length + " posts");
+
+            callback(err, result);
+        });
+    }
+
+
 
     this.getPostsByTag = function(tag, num, callback) {
         "use strict";

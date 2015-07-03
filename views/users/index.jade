@@ -58,7 +58,7 @@ block content
                     a(href="/tag/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
                 - };       
         - };
-        div(id="pager" class="text-center")
+        div(id="pager", class="text-center")
 
         script(type="text/javascript", src="/js/jquery.bootpag.min.js")
         script.
@@ -81,9 +81,8 @@ block content
             lastClass: 'last',
             firstClass: 'first',*/
             //href: "/home/{{number}}",
-          })
-          .on("page", function(event, /* page number here */ num) {
-            window.location.assign("/home/"+num);
+          }).on("page", function(event, /* page number here */ num) {
+              window.location.assign("/home/"+num);
           });
 
     div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
@@ -111,71 +110,48 @@ block content
               div(class="form-group email-box")
                 form(action='/contact', name='contactus', id='contactus', method='post')
                   input(type=text, class="form-control email", id=email, placeholder="Email")
-                  input(type="submit", class="email-btn", value="Subscribe") 
+                  input(type="submit", class="mycustom-btn", value="Subscribe") 
 
       .facebook
         .heading
           h4 Find us on Facebook 
         .plugin          
-          div(class="fb-page", data-href="https://www.facebook.com/WWE", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
+          div(class="fb-page", data-href="https://www.facebook.com/GameOfThrones", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")
-              blockquote(cite="https://www.facebook.com/WWE")
-                a(href="https://www.facebook.com/facebook") WWE  
+              blockquote(cite="https://www.facebook.com/GameOfThrones")
+                a(href="https://www.facebook.com/facebook") GameOfThrones  
 
       .category
         .heading
           h4 Category
         .list
           ul(class="categories")
-            li
-              a(href="#", class="cat-list") Graphic Design        
-            li
-              a(href="#", class="cat-list") Logo Design
-            li
-              a(href="#", class="cat-list") Functional Programming        
-            li
-              a(href="#", class="cat-list") UI/UX Design
-            li
-              a(href="#", class="cat-list") Mobile App Development
-            li
-              a(href="#", class="cat-list") Web Design  
-            li
-              a(href="#", class="cat-list") Photography  
-            li
-              a(href="#", class="cat-list") Front-End Development
-            li
-              a(href="#", class="cat-list") Back-End Development        
+            - for(var i=0 ; i< categories.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                  li(class="tag-count")= categories[i].count  
+            - };         
               
       .tagbox
         .heading
           h4 Tags
         .tags
           ul(class="tags")
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") Android
-            li
-              a(href="#", class="tag") C/C++           
+            - for(var i=0 ; i< tags.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                  li(class="tag-count")= tags[i].count   
+            - };
+
+      .hotPostsbox
+        .heading
+          h4 Hot posts
+        .hotPosts
+          - for(var i=0 ; i< hot_posts.length ; i++) {
+              ul(class="hot_links")
+                li
+                  span ↠
+                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title + " is the best in the world"
+          - };            

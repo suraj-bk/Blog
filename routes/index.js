@@ -19,6 +19,14 @@ module.exports = exports = function(app, db) {
 		res.render('users/about',{title : 'suraj'});
 	});
 
+	app.get('/home/subscription_confirmed',function(req, res){
+		res.render('users/subs_confirm',{title : 'suraj'});
+	});
+
+	app.get('/home/email_sent',function(req, res){
+		res.render('users/email_sent',{title : 'suraj'});
+	});
+
 	app.get('/home/contact_us',function(req, res){
 		res.render('users/contact_us',{title : 'suraj'});
 	});
@@ -41,7 +49,7 @@ module.exports = exports = function(app, db) {
 	  //Mail options
 	var mailOptions = {
       from: 'Ravi shetty <ravishetty150@gmail.com>',
-      to: "<bksuraj1994@gmail.com>",
+      to: "<bksuraj1994@gmail.com>, <dkshthshetty7@gmail.com>",
       subject: 'Hello',
       text: 'Hello world',
       html: '<b>Hello world</b>'
@@ -49,10 +57,10 @@ module.exports = exports = function(app, db) {
 
 	transporter.sendMail({
       from: 'Ravi shetty <ravishetty150@gmail.com>',
-      to: "<bksuraj1994@gmail.com>",
+      to: "<bksuraj1994@gmail.com>,<dkshthshetty7@gmail.com>",
       subject: 'Hello',
       text: 'Hello world',
-      html: '<b>Hello world</b>'
+      html: "<h3>Subscription Confirmation</h3><form action='192.168.1.2:8000/home/subscription_confirmed' method='post' target='_blank'><input type='submit' value='Confirm' /></form>"
      }, function(error, info) {
 	      //Email not sent
 	      if (error) {

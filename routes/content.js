@@ -14,34 +14,23 @@ function ContentHandler (db) {
             "use strict";
             if (err) return next(err);
             console.log("kdjlas : "+totalNumPages);
-            console.log(results);
-            return res.render('users/index', {
-                totPages : totalNumPages,
-                posts: results,
-                pnum : 1
-            });
+
+            posts.getHotPosts(5, 1, function(err, hot_results) {
+                posts.getAllCategories(function(err, category_results) {
+                    posts.getAllTags(function(err, tag_results) {
+                        return res.render('users/index', {
+                            totPages : totalNumPages,
+                            posts: results,
+                            pnum : 1,
+                            hot_posts: hot_results,
+                            categories: category_results,
+                            tags: tag_results
+                        });    
+                    });
+                });
+            });    
         });
     }
-
-    this.postByPage = function (req, res) {
-      var page = parseInt(req.query.page),
-         size = parseInt(req.query.size),
-         skip = page > 0 ? ((page - 1) * size) : 0;
- 
-      db.collection("articles").find(null, null, {
-         skip: skip,
-         limit: size
-      }, function (err, data) {
-         if(err) {
-            res.json(500, err);
-         }
-         else {
-            res.json({
-               data: data
-            });
-         }
-      });
-   };
 
     this.displayPostsByPage = function(req, res, next){
     	"use strict";
@@ -52,11 +41,9 @@ function ContentHandler (db) {
     	posts.getPostsByPage(totalPostPerPage, pageNo, function(err, results) {
             "use strict";
             if (err) return next(err);
-            console.log(results.json);
             return res.render('users/index', {
                 totPages : totalNumPages,
-                posts: results,
-                pnum : pageNo
+                posts: results
             });
         });
     }

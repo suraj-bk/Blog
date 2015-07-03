@@ -45,7 +45,6 @@ body
   //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   //box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
 
-
 .flex-container h2.main-titles
   margin-left 20px
   color #2275b4
@@ -176,7 +175,7 @@ ul.categories
   line-height: 26px;
   padding: 0 20px 0 23px;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 -5px 10px 20px
   text-decoration: none;
   -webkit-transition: color 0.2s;
 
@@ -235,7 +234,7 @@ ul.tags
   line-height: 26px;
   padding: 0 20px 0 23px;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 -5px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
 
@@ -280,6 +279,22 @@ ul.tags
 
 //.tag:hover::after 
    //border-left-color: #2AA4CF; 
+
+
+.tag-count 
+  background: #3EA26C;
+  color: #fff;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+
+.tag-countL::hover 
+  background-color: #2AA4CF;
+  color: white; 
 
 
 .flex-container .tag-body
@@ -450,6 +465,44 @@ ul.tags
   -webkit-flex-flow row wrap
   justify-content space-around 
 
+.aside-container .hotPostsbox
+  height auto
+  background #f1f4f9
+  margin-top 30px
+  
+.aside-container .hotPostsbox .heading
+  height auto
+  text-align center
+  background #2f3036
+  float left
+  color #fff
+  width 100% 
+
+.aside-container .hotPosts .hot_links
+  padding-top 10px
+  padding 10px
+  margin 0
+  list-style none
+  text-align left
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+
+.aside-container .hotPosts .hot_links .hot-post-links
+  background #eee
+  color #1E824C
+  display block
+  text-decoration underline
+  margin-top -20px
+  margin-left 20px
+  font-size 18px
+
+.aside-container .hotPosts .hot_links .hot-post-links:hover
+  color #000    
+
 .aside-container .facebook
   height 300px
   background #eaeaea
@@ -510,9 +563,8 @@ ul.tags
     background #fff
 
 
-
 .disqus
-  padding 30px    
+  padding 30px 
   
 @import url(http://fonts.googleapis.com/css?family=Lato:700,900)
 

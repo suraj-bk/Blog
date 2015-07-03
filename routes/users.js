@@ -64,6 +64,18 @@ module.exports = function(db){
 
 	});
 
+	router.get('/home/subscription_confirmed',function(req, res){
+
+		res.render('users/subs_confirm',{title : 'suraj'});
+
+	});
+
+	router.get('/home/email_sent',function(req, res){
+
+		res.render('users/email_sent',{title : 'suraj'});
+
+	});
+
 	router.get('/home/:pageNo',function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 	    	"use strict";
