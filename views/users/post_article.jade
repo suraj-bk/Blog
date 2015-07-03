@@ -42,11 +42,24 @@ block content
                 li
                   a(href="/tag/" + "tag1", class="tag")= "tag1"
             - };           
-                                 
+          
+           script.
+                function putPostBody(){
+                  var dom_target = document.getElementById("thePostBody");
+                  dom_target.innerHTML = !{post_body};
+                }
+
           .post-body.col-md-12
             .pic2.col-md-12
             .post-content.col-md-12
-              p= post_body
+              div(id="thePostBody")= ""
+
+              script.
+                putPostBody();
+                
+              
+
+          
 
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
           div(class="disqus", id="disqus_thread")      
@@ -78,40 +91,37 @@ block content
                 input(type=text, class="form-control email", id=email, placeholder="Email")
                 button(type=submit, class="mycustom-btn") Subscribe
               
+      .category
+        .heading
+          h4 Category
+        .list
+          ul(class="categories")
+            - for(var i=0 ; i< categories.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                  li(class="tag-count")= categories[i].count  
+            - };         
+              
       .tagbox
         .heading
           h4 Tags
         .tags
           ul(class="tags")
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") Android
-            li
-              a(href="#", class="tag") C/C++
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") Android
-            li
-              a(href="#", class="tag") C/C++       
+            - for(var i=0 ; i< tags.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                  li(class="tag-count")= tags[i].count   
+            - };
+
+      .hotPostsbox
+        .heading
+          h4 Hot posts
+        .hotPosts
+          - for(var i=0 ; i< hot_posts.length ; i++) {
+              ul(class="hot_links")
+                li
+                  span ↠
+                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title + " is the best in the world"
+          - };       

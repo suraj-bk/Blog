@@ -13,7 +13,7 @@ module.exports = exports = function(app, db) {
 
 	app.get("/post/:permalink", contentHandler.displayPostByPermalink);
 
-    app.get('/tag/:tag', contentHandler.displayMainPageByTag);
+    app.get('/tags/:tag', contentHandler.displayMainPageByTag);
 
 	app.get('/home/about',function(req, res){
 		res.render('users/about',{title : 'suraj'});
