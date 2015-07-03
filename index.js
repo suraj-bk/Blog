@@ -41,6 +41,9 @@ MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
     var initPassport = require('./passport/init');
     initPassport(passport);
 
+    var routes1 = require('./routes/admin')(passport,urlencodedParser);
+    app.use('/admin', routes1);
+
     routes(app,db);
     app.listen(8000);
     console.log('Express server listening on port 8000');

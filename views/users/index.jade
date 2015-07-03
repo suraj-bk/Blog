@@ -58,32 +58,33 @@ block content
                     a(href="/tag/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
                 - };       
         - };
-        
-        article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          - for(var i=0 ; i< totPages ; i++) {
-            - var c = i+1;
-            ul(class="list-inline")
-              li
-                a(href="/home/" + encodeURIComponent(c))= c
-          -}
-              li 
-                a(href="/home/" + encodeURIComponent(count)) Next ⬈
+        div(id="pager" class="text-center")
 
-        //article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          - var count = pageNo;
-          - count++;
-          - if(count > (totPage/limit)) count = Math.ceil(totPage/limit);
-          h5= "Page " + pageNo + " of "  + Math.ceil(totPage/limit)
-          ul(class="list-inline")
-            li 
-              a(href="/home/1") 1
-            li .
-            li .
-            li
-              a(href="/home/3") 3 
-            li 
-              a(href="/home/" + encodeURIComponent(count)) Next ⬈ 
-
+        script(type="text/javascript", src="/js/jquery.bootpag.min.js")
+        script.
+          var numb = !{pnum};
+          $('#pager').bootpag({
+            total: !{totPages},
+            //firstLastUse: true,
+            //leaps: true, 
+            page : numb,
+            maxVisible : 5,
+            //next : '',
+            //prev : '',
+            //first: '←',
+            //last: '→',
+            /*wrapClass: 'pagination',
+            activeClass: 'active',
+            disabledClass: 'disabled',
+            nextClass: 'next',
+            prevClass: 'prev',
+            lastClass: 'last',
+            firstClass: 'first',*/
+            //href: "/home/{{number}}",
+          })
+          .on("page", function(event, /* page number here */ num) {
+            window.location.assign("/home/"+num);
+          });
 
     div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
       .connect

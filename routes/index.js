@@ -23,6 +23,8 @@ module.exports = exports = function(app, db) {
 		res.render('users/contact_us',{title : 'suraj'});
 	});
 
+	//app.get('/api/testData',contentHandler.postByPage);
+
 	app.get('/home/:pageNo',contentHandler.displayPostsByPage);
 
 	app.post('/contact', function(req, res) {

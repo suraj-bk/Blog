@@ -14,12 +14,34 @@ function ContentHandler (db) {
             "use strict";
             if (err) return next(err);
             console.log("kdjlas : "+totalNumPages);
+            console.log(results);
             return res.render('users/index', {
                 totPages : totalNumPages,
-                posts: results
+                posts: results,
+                pnum : 1
             });
         });
     }
+
+    this.postByPage = function (req, res) {
+      var page = parseInt(req.query.page),
+         size = parseInt(req.query.size),
+         skip = page > 0 ? ((page - 1) * size) : 0;
+ 
+      db.collection("articles").find(null, null, {
+         skip: skip,
+         limit: size
+      }, function (err, data) {
+         if(err) {
+            res.json(500, err);
+         }
+         else {
+            res.json({
+               data: data
+            });
+         }
+      });
+   };
 
     this.displayPostsByPage = function(req, res, next){
     	"use strict";
@@ -30,9 +52,11 @@ function ContentHandler (db) {
     	posts.getPostsByPage(totalPostPerPage, pageNo, function(err, results) {
             "use strict";
             if (err) return next(err);
+            console.log(results.json);
             return res.render('users/index', {
                 totPages : totalNumPages,
-                posts: results
+                posts: results,
+                pnum : pageNo
             });
         });
     }

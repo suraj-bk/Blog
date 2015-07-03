@@ -66,6 +66,8 @@ function PostsDAO(db) {
         });
     }
 
+    
+
     this.getPostsByTag = function(tag, num, callback) {
         "use strict";
 
