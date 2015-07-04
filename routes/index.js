@@ -64,6 +64,42 @@ module.exports = exports = function(app, db) {
 
 	app.get('/home/:pageNo',contentHandler.displayPostsByPage);
 
+	app.post('/contact_us', function(req, res) {
+
+		var cont_name = req.body.cont_name;
+		var cont_email = req.body.cont_email;
+		var cont_category = req.body.cont_category;
+		var cont_descr = req.body.cont_descr;
+
+		// create reusable transporter object using SMTP transport
+		var transporter = nodemailer.createTransport({
+		    service: 'Mailgun',
+			  auth: { 
+			  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
+			  		//'ravishetty150@gmail.com',
+			        pass: 'e2f670eefe44504724a607491d160cb5'
+			        //'nmamitsucks' 
+			    }
+		});
+
+		// setup e-mail data with unicode symbols
+		var mailOptions = {
+		    from: cont_name + "<" + cont_email + ">", // sender address
+		    to: 'ravishetty150@gmail.com', // list of receivers
+		    subject: cont_category , // Subject line
+		    text: cont_descr, // plaintext body
+		};
+
+		// send mail with defined transport object
+		transporter.sendMail(mailOptions, function(error, info){
+		    if(error){
+		        return console.log(error);
+		    }
+		    console.log('Message sent: ' + info.response);
+		    res.render('users/contact_us',{title : 'suraj', email_sent : true });
+		});
+	});	
+
 	app.post('/contact', function(req, res) {
 	  var mailOpts, smtpTrans;
 	  
@@ -127,7 +163,7 @@ module.exports = exports = function(app, db) {
 						console.log("inserted");
 					  });
 		            console.log("SUCCESS : " +responseStatus.message);
-		            res.redirect('/')
+		            res.redirect('/?email_sent=true')
 		          }
 		        });
 		      }

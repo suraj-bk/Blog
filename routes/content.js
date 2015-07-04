@@ -9,6 +9,7 @@ function ContentHandler (db) {
 
     this.displayMainPage = function(req, res, next) {
         "use strict";
+        var email_sent_value = req.query.email_sent;
         db.collection("articles").count(function(error, nbDocs) {
             totalNumPages =  Math.ceil(nbDocs/totalPostPerPage);
         });
@@ -26,7 +27,8 @@ function ContentHandler (db) {
                             pnum : 1,
                             hot_posts: hot_results,
                             categories: category_results,
-                            tags: tag_results
+                            tags: tag_results,
+                            email_sent: email_sent_value
                         });    
                     });
                 });

@@ -5,20 +5,20 @@ block content
     div(class="col-md-8 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-              h2.main-titles About Code-Like-Ninja
+              h2.main-titles About 忍者コーダー
 
               .about-body.col-md-12
                 p 
-                  | CodeLikeNinja was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of CodeLikeNinja is to bring you cool, less mainstream, geeky news. 
+                  | 忍者コーダー was started in 2004 by the almighty online procrastinator Scrivs.
+                  |  The aim of 忍者コーダー is to bring you cool, less mainstream, geeky news. 
                   |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
-                  |  CodeLikeNinja was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of CodeLikeNinja is to bring you cool, less mainstream, geeky news. 
+                  |  忍者コーダー was started in 2004 by the almighty online procrastinator Scrivs.
+                  |  The aim of 忍者コーダー is to bring you cool, less mainstream, geeky news. 
                   |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
 
 
         article(class="flex-item col-md-12")      
-              h2(class="main-titles about-head") Developers
+              h2(class="main-titles about-head") Editors
                   
               .about-body.col-md-12
                 h3(class="dev-name") Suraj B.K
@@ -38,38 +38,44 @@ block content
                     | Deekshith is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
                     | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
                     | shows, fantasy and sci-fi books, geek merchandise, and the like.
-                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio  
+                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio
+
+              .about-body.col-md-12
+                h3(class="dev-name") John Cena
+                .dev-pic.col-md-4
+                .about-content.col-md-8
+                  p 
+                    | Cena is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
+                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
+                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
+                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio
+
+              .about-body.col-md-12
+                h3(class="dev-name") Goku
+                .dev-pic.col-md-4
+                .about-content.col-md-8
+                  p 
+                    | Goku is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
+                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
+                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
+                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio          
 
         article(class="flex-item col-md-12")
-              h2(class="main-titles about-head") Editors
+              h2(class="main-titles about-head") Developers
                   
-              .editor-body
+              .developer-body
                 h3(class="dev-name") Suraj B.K
                 .dev-pic
-                h5 Chief Editor
+                h5 Co-founder/Developer
                 h5 Follow 
                   a(href="#") @suraj
               
-              .editor-body
+              .developer-body
                 h3(class="dev-name") Deekshith
                 .dev-pic
-                h5 Chief Editor
+                h5 Co-founder/Developer
                 h5 Follow 
-                  a(href="#") @deekshith
-
-              .editor-body
-                h3(class="dev-name") John Cena
-                .dev-pic
-                h5 Contributing Editor
-                h5 Follow 
-                  a(href="#") @cena
-              
-              .editor-body
-                h3(class="dev-name") Goku
-                .dev-pic
-                h5 Contributing Editor
-                h5 Follow 
-                  a(href="#") @goku    
+                  a(href="#") @deekshith   
     
 
     div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
@@ -95,8 +101,30 @@ block content
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
               div(class="form-group email-box")
-                input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="mycustom-btn2") Subscribe
+                form(action='/contact', name='contactus', id='contactus', method='post')
+                  input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
+                  input(type="submit", class="mycustom-btn2", value="Subscribe")
+
+                div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert2")
+                    p Invalid Email-id 
+
+                script.
+                  function checkEmail(){
+                    var sub_email = document.getElementById("sub_email").value;
+                    var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
+
+                    if(p == -1){
+                      document.getElementById("email-alert2").style.display = "block";
+                      document.getElementById("sub_email").value="";
+                      document.getElementById("sub_email").focus();
+                      document.getElementById("sub_email").select();
+
+                      return false;
+                    }else{
+                      document.getElementById("email-alert2").style.display = "none";
+                      return true;
+                    }
+                  }   
               
       .tagbox
         .heading

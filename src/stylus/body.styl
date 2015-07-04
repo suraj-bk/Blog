@@ -37,6 +37,7 @@ body
   border-bottom 1pt solid #e7e7e7
   background #fff
   padding 5px
+  width 100%
   margin-top 20px
   color black
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -47,6 +48,7 @@ body
 
 .flex-container h2.main-titles
   margin-left 20px
+  width 100%
   color #2275b4
 
 .flex-container a.post-title-link
@@ -80,14 +82,24 @@ body
   text-align left 
   
 .flex-container .post-body .pic
-  height 150px
+  width auto
+  padding 0
   margin-bottom 20px
-  background #B6A78A
+  background #F1F4F9
+
+.flex-container .post-body .pic img
+  max-width 100%
+  height auto	  
 
 .flex-container .post-body .pic2
-  height 350px
+  height auto
+  width 100%
   margin-bottom 20px
-  background #B6A78A    
+  background #F1F4F9 
+
+.flex-container .post-body .pic2 img
+    max-width 100%
+    height auto	   
 
 .flex-container .post-body .post-content
   padding-left 10px
@@ -117,6 +129,10 @@ body
   margin-left 5px
   margin-bottom 20px 
 
+.flex-container .about-body p
+  text-align left  
+  aligggn left
+
 .flex-container .about-body .about-head
   margin-top 10px  
 
@@ -127,15 +143,20 @@ body
 
 .flex-container .about-body .about-content
   background #fff
-  font-size 15px 
+  font-size 15px
 
-.flex-container .editor-body
+@media all and (max-width : 660px)
+	.flex-container .about-body .about-content
+	  margin-top 10px
+	  margin-left -10px    
+
+.flex-container .developer-body
   padding 20px
   float left
   margin-bottom 20px
   margin-right 20px  
 
-.flex-container .editor-body .dev-pic
+.flex-container .developer-body .dev-pic
   height 150px
   width 150px
   background #B6A78A     
@@ -592,7 +613,20 @@ ul.tags
 .alert-box
   margin 10px
   width 100%
+  display none
+
+.incorrect-alert-box
+  width 100%
+  padding 5px
+  background #FF9494
+  color #FFFFFF
+  height 30px
+  margin-top 5px
   display none  
+
+.alert-box p
+	text-align left
+	align left    
   
 // @import url(http://fonts.googleapis.com/css?family=Lato:700,900)
 
