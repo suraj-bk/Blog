@@ -1,4 +1,6 @@
 var PostsDAO = require('../posts').PostsDAO;
+var url = require('url');
+
 function ContentHandler (db) {
     "use strict";
     var posts = new PostsDAO(db);
@@ -103,6 +105,35 @@ function ContentHandler (db) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
+                            totPages : totalNumPages,
+                            posts: results,
+                            pnum : 1,
+                            hot_posts: hot_results,
+                            categories: category_results,
+                            tags: tag_results
+                        });    
+                    });
+                });
+            });    
+        });
+    }
+
+    this.displayPostsBySearch = function(req, res, next) {
+        "use strict";
+
+        //var searchQuery = url.parse(request.url, true).query;
+        //console.log(searchQuery);
+
+       posts.getPostsBySearch(req.query.q, 10, function(err, results) {
+            "use strict";
+            if (err) return next(err);
+            console.log("kdjlas : "+totalNumPages);
+
+            posts.getHotPosts(5, 1, function(err, hot_results) {
+                posts.getAllCategories(function(err, category_results) {
+                    posts.getAllTags(function(err, tag_results) {
+                        return res.render('users/index', {
+                            search : true,
                             totPages : totalNumPages,
                             posts: results,
                             pnum : 1,

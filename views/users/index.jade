@@ -4,6 +4,15 @@ block content
   .row
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
+        div(class="alert alert-success col-md-9 col-sm-12 col-xs-12 alert-box", id="search-alert-box")
+          p THE RESULTS FOR YOUR SEARCH
+
+        script.
+          if(!{search} == true)
+            document.getElementById("search-alert-box").style.display = "block";  
+
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
+      ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
             article(class="flex-item col-md-12 col-sm-12 col-xs-12")
               a(class="col-md-12 post-title-link" href="/post/"+posts[i].title)
@@ -13,7 +22,18 @@ block content
                   ul(class="list-inline")
                     li
                       img(src="/img/comment.png") 
-                    li= "30 Comments"
+                    li
+                      span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + posts[i].title + "#disqus_thread") 0 Comments
+
+                      script.
+                        var disqus_shortname = 'annappablogtest';
+
+                        (function () {
+                          var s = document.createElement('script'); s.async = true;
+                          s.type = 'text/javascript';
+                          s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                        }());
                 li
                   ul(class="list-inline")
                     li
@@ -47,7 +67,7 @@ block content
               .post-body.col-md-12
                 .pic.col-md-4
                 .post-content.col-md-8
-                  span= posts[i].body
+                  span= posts[i].title
                   .readmore 
                     a(href="/post/"+posts[i].title) Read more ⬈
               br

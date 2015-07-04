@@ -11,7 +11,20 @@ block content
               ul(class="list-inline")
                 li
                   img(src="/img/comment.png") 
-                li= "30 Comments"
+                li
+                  span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
+
+                  script.
+                    var disqus_shortname = 'annappablogtest';
+
+                    (function () {
+                      var s = document.createElement('script'); s.async = true;
+                      s.type = 'text/javascript';
+                      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                    }());
+
+
             li
               ul(class="list-inline")
                 li
@@ -44,18 +57,18 @@ block content
             - };           
           
            script.
-                function putPostBody(){
-                  var dom_target = document.getElementById("thePostBody");
-                  dom_target.innerHTML = !{post_body};
-                }
+            function putPostBody(){
+              var dom_target = document.getElementById("thePostBody");
+              dom_target.innerHTML = !{post_body};
+            }
 
           .post-body.col-md-12
             .pic2.col-md-12
             .post-content.col-md-12
-              div(id="thePostBody")= ""
+              div(id="thePostBody") !{post_body}
 
               script.
-                putPostBody();
+                //putPostBody();
                 
               
 

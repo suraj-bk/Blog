@@ -133,6 +133,24 @@ function PostsDAO(db) {
         });
     }
 
+    this.getPostsBySearch = function(searchQuery, num, callback) {
+        "use strict";
+
+        posts.createIndex( { 'title': "text" } );
+        console.log(searchQuery);
+        //posts.find({ 'title' : {$regex : searchQuery} }).sort({'created_at.date': -1}).limit(num).toArray(function(err, items) {
+        posts.find({ $text : {$search : searchQuery} }).sort({'created_at.date': -1}).limit(num).toArray(function(err, items) {
+            "use strict";
+
+            if (err) return callback(err, null);
+
+            console.log("Found ikkks" + items.length + " posts");
+
+            callback(err, items);
+        });
+    }
+
+
     this.getPostByPermalink = function(permalink, callback) {
         "use strict";
         posts.findOne({'title': permalink}, function(err, post) {

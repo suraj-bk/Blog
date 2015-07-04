@@ -15,6 +15,8 @@ module.exports = exports = function(app, db) {
 
     app.get('/tags/:tag', contentHandler.displayMainPageByTag);
 
+    app.get('/search', contentHandler.displayPostsBySearch);
+
 	app.get('/home/about',function(req, res){
 		res.render('users/about',{title : 'suraj'});
 	});

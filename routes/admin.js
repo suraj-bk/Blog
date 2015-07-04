@@ -102,8 +102,6 @@ module.exports = function(passport,urlencodedParser){
 		    "use strict";
 		    if(err) throw err;
 
-			res.render('admin/admin_modify_post',{title : 'suraj'});
-
 			var post = {
 				title : req.body.post_title
 			};	
@@ -114,16 +112,18 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
+				res.render('admin/admin_modify_post',{title : 'suraj'});
 				console.log("Data removed successfully");
 				return db.close();
 			});
+
 
 		});	
 
 	});
 
 	//updating the posts
-	router.post('/admin/upd_post',function(req, res){
+	router.post('/upd_post',function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
@@ -132,15 +132,21 @@ module.exports = function(passport,urlencodedParser){
 
 			var post = {
 				title : req.body.post_title
+			};
+
+			var operator = {
+				'$set' : {
+					body : req.body.post_descr
+				}
 			};	
 
-			db.collection('articles').remove(post, function(err,removed){
+			db.collection('articles').update(post, operator, function(err,removed){
 				if(err) {
 					console.log("Alert");
 					return db.close();
 				}
 
-				console.log("Data removed successfully");
+				console.log("Data updated successfully");
 				return db.close();
 			});
 
