@@ -43,8 +43,8 @@ function ContentHandler (db) {
     	posts.getPostsByPage(totalPostPerPage, pageNo, function(err, results) {
             "use strict";
             if (err) return next(err);
-            console.log("kdjlas : "+totalNumPages);
 
+            console.log("kdjlas : "+totalNumPages);
             posts.getHotPosts(5, 1, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
@@ -61,6 +61,14 @@ function ContentHandler (db) {
             });    
         });
     }
+
+    this.displayEmails = function(req, res, next) {
+    	posts.getemails(function(err, em) {
+            return res.render('email/show', {
+                email : em
+            });
+ 	   });
+	}
 
     this.displayPostByPermalink = function(req, res, next) {
         "use strict";

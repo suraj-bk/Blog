@@ -177,6 +177,21 @@ function PostsDAO(db) {
         });
         //callback(Error("addComment NYI"), null);
     }*/
+
+    this.getemails = function(callback) {
+        "use strict";
+
+        db.collection("email_sub").find().toArray(function(err, items) {
+            "use strict";
+
+            if (err) return callback(err, null);
+
+            console.log("Found " + items.length + " emails");
+
+            callback(err, items);
+        });
+    }
+
 }
 
 module.exports.PostsDAO = PostsDAO;
