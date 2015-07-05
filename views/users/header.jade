@@ -1,20 +1,49 @@
 script(type="text/javascript", src="/js/classie.js")
 script(type="text/javascript", src="/js/navbar.js")
+script(src="/js/responsive-nav.js")
+//link(rel='stylesheet', href='/css/header.css')
 
 header
-	.container.clearfix
-		a(href="/")
-			div(id="logoImg")
-		h1(id="logoTitle", class="text-longshadow1") 忍者コーダー
-		nav
-			a(href="/") HOME
-			a(href="/home/about") ABOUT
-			a(href="/home/contact_us") CONTACT
-			div(class="searchBox")
-				form(class="search-container", action="/search")
-					input(id="search-box", type="text", class="search-box", name="q")
-					label(for="search-box")
-						span(class="glyphicon glyphicon-search search-icon")
-					input(type="submit", id="search-submit")
+	a(href="/")
+		div(id="logoImg")
+	h1(id="logoTitle") 忍者コーダー
+	button(id="mobi-search")
+	nav.nav-collapse
+		ul
+			li.menu-item
+				a(href="/", data-scroll="") HOME
+			li.menu-item
+				a(href="/home/about", data-scroll="") ABOUT
+			li.menu-item
+				a(href="/home/contact_us", data-scroll="") CONTACT
+			li.menu-item
+				a(href="/home/donate", data-scroll="") DONATE
+			li.menu-item
+				div(class="search-bar")
+					form(class="search-container", action="/search")
+						input(id="search-box" ,type="text", class="search-box", name="q")
+						label(for="search-box")
+							span(class="glyphicon glyphicon-search search-icon")
+						input(type="submit",id="search-submit")
+	div(id="search-div")
+		form(action="/search")
+			input(id="search-text" ,type="text", name="q")
+			input(id="mobi-submit" ,type="submit" value="Go")
+
+	script.
+		$("#mobi-search").click(function(){
+			$("#search-div").toggle();
+			});
+
+
+
+
+script(src="/js/fastclick.js")
+script(src="/js/scroll.js")
+script(src="/js/fixed-responsive-nav.js")
+
+
+
+
 
 
