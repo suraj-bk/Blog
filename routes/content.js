@@ -90,6 +90,23 @@ var jd = "block content"+
     	
 	}
 
+    this.displayNewsletter = function(req, res, next) {
+        var  jade = require('jade');
+        jade.renderFile('routes/newsletter.jade',  { name :"Deekshith" }, function(err, html) {
+            if(err){
+                console.log("error" + err);
+            }
+            // if err...
+            console.log(html);
+            posts.getemails(function(err, em) {
+                return res.render('email/show', {
+                    email : em,
+                    ht :html
+                });
+            });
+        });   
+    }
+
     this.displayPostByPermalink = function(req, res, next) {
         "use strict";
 
@@ -109,6 +126,7 @@ var jd = "block content"+
                             post_title : post.title,
                             author_name: post.author_name,
                             post_body: post.body,
+                            post_tags: post.tags,
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results

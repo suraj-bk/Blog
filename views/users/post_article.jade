@@ -51,10 +51,10 @@ block content
           br
           h4(class="col-md-12") Tagged with :
           .tag-body.tags.col-md-12
-            - for(var j=0 ; j< 4 ; j++) {
-                li
-                  a(href="/tag/" + "tag1", class="tag")= "tag1"
-            - };           
+            - for(var j=0 ; j< post_tags.length ; j++) {
+              li
+                a(href="/tags/" + post_tags[j], class="tag2")= post_tags[j]
+            - };             
           
            script.
             function putPostBody(){

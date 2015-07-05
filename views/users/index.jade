@@ -87,7 +87,7 @@ block content
               .tag-body.tags.col-md-12
                 - for(var j=0 ; j< posts[i].tags.length ; j++) {
                   li
-                    a(href="/tags/" + posts[i].tags[j], class="tag")= posts[i].tags[j]
+                    a(href="/tags/" + posts[i].tags[j], class="tag2")= posts[i].tags[j]
                 - };       
         - };
         div(id="pager", class="text-center")
@@ -124,7 +124,9 @@ block content
 
         .subscribe
           div(class="section-inner text-center")  
-            h5 Subscribe - We dont spam
+            h5 Subscribe - We dont spam 
+              a(href="/newsletter_send")  Newsletter
+
               div(class="form-group email-box",id="sub_box")
                 //form(action='/contact', name='contactus', id='contactus', method='post')
                 input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
