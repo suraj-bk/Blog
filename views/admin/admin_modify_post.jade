@@ -6,6 +6,17 @@ block content
     div(class="row")
       div(class="primary col-md-12")
         h1 Welcome to 忍者コーダー Admin Page
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="post-alert-box1")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The post has been deleted
+
+            script.
+              if(!{post_deleted} == true)
+                document.getElementById("post-alert-box1").style.display = "block";
+
         section(class="section")
           h2.admin Delete Post
           div(class="section-inner")
@@ -15,7 +26,17 @@ block content
                 input(type="text", class="form-control", id="post_title", placeholder="Title")
               button(type="submit", class="btn btn-success") Delete
               
-          
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="post-alert-box2")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The post has been updated
+
+            script.
+              if(!{post_updated} == true)
+                document.getElementById("post-alert-box2").style.display = "block";
+
+
         section(class="section")
           h2.admin Update Post
           div(class="section-inner")

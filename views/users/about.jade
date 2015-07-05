@@ -24,7 +24,8 @@ block content
                 .about-body.col-md-12
                   h3(class="dev-name")= editors[i].name
                   .dev-pic.col-md-4
-                    img(src="/img/editors/" + editors[i].name + ".jpg")
+                    object(data="/img/editors/" + editors[i].name + ".jpg", type="image/png")
+                      img(src="http://gsm24unlock.com/images/no_image.gif")
                   .about-content.col-md-8
                     p= editors[i].description
 
