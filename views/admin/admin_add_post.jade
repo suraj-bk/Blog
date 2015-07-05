@@ -7,6 +7,17 @@ block content
     div(class="row")
       div(class="primary col-md-12")
         h1 Welcome to 忍者コーダー Admin Page
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="post-alert-box")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The article has been added
+
+            script.
+              if(!{post_added} == true)
+                document.getElementById("post-alert-box").style.display = "block";
+
         section(class="section")
           h2.admin New Post
           div(class="section-inner")
@@ -35,5 +46,5 @@ block content
             form(role="form", method="post", action="/admin/html_preview", target="_blank")
               div(class="form-group")
                 label(for="post_descr") Description
-                textarea(rows="10", class="form-control",name="post_descr", id="post_descr", placeholder="Enter a HTML code snippet here")
+                textarea(rows="30", class="form-control",name="post_descr", id="post_descr", placeholder="Enter a HTML code snippet here")
               button(type="submit", class="btn btn-success") Preview         

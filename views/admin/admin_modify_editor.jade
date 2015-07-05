@@ -8,6 +8,17 @@ block content
     div(class="row")
       div(class="primary col-md-12")
         h1 Welcome to 忍者コーダー Admin Page
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="editor-alert-box1")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The editor has been deleted
+
+            script.
+              if(!{editor_deleted} == true)
+                document.getElementById("editor-alert-box1").style.display = "block";
+
         section(class="section")
           h2.admin Delete an Editor
           div(class="section-inner")
@@ -16,6 +27,17 @@ block content
                 label(for="editor_name") Editor Name
                 input(type="text", class="form-control", name="editor_name" id="editor_name", placeholder="Name")
               button(type="submit", class="btn btn-success") Delete
+
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="editor-alert-box2")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The editor has been updated
+
+            script.
+              if(!{editor_updated} == true)
+                document.getElementById("editor-alert-box2").style.display = "block";      
               
         section(class="section")
           h2.admin Update Editor

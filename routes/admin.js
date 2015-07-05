@@ -85,7 +85,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 					
 				}
-				res.render('admin/admin_add_post',{title : 'suraj'});
+				res.render('admin/admin_add_post',{title : 'suraj', post_added : true });
 				console.log("Data inserted successfully");
 				return db.close();
 			});		
@@ -114,7 +114,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
-				res.render('admin/admin_modify_post',{title : 'suraj'});
+				res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true });
 				console.log("Data removed successfully");
 				return db.close();
 			});
@@ -129,8 +129,6 @@ module.exports = function(passport,urlencodedParser){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
-
-			res.render('admin/admin_modify_post',{title : 'suraj'});
 
 			var post = {
 				title : req.body.post_title
@@ -149,6 +147,7 @@ module.exports = function(passport,urlencodedParser){
 				}
 
 				console.log("Data updated successfully");
+				res.render('admin/admin_modify_post',{title : 'suraj', post_updated : true });
 				return db.close();
 			});
 
@@ -179,7 +178,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 					
 				}
-				res.render('admin/admin_add_editor',{title : 'suraj'});
+				res.render('admin/admin_add_editor',{title : 'suraj', editor_added : true });
 				console.log("Data inserted successfully");
 				return db.close();
 			});		
@@ -192,7 +191,7 @@ module.exports = function(passport,urlencodedParser){
 	});
 
 
-	//deleting the post
+	//deleting the editor
 	router.post('/del_editor',function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
@@ -208,7 +207,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
-				res.render('admin/admin_modify_editor',{title : 'suraj'});
+				res.render('admin/admin_modify_editor',{title : 'suraj', editor_deleted : true});
 				console.log("Data removed successfully");
 				return db.close();
 			});
@@ -218,8 +217,8 @@ module.exports = function(passport,urlencodedParser){
 
 	});
 
-	//updating the posts
-	router.post('/upd_post',function(req, res){
+	//updating the editor
+	router.post('/upd_editor',function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
@@ -240,7 +239,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
-				res.render('admin/admin_modify_editor',{title : 'suraj'});
+				res.render('admin/admin_modify_editor',{title : 'suraj', editor_updated : true});
 				console.log("Data updated successfully");
 				return db.close();
 			});

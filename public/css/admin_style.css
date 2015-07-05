@@ -9,6 +9,7 @@ section {
 section h2.admin {
 	width: 100%;
 	text-align: center;
+	margin-top: 30px;
 	background-color: #333;
 	color: #CCC;
 	padding: 5px;
@@ -25,6 +26,19 @@ section a.admin:hover {
 	color: #003298;
 	text-decoration: none;
 }
+
+.alert-box{
+  margin: 10px;
+  width: 100%;
+  padding: 4px;
+  background: #399FC5;
+  color: #eee;
+  text-align: center;
+  margin-left: -35px;
+  width:103%;
+  display: none;
+}
+
 
 h2.main-title{
 	width: 100%;
