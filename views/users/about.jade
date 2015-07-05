@@ -19,46 +19,18 @@ block content
 
         article(class="flex-item col-md-12")      
               h2(class="main-titles about-head") Editors
-                  
-              .about-body.col-md-12
-                h3(class="dev-name") Suraj B.K
-                .dev-pic.col-md-4
-                .about-content.col-md-8
-                  p 
-                    | Suraj is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
-                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
-                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
-                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio   
               
-              .about-body.col-md-12
-                h3(class="dev-name") Deekshith
-                .dev-pic.col-md-4
-                .about-content.col-md-8
-                  p 
-                    | Deekshith is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
-                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
-                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
-                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio
+              - for(var i=0 ; i< editors.length ; i++) {    
+                .about-body.col-md-12
+                  h3(class="dev-name")= editors[i].name
+                  .dev-pic.col-md-4
+                    img(src="/img/editors/" + editors[i].name + ".jpg")
+                  .about-content.col-md-8
+                    p= editors[i].description
 
-              .about-body.col-md-12
-                h3(class="dev-name") John Cena
-                .dev-pic.col-md-4
-                .about-content.col-md-8
-                  p 
-                    | Cena is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
-                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
-                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
-                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio
+                    a(class="twitter-follow-button" ,data-size="large", data-show-count="false", data-show-screen-name="false", href= editors[i].social.twitter) Follow
 
-              .about-body.col-md-12
-                h3(class="dev-name") Goku
-                .dev-pic.col-md-4
-                .about-content.col-md-8
-                  p 
-                    | Goku is a full-fledged work-in-bed freelance writer/editor who sees it her duty to 
-                    | keeptabs on the industry”. That may or may not include having to read up on the latest TV 
-                    | shows, fantasy and sci-fi books, geek merchandise, and the like.
-                  a(class="twitter-follow-button", href="https://twitter.com/SaiyanStudio", data-size="large", data-show-count="false", data-show-screen-name="false") Follow @SaiyanStudio          
+              - };        
 
         article(class="flex-item col-md-12")
               h2(class="main-titles about-head") Developers
@@ -66,6 +38,7 @@ block content
               .developer-body
                 h3(class="dev-name") Suraj B.K
                 .dev-pic
+                  img(src="/img/devs/Suraj.jpg")
                 h5 Co-founder/Developer
                 h5 Follow 
                   a(href="#") @suraj
@@ -73,6 +46,7 @@ block content
               .developer-body
                 h3(class="dev-name") Deekshith
                 .dev-pic
+                  img(src="/img/devs/Deekshith.jpg")
                 h5 Co-founder/Developer
                 h5 Follow 
                   a(href="#") @deekshith   
@@ -126,40 +100,37 @@ block content
                     }
                   }   
               
+      .category
+        .heading
+          h4 Category
+        .list
+          ul(class="categories")
+            - for(var i=0 ; i< categories.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                  li(class="tag-count")= categories[i].count  
+            - };         
+              
       .tagbox
         .heading
           h4 Tags
         .tags
           ul(class="tags")
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") HTML
-            li
-              a(href="#", class="tag") Nginx
-            li
-              a(href="#", class="tag") CSS
-            li
-              a(href="#", class="tag") Node.js
-            li
-              a(href="#", class="tag") Express
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") Android
-            li
-              a(href="#", class="tag") C/C++  
-            li
-              a(href="#", class="tag") Java
-            li
-              a(href="#", class="tag") Aandroid
-            li
-              a(href="#", class="tag") C/C++           
+            - for(var i=0 ; i< tags.length ; i++) {
+                ul(class="list-inline")
+                  li
+                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                  li(class="tag-count")= tags[i].count   
+            - };
+
+      .hotPostsbox
+        .heading
+          h4 Hot posts
+        .hotPosts
+          - for(var i=0 ; i< hot_posts.length ; i++) {
+              ul(class="hot_links")
+                li
+                  span ↠
+                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title + " is the best in the world"
+          - };          

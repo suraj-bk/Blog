@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div(class="container sections-wrapper")
+    div(class="row")
+      div(class="primary col-md-11")
+        h1 Welcome to 忍者コーダー Admin Page
+        section(class="section")
+          div(class="section-inner")
+            h2.admin Post Preview
+
+            h2.main-title Here goes the title
+            .pic2.col-md-12
+              img(src="/img/posts_full/default/960x540.jpg")
+            div(class="editor_article") !{html_code}

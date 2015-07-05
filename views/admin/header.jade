@@ -1,0 +1,20 @@
+script(type="text/javascript", src="/js/classie.js")
+script(type="text/javascript", src="/js/navbar.js")
+
+header
+	.container.clearfix
+		a(href="/")
+			div(id="logoImg")
+		h1(id="logoTitle", class="text-longshadow1") 忍者コーダー
+		nav
+			a(href="/") HOME
+			a(href="/home/about") ABOUT
+			a(href="/home/contact_us") CONTACT
+			div(class="searchBox")
+				form(class="search-container", action="/search")
+					input(id="search-box", type="text", class="search-box", name="q")
+					label(for="search-box")
+						span(class="glyphicon glyphicon-search search-icon")
+					input(type="submit", id="search-submit")
+
+

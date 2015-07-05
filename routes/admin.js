@@ -59,13 +59,14 @@ module.exports = function(passport,urlencodedParser){
 		res.render('admin/admin_add_post',{title : 'suraj'});
 	});
 
+	router.post('/html_preview',isAuthenticated,function(req, res){
+		res.render('admin/admin_preview',{ html_code : req.body.post_descr });
+	});
+
 	router.post('/add_post', urlencodedParser, function(req, res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
-
-
-			res.render('admin/admin_add_post',{title : 'suraj'});
 
 			var tags = req.body.post_tags;
 			tags = tags.split(',');
@@ -84,6 +85,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 					
 				}
+				res.render('admin/admin_add_post',{title : 'suraj'});
 				console.log("Data inserted successfully");
 				return db.close();
 			});		
@@ -146,6 +148,99 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
+				console.log("Data updated successfully");
+				return db.close();
+			});
+
+		});	
+
+	});
+
+
+	router.get('/add_editor',isAuthenticated,function(req, res){
+		res.render('admin/admin_add_editor',{title : 'suraj'});
+	});
+
+
+
+	router.post('/add_editor', urlencodedParser, function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+			var editor = {
+				name : req.body.editor_name,
+				description : req.body.editor_descr,
+				social : { twitter: req.body.editor_twitter }
+			};
+			db.collection('editors').insert(editor,function(err,inserted){
+				if(err) {
+					console.log("Alert");
+					return db.close();
+					
+				}
+				res.render('admin/admin_add_editor',{title : 'suraj'});
+				console.log("Data inserted successfully");
+				return db.close();
+			});		
+		});
+
+	});
+
+	router.get('/mod_editor',isAuthenticated,function(req, res){
+		res.render('admin/admin_modify_editor',{title : 'suraj'});
+	});
+
+
+	//deleting the post
+	router.post('/del_editor',function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+			var editor = {
+				name : req.body.editor_name
+			};	
+
+			db.collection('editors').remove(editor, function(err,removed){
+				if(err) {
+					console.log("Alert");
+					return db.close();
+				}
+
+				res.render('admin/admin_modify_editor',{title : 'suraj'});
+				console.log("Data removed successfully");
+				return db.close();
+			});
+
+
+		});	
+
+	});
+
+	//updating the posts
+	router.post('/upd_post',function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+			var editor = {
+				name : req.body.editor_name
+			};
+
+			var operator = {
+				'$set' : {
+					description : req.body.editor_descr
+				}
+			};	
+
+			db.collection('editors').update(editor, operator, function(err,removed){
+				if(err) {
+					console.log("Alert");
+					return db.close();
+				}
+
+				res.render('admin/admin_modify_editor',{title : 'suraj'});
 				console.log("Data updated successfully");
 				return db.close();
 			});

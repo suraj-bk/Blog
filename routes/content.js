@@ -1,9 +1,11 @@
 var PostsDAO = require('../posts').PostsDAO;
+var EditorsDAO = require('../editors').EditorsDAO;
 var url = require('url');
 
 function ContentHandler (db) {
     "use strict";
     var posts = new PostsDAO(db);
+    var editors = new EditorsDAO(db);
     var totalPostPerPage = posts.totalPostPerPage;
     var totalNumPages;
 
@@ -166,6 +168,31 @@ var jd = "block content"+
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results
+                        });    
+                    });
+                });
+            });    
+        });
+    }
+
+    this.displayAboutPage = function(req, res, next) {
+        "use strict";
+
+        var email_sent_value = req.query.email_sent;
+        
+        editors.getEditors(function(err, results) {
+            "use strict";
+            if (err) return next(err);
+
+            posts.getHotPosts(5, 1, function(err, hot_results) {
+                posts.getAllCategories(function(err, category_results) {
+                    posts.getAllTags(function(err, tag_results) {
+                        return res.render('users/about', {
+                            editors: results,
+                            hot_posts: hot_results,
+                            categories: category_results,
+                            tags: tag_results,
+                            email_sent: email_sent_value
                         });    
                     });
                 });

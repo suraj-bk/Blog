@@ -1,0 +1,72 @@
+section {
+	background : #FFF;
+	padding : 20px;
+	margin-bottom: 20px;
+	height: auto;
+  	width: 100%;
+}
+
+section h2.admin {
+	width: 100%;
+	text-align: center;
+	background-color: #333;
+	color: #CCC;
+	padding: 5px;
+}
+
+section a.admin {
+	font-size: 25px;
+	padding: 10px;
+	color: #333;
+	text-decoration: none;
+}
+
+section a.admin:hover {
+	color: #003298;
+	text-decoration: none;
+}
+
+h2.main-title{
+	width: 100%;
+	font-size: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #2275b4;
+}
+
+.pic2{
+	height: auto;
+	width: 100%;
+	margin-bottom: 20px;
+	background: #F1F4F9 ;
+}
+  
+
+.pic2 img{
+	max-width: 100%;
+    height: auto;
+}	
+
+div.editor_article p {
+	text-align: left;
+	font-size: 18px;
+	align: left;
+}
+  
+div.editor_article blockquote{
+  background-color: #efefef;  
+}
+
+div.editor_article img{
+  height: 500px;
+  width: 900px;
+  margin-bottom: 10px;  
+}  
+
+@media all and (max-width : 660px){
+	div.editor_article img{
+	    height: 200px;
+	    width: 290px;
+	}    
+}
+  

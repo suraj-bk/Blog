@@ -1,17 +1,22 @@
 extends layout
 
-block header
-  h1 Welcome to Admin Page
 block content
-  
   div(class="container sections-wrapper")
     div(class="row")
       div(class="primary col-md-12")
+        h1 Welcome to 忍者コーダー Admin Page
         section(class="section")
           div(class="section-inner")
+            h2.admin Post
             form(role="form")
-              h3 Insert Post
-              a(href="/admin/add_post") Insert
+              a(href="/admin/add_post", class="admin") Add a Post
             form(role="form")
-              h3 Modify/Delete Post
-              a(href="/admin/mod_post") Modify/Delete  
+              a(href="/admin/mod_post", class="admin") Modify / Delete a Post
+
+        section(class="section")
+            div(class="section-inner")
+              h2.admin Editor
+              form(role="form")
+                a(href="/admin/add_editor", class="admin") Add an Editor
+              form(role="form")
+                a(href="/admin/mod_editor", class="admin") Modify / Delete an Editor   

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div(id="message")
+  
+  div(class="container sections-wrapper")
+    div(class="row")
+      div(class="primary col-md-12")
+        h1 Welcome to 忍者コーダー Admin Page
+        section(class="section")
+          h2.admin New Editor
+          div(class="section-inner")
+            form(role="form", method="post", action="/admin/add_editor")
+              div(class="form-group")
+                label(for="editor_name") Editor Name
+                input(type="text", class="form-control",name="editor_name", id="editor_name", placeholder="Name")
+              div(class="form-group")
+                label(for="editor_descr") Description
+                textarea(rows="8", class="form-control",name="editor_descr", id="editor_descr",placeholder="Enter the HTML snippet here")  
+              div(class="form-group")
+                label(for="editor_twitter") Twitter link
+                input(type="text", class="form-control",name="editor_twitter", id="editor_twitter",  placeholder="Twitter link")
+              button(type="submit", class="btn btn-success")  Save       

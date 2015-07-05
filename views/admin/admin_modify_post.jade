@@ -1,39 +1,39 @@
 extends layout
 
-block header
-  h1 Welcome to Admin Page - Modify Post
 block content
   
   div(class="container sections-wrapper")
     div(class="row")
       div(class="primary col-md-12")
+        h1 Welcome to 忍者コーダー Admin Page
         section(class="section")
-          h2 Delete Post
+          h2.admin Delete Post
           div(class="section-inner")
             form(role="form", method="post", action="/admin/del_post")
               div(class="form-group")
                 label(for="post_title") Post Title
-                input(type="text", class="form-control", id="post_title")
+                input(type="text", class="form-control", id="post_title", placeholder="Title")
               button(type="submit", class="btn btn-success") Delete
               
-          h2 Update Post
-          section(class="section")
-            div(class="section-inner")
-              form(role="form", method="post", action="/admin/upd_post")
-                div(class="form-group")
-                  label(for="post_title") Post Title
-                  input(type="text", class="form-control", id="post_title")
-                div(class="form-group")
-                  label(for="post_descr") Description
-                  textarea(rows="10", class="form-control", id="post_descr")  
-                div(class="form-group")
-                  label(for="post_author") Author
-                  input(type="text", class="form-control", id="post_author")
-                div(class="form-group")
-                  label(for="post_category") Category
-                  input(type="text", class="form-control", id="post_category")    
-                div(class="form-group")
-                  label(for="post_tags") Tags
-                  input(type="text", class="form-control", id="post_tags")
+          
+        section(class="section")
+          h2.admin Update Post
+          div(class="section-inner")
+            form(role="form", method="post", action="/admin/upd_post")
+              div(class="form-group")
+                label(for="post_title") Post Title
+                input(type="text", class="form-control", id="post_title", placeholder="Title")
+              div(class="form-group")
+                label(for="post_descr") Description
+                textarea(rows="10", class="form-control", id="post_descr", placeholder="Description")  
+              div(class="form-group")
+                label(for="post_author") Author
+                input(type="text", class="form-control", id="post_author", placeholder="Author")
+              div(class="form-group")
+                label(for="post_category") Category
+                input(type="text", class="form-control", id="post_category", placeholder="Category")    
+              div(class="form-group")
+                label(for="post_tags") Tags
+                input(type="text", class="form-control", id="post_tags", placeholder="Tags")
 
-                button(type="submit", class="btn btn-success") Update
+              button(type="submit", class="btn btn-success") Update

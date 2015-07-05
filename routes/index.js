@@ -42,9 +42,7 @@ module.exports = exports = function(app, db) {
 
     app.get('/search', contentHandler.displayPostsBySearch);
 
-	app.get('/home/about',function(req, res){
-		res.render('users/about',{title : 'suraj'});
-	});
+	app.get('/home/about',contentHandler.displayAboutPage);
 
 	app.get('/home/subscription_confirmed',function(req, res){
 		res.render('users/subs_confirm',{title : 'suraj'});
