@@ -1,0 +1,26 @@
+[  
+   {  
+      "editor_id":"1234",
+      "name":"Suraj",
+      "description":"best developer",
+      "pic":"path",
+      "availableForHire":"true",
+      "social":{  
+         "twitter":"https://twitter.com",
+         "google":"https://google.com",
+         "email":"bksuraj1994@gmail.com"
+      }
+   },
+   {  
+      "editor_id":"1234",
+      "name":"Suraj",
+      "description":"best developer",
+      "pic":"path",
+      "availableForHire":"true",
+      "social":{  
+         "twitter":"https://twitter.com",
+         "google":"https://google.com",
+         "email":"bksuraj1994@gmail.com"
+      }
+   }
+]

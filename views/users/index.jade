@@ -97,23 +97,9 @@ block content
           var numb = !{pnum};
           $('#pager').bootpag({
             total: !{totPages},
-            //firstLastUse: true,
-            //leaps: true, 
             page : numb,
             maxVisible : 5,
-            //next : '',
-            //prev : '',
-            //first: '←',
-            //last: '→',
-            /*wrapClass: 'pagination',
-            activeClass: 'active',
-            disabledClass: 'disabled',
-            nextClass: 'next',
-            prevClass: 'prev',
-            lastClass: 'last',
-            firstClass: 'first',*/
-            //href: "/home/{{number}}",
-          }).on("page", function(event, /* page number here */ num) {
+          }).on("page", function(event, num) {
               window.location.assign("/home/"+num);
           });
 
@@ -139,10 +125,10 @@ block content
         .subscribe
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
-              div(class="form-group email-box")
-                form(action='/contact', name='contactus', id='contactus', method='post')
-                  input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
-                  input(type="submit", class="mycustom-btn", value="Subscribe")
+              div(class="form-group email-box",id="sub_box")
+                //form(action='/contact', name='contactus', id='contactus', method='post')
+                input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
+                input(type="button", class="mycustom-btn", value="Subscribe" ,id="subM") 
 
                 div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
                     p Invalid Email-id 
@@ -163,7 +149,23 @@ block content
                       document.getElementById("email-alert").style.display = "none";
                       return true;
                     }
-                  }        
+                  }         
+
+        script.
+          $("#subM").click(function (event) {
+            event.preventDefault();
+            var searchIDs = $('#sub_email').val();
+            console.log("selected::::" + searchIDs);
+            $('#sub_box').html('<p>Doing Wait</p>');
+            $.ajax({
+               url:'/contact',type:'post',
+               data:{sub_email:searchIDs},
+               success:function(response){
+                  console.log("Done ajax .. "+response);
+                  $('#sub_box').html('<p>Done</p>');
+              }
+            });
+          });
 
       .facebook
         .heading

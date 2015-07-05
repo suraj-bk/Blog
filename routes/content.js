@@ -64,12 +64,28 @@ function ContentHandler (db) {
         });
     }
 
+var jd = "block content"+
+		"	p email[i].email"+
+		"	br"+
+		"	p ht";
+
     this.displayEmails = function(req, res, next) {
-    	posts.getemails(function(err, em) {
+    	var  jade = require('jade');
+		jade.renderFile('routes/html.jade', {name :"suraj",m_link : "abc",p_link : "abb"}, function(err, html) {
+			if(err){
+				console.log("error" + err);
+			}
+	    	// if err...
+	    	console.log(html);
+	    	posts.getemails(function(err, em) {
             return res.render('email/show', {
-                email : em
+                email : em,
+                ht :html
             });
  	   });
+		});
+
+    	
 	}
 
     this.displayPostByPermalink = function(req, res, next) {

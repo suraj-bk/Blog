@@ -2,7 +2,11 @@ extends layout
 
 block content
 	- for(var i=0 ; i< email.length ; i++) {
-		p=email[i].email
+		input(type="checkbox" name="chk_group[]" value="value"+i)
+		label= email[i].email
+		//p=email[i].email
+		br
+		//p=ht
 	-}
 		
 
