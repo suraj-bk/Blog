@@ -66,6 +66,15 @@ function PostsDAO(db) {
         });
     }
 
+    this.getTagByPage = function(numPostsPerPage, pageNo, tag, callback){
+        "use strict";
+        posts.find({ tags : tag }).sort({'created_at.year':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
+            "use strict";
+            if (err) return callback(err, null);
+            callback(err, items);
+        });
+    }
+
     this.getHotPosts = function(num, skip, callback) {
         "use strict";
 

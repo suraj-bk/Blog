@@ -38,7 +38,7 @@ module.exports = exports = function(app, db) {
 
 	app.get("/post/:permalink", contentHandler.displayPostByPermalink);
 
-    app.get('/tags/:tag', contentHandler.displayMainPageByTag);
+    app.get('/tags/:tag/:pageNo', contentHandler.displayTagByPage);
 
     app.get('/search', contentHandler.displayPostsBySearch);
 

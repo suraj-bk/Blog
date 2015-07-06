@@ -94,13 +94,22 @@ block content
 
         script(type="text/javascript", src="/js/jquery.bootpag.min.js")
         script.
-          var numb = !{pnum};
+          var numb;
+          console.log("value of PNUM "+ !{pnum});
+          if(!{pnum} == 0){
+              numb = !{tnum};
+          }else{
+            numb = !{pnum};
+          }
           $('#pager').bootpag({
             total: !{totPages},
             page : numb,
             maxVisible : 5,
           }).on("page", function(event, num) {
+            if(!{pnum} != 0)
               window.location.assign("/home/"+num);
+            else
+              window.location.assign("/tags/" + if_tag +"/"+num);
           });
 
     div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
@@ -197,7 +206,7 @@ block content
             - for(var i=0 ; i< tags.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                    a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
                   li(class="tag-count")= tags[i].count   
             - };
 

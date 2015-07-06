@@ -27,6 +27,8 @@ function ContentHandler (db) {
                             totPages : totalNumPages,
                             posts: results,
                             pnum : 1,
+                            tnum : 0,
+                            if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results,
@@ -56,6 +58,8 @@ function ContentHandler (db) {
                             totPages : totalNumPages,
                             posts: results,
                             pnum : pageNo,
+                            tnum : 0,
+                            if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results
@@ -154,6 +158,40 @@ var jd = "block content"+
                             totPages : totalNumPages,
                             posts: results,
                             pnum : 1,
+                            tnum : 0,
+                            if_tag : "",
+                            hot_posts: hot_results,
+                            categories: category_results,
+                            tags: tag_results
+                        });    
+                    });
+                });
+            });    
+        });
+    }
+
+    this.displayTagByPage = function(req, res, next){
+    	"use strict";
+    	var tag = req.params.tag;
+    	var t = req.params.tag;
+    	db.collection("articles").find({ tags : tag }).count(function(error, nbDocs) {
+            totalNumPages =  Math.ceil(nbDocs/totalPostPerPage);
+        });
+    	var pageNo = req.params.pageNo;
+    	posts.getTagByPage(totalPostPerPage, pageNo, tag, function(err, results) {
+            "use strict";
+            if (err) return next(err);
+
+            console.log("kdjlas : "+totalNumPages);
+            posts.getHotPosts(5, 1, function(err, hot_results) {
+                posts.getAllCategories(function(err, category_results) {
+                    posts.getAllTags(function(err, tag_results) {
+                        return res.render('users/index', {
+                            totPages : totalNumPages,
+                            posts: results,
+                            tnum : pageNo,
+                            pnum : 0,
+                            if_tag : t,
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results
@@ -183,6 +221,8 @@ var jd = "block content"+
                             totPages : totalNumPages,
                             posts: results,
                             pnum : 1,
+                            tnum : 0,
+                            if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results
