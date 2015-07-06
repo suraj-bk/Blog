@@ -19,4 +19,24 @@ block content
               form(role="form")
                 a(href="/admin/add_editor", class="admin") Add an Editor
               form(role="form")
-                a(href="/admin/mod_editor", class="admin") Modify / Delete an Editor   
+                a(href="/admin/mod_editor", class="admin") Modify / Delete an Editor
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="newsletter-alert-box")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The newsletter has been sent
+
+            script.
+              if(!{newsletter_sent} == true)
+                document.getElementById("newsletter-alert-box").style.display = "block";        
+
+        section(class="section")
+            div(class="section-inner")
+              h2.admin Newsletter
+              form(role="form")
+                a(href="/admin/email_manager", class="admin") Email Manager
+              form(role="form")
+                a(href="/admin/newsletter_preveiw", class="admin") Preview
+              form(role="form")
+                a(href="/admin/newsletter_send", class="admin") Send             

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  div(id="message")
+  
+  div(class="container sections-wrapper")
+    div(class="row")
+      div(class="primary col-md-12")
+        h1 Welcome to 忍者コーダー Admin Page
+
+        section(class="section")
+          h2.admin Newsletter
+          div(class="section-inner")
+            form(role="form")
+                a(href="/admin/newsletter_preveiw", class="admin") Preview
+              form(role="form")
+                a(href="/admin/newsletter_send", class="admin") Send
+
+        section(class="section")
+          h2.admin Emails
+          div(class="email-container")
+            form(role="form", method="post", action="/admin/del_email")
+              - for(var i=0 ; i< emails.length ; i++) {
+                  div(class="checkbox")
+                    label 
+                      input(type="checkbox",name="email_checkbox", value=emails[i].email, class="email-checkbox")
+                      !{emails[i].email}
+              - };
+              div.clear
+              button(type="submit", class="btn btn-primary") Delete

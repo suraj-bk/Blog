@@ -5,6 +5,15 @@
 	margin:0;
 	padding:0;
 }
+.demo {
+	width: 100%;
+	text-align: center;
+	background-color: #ddd;
+	padding-top: 10px;
+	font-size: 15px;
+	padding-bottom: 10px;
+}
+
 * { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
 
 img { 

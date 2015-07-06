@@ -83,4 +83,28 @@ div.editor_article img{
 	    width: 290px;
 	}    
 }
+
+div.email-container {
+	background : #FFF;
+	height: auto;
+  	width: 100%;
+}
+
+
+div.checkbox {
+	width: 300px;
+	background-color: #DDD;
+	padding: 5px;
+	float: left;
+	margin-right: 10px;
+	font-size: 18px;
+}
+
+div.clear {
+	clear : both;
+}
+
+button.btn {
+	
+}
   

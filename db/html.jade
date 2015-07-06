@@ -5,14 +5,8 @@ html
 		meta(name="viewport", content="width=device-width")
 		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
 
+
 	body(bgcolor="#FFFFFF", topmargin="0", leftmargin="0", marginheight="0", marginwidth="0")
-		table(class="demo")
-			tr
-				td
-				td
-					h3 Explore this week on 忍者コーダー
-					p You are recieving this because you have subscribed
-				td
 
 		table(class="head-wrap", bgcolor="#446382")
 			tr
@@ -22,7 +16,7 @@ html
 						table(bgcolor="#446382")
 							tr
 								td
-									img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193413/logo_wc2dyj.png")
+									img(src="http://i57.tinypic.com/de8aa1.png")
 								td
 									h3(id="logoTitle") 忍者コーダー
 								td(align="right")
@@ -40,27 +34,45 @@ html
 						table
 							tr
 								td
+									h2= "Hello " + name + " ,"
 									h1 Popular posts this week
-									h3= hot_posts[0].title
+									h3 Game of thrones
+									p(class="lead")
+										| Game of Thrones is an American fantasy drama television series created for HBO.
+										|	It is an adaptation of A Song of Ice and Fire, George R. R. Martin's series of fantasy 
+										| novels, the first of which is titled A Game of Thrones.
 									p
-										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193764/Posts_full/default/960x540.jpg")
-									p= hot_posts[0].title
+										img(src="http://placehold.it/600x300")
+									p
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
 
+					<!-- content -->
+					div(class="content")
+						table(bgcolor="")
+							tr
+								td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
+									img(src="http://placehold.it/75x75")
+								td
+									h4 Title Ipsum
+									p(class="")
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+									a(class="btn") Read More &raquo;
 
-					- for(var i=1 ; i< hot_posts.length ; i++) {
-						<!-- content -->
-						div(class="content")
-							table(bgcolor="")
-								tr
-									td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
-										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193834/Posts_short/default/300x150.jpg")
-									td
-										h4= hot_posts[i].title
-											small= hot_posts[i].author_name
-										p(class="")= hot_posts[i].title
-										a(class="btn", href="/post/"+hot_posts[i].title) Read More &raquo;
+					<!-- content -->
+					div(class="content")
+						table(bgcolor="")
+							tr
+								td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
+									img(src="http://placehold.it/75x75")
+								td
+									h4 Title Ipsum
+									p(class="")
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+										| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+									a(class="btn") Read More &raquo;				
 
-					- };
 
 					<!-- content -->
 					div(class="content")
