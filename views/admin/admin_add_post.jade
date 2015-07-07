@@ -49,13 +49,12 @@ block content
             strong Note :
             |  Please enter the post title before uploading and image.
           p Copy the link from the returned url for the src of your post images <img> tag.
-          p Place the images under the project Blog/
-          div(class="form-group")
-            label(for="post_title") Post Title
-            input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
 
           div(class="section-inner")
             form(role="form", class="image_upload", enctype="multipart/form-data", id="imageUploadForm_short")
+              div(class="form-group")
+                label(for="post_title") Post Title
+                input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
               div(class="form-group")
                 label(for="post_descr") Posts Short 350x150.jpg
                 input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_short")
@@ -65,7 +64,7 @@ block content
                 div(class="main-container")
                   ul(class="flex-container", id="sub_box_short")
                     div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info", id="photo-box2")
-                      p Upload an image     
+                      p Upload an image         
 
                 object(data="/img/editors/asas.jpg", type="image/png",class="image")
                   img(id="preview_short",class="image", src="http://gsm24unlock.com/images/no_image.gif", alt="your image")
@@ -87,27 +86,34 @@ block content
                 readURL(this);
               });
 
+              $(':file').change(function(){
+                var file = this.files[0];
+                var name = file.name;
+                var size = file.size;
+                var type = file.type;
+              });
 
               $('#upload_btn_short').click(function (event) {
                 $('#imageUploadForm_short').on('submit', function(e) {
                   e.preventDefault();
-                  $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
-                  var image_path = $('#image_input_short').val();
-                  var img_post_title = $('#img_post_title').val();
 
-                  console.log("selected::::" + image_path);
+                  var formData = new FormData($('form')[1]);
+
+                  $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
                   $.ajax({
                     type: 'post',
-                    dataType: 'json',
                     url: '/admin/image_upload/posts_short',
-                    data: {
-                      post_title : img_post_title,
-                      image : image_path
-                    },
+                    dataType: 'json',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success:function(response){
                       if(response.status == 200){
                         $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>The Image has been uploaded </p></div>');
+                        $('#imageUploadForm_short').trigger("reset");
+                        $('#preview_short').attr('src', 'http://gsm24unlock.com/images/no_image.gif');
                       }else{
                         $('#sub_box_short').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some error </p></div>');
                       }
@@ -117,13 +123,16 @@ block content
                     }
                   });
                 });  
-              });   
+              });  
                 
             
             form(role="form", class="image_upload", enctype="multipart/form-data", id="imageUploadForm_full")
               div(class="form-group")
+                label(for="post_title") Post Title
+                input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
+              div(class="form-group")
                 label(for="post_descr") Posts Full 350x150.jpg
-                input(type="file",class="form-control", accept="image/gif, image/jpeg, image/png", id="image_input_full")
+                input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_full")
 
                 p The image that will be shown in the article page
 
@@ -138,7 +147,7 @@ block content
               button(type="submit", class="btn btn-success", id="upload_btn_full") Upload
 
             script.
-              function readURL(input){
+              function readURL2(input){
                 if(input.files && input.files[0]){
                   var reader = new FileReader();
                   reader.onload = function (e){
@@ -149,30 +158,31 @@ block content
               }
 
               $("#image_input_full").change(function(){
-                readURL(this);
+                readURL2(this);
               });
 
 
               $('#upload_btn_full').click(function (event) {
                 $('#imageUploadForm_full').on('submit', function(e) {
                   e.preventDefault();
-                  $('#sub_box_full').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
-                  var image_path = $('#image_input_full').val();
-                  var img_post_title = $('#img_post_title').val();
 
-                  console.log("selected::::" + image_path);
+                  var formData = new FormData($('form')[2]);
+
+                  $('#sub_box_full').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
                   $.ajax({
                     type: 'post',
-                    dataType: 'json',
                     url: '/admin/image_upload/posts_full',
-                    data: {
-                      post_title : img_post_title,
-                      image : image_path
-                    },
+                    dataType: 'json',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success:function(response){
                       if(response.status == 200){
                         $('#sub_box_full').html('<div class="alert alert-success col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>The Image has been uploaded </p></div>');
+                        $('#imageUploadForm_full').trigger("reset");
+                        $('#preview_full').attr('src', 'http://gsm24unlock.com/images/no_image.gif');
                       }else{
                         $('#sub_box_full').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
                       }
@@ -186,8 +196,11 @@ block content
 
             form(role="form", class="image_upload_others", enctype="multipart/form-data", id="imageUploadForm_others")
               div(class="form-group")
+                label(for="post_title") Post Title
+                input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
+              div(class="form-group")
                 label(for="post_descr") Posts Other images
-                input(type="file",class="form-control", accept="image/gif, image/jpeg, image/png", id="image_input_others")
+                input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_others")
 
                 p The extra images for the post
 
@@ -202,7 +215,7 @@ block content
               button(type="submit", class="btn btn-success", id="upload_btn_others") Upload
 
             script.
-              function readURL(input){
+              function readURL3(input){
                 if(input.files && input.files[0]){
                   var reader = new FileReader();
                   reader.onload = function (e){
@@ -213,30 +226,31 @@ block content
               }
 
               $("#image_input_others").change(function(){
-                readURL(this);
+                readURL3(this);
               });
 
 
               $('#upload_btn_others').click(function (event) {
                 $('#imageUploadForm_others').on('submit', function(e) {
                   e.preventDefault();
-                  $('#sub_box_others').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
-                  var image_path = $('#image_input_others').val();
-                  var img_post_title = $('#img_post_title').val();
 
-                  console.log("selected::::" + image_path);
+                  var formData = new FormData($('form')[3]);
+
+                  $('#sub_box_others').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
                   $.ajax({
                     type: 'post',
-                    dataType: 'json',
                     url: '/admin/image_upload/posts_others',
-                    data: {
-                      post_title : img_post_title,
-                      image : image_path
-                    },
+                    dataType: 'json',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     success:function(response){
                       if(response.status == 200){
-                        $('#sub_box_others').html('<div class="alert alert-success col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>URL: <a href="+ response.url_path +">'+ response.url_path +'</a></p></div>');
+                        $('#sub_box_others').html('<div class="alert alert-success col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>URL: <a href="' + response.url_path + '">' + response.url_path +'</a></p></div>');
+                        $('#imageUploadForm_others').trigger("reset");
+                        $('#preview_others').attr('src', 'http://gsm24unlock.com/images/no_image.gif');
                       }else{
                         $('#sub_box_others').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
                       }

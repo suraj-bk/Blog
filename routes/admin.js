@@ -10,7 +10,11 @@ var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
 
 var cloudinary = require('cloudinary');
+var fs = require('fs');
 var path = require('path');
+
+var multer = require('multer');
+var fileUpload_done = false;
 
 cloudinary.config({ 
   cloud_name: 'codejitsu', 
@@ -390,66 +394,120 @@ module.exports = function(passport,urlencodedParser){
 		});    
 	});
 
+	router.use(multer({ dest: './uploads/',
+		rename: function (fieldname, filename) {
+		    return filename+Date.now();
+		},
+		onFileUploadStart: function (file) {
+		  	console.log(file.originalname + ' is starting ...');
+		},
+		onFileUploadComplete: function (file) {
+		  	console.log(file.fieldname + ' uploaded to  ' + file.path);
+		  	fileUpload_done = true;
+		}
+	}));
+
+	router.get('/clean_images',isAuthenticated, function(req, res) {
+		var p = "./uploads/"
+		fs.readdir(p, function(err, list_of_files) {
+			if (err) throw err;
+			list_of_files.map(function (file) {
+		        return path.join(p, file);
+		    }).forEach(function(filename) {
+				fs.unlink(filename);
+				console.log(filename + " deleted");
+			});
+			res.render('admin/admin_home', {images_cleaned : true });	
+		});
+	});	
 
 	//cloudinary
 	router.post('/image_upload/posts_short',function(req,res){
-		//console.log("asdadads");
-		//console.log("Req.file ::: " + req.myImage.path);
 
-		var image = req.body.image.split('\\');
-		var imageName = image[2].split('.');
-		var post_title = req.body.post_title;
-		var path = "Posts_short/" + post_title + "/" + imageName[0];
-		cloudinary.uploader.upload(image[2], function(result) { 
-		   console.log(result)
-		   console.log(req.body.image);
+		if(fileUpload_done == true){
+			console.log(req.files);
 
-		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
-		},{ public_id: path });
+			var originalImageName = req.files.myImage.originalname;
+			originalImageName = originalImageName.split('.')[0];
+			var post_title = req.body.img_post_title;
+			if(typeof post_title === "undefined")
+				var cloudPath = "Posts_short/" + originalImageName;
+			else	
+				var cloudPath = "Posts_short/" + post_title + "/" + originalImageName;
+			cloudinary.uploader.upload(req.files.myImage.path, function(result) { 
+			   console.log(result);
+
+			   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+			   fileUpload_done = false;
+			},{ public_id: cloudPath });
+		}
+
 	});
 
 	router.post('/image_upload/posts_full',function(req,res){
+		console.log("asasaasa");
+		if(fileUpload_done == true){
+			console.log(req.files);
 
-		var image = req.body.image.split('\\');
-		var imageName = image[2].split('.');
-		var post_title = req.body.post_title;
-		var path = "Posts_full/" + post_title + "/" + imageName[0];
-		cloudinary.uploader.upload(image[2], function(result) { 
-		   console.log(result)
-		   //console.log(req.body.image);
-		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
-		},{ public_id: path });
+			var originalImageName = req.files.myImage.originalname;
+			originalImageName = originalImageName.split('.')[0];
+			var post_title = req.body.img_post_title;
+			if(typeof post_title === "undefined")
+				var cloudPath = "Posts_full/" + originalImageName;
+			else	
+				var cloudPath = "Posts_full/" + post_title + "/" + originalImageName;
+			
+			cloudinary.uploader.upload(req.files.myImage.path, function(result) { 
+			   console.log(result);
+
+			   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+			   fileUpload_done = false;
+			},{ public_id: cloudPath });
+		}
 	});
 
 	router.post('/image_upload/posts_others',function(req,res){
 
-		var image = req.body.image.split('\\');
-		var imageName = image[2].split('.');
-		var post_title = req.body.post_title;
-		var path = "Posts_full/" + post_title + "/" + imageName[0];
-		cloudinary.uploader.upload(image[2], function(result) { 
-		   console.log(result)
-		   //console.log(req.body.image);
-		   	var response = {
-			    status  : 200,
-			    success : 'Updated Successfully',
-			    url_path : result.url
-			}
-		   res.end(JSON.stringify(response));
-		},{ public_id: path });
+		if(fileUpload_done == true){
+			console.log(req.files);
+
+			var originalImageName = req.files.myImage.originalname;
+			originalImageName = originalImageName.split('.')[0];
+			var post_title = req.body.img_post_title;
+			if(typeof post_title === "undefined")
+				var cloudPath = "Posts_full/" + originalImageName;
+			else	
+				var cloudPath = "Posts_full/" + post_title + "/" + originalImageName;
+
+			cloudinary.uploader.upload(req.files.myImage.path, function(result) { 
+			   console.log(result);
+			   var response = {
+			   		success : "Uploaded Successfully",
+			   		status : 200,
+			   		url_path : result.url
+			   }
+			   res.end(JSON.stringify(response));
+			   fileUpload_done = false;
+			},{ public_id: cloudPath });
+		}
 	});
 
 	router.post('/image_upload/editors',function(req,res){
 
-		var image = req.body.image.split('\\');
-		var imageName = image[2].split('.');
-		var editor_name = req.body.editor_name;
-		var path = "Editors/" + imageName[0];
-		cloudinary.uploader.upload(image[2], function(result) { 
-		   console.log(result)
-		   //console.log(req.body.image);
-		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
-		},{ public_id: path });
+		if(fileUpload_done == true){
+			console.log(req.files);
+			res.end("File uploaded......");
+
+			var originalImageName = req.files.myImage.originalname;
+			originalImageName = originalImageName.split('.')[0];
+			var cloudPath = "Editors/" + originalImageName;
+			cloudinary.uploader.upload(req.files.myImage.path, function(result) { 
+			   console.log(result);
+
+			   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+			   fileUpload_done = false;
+			},{ public_id: cloudPath });
+		}
 	});
 
 

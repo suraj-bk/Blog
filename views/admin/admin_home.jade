@@ -23,6 +23,22 @@ block content
 
         div(class="col-md-12 col-sm-12 col-xs-12 main-container")
           ul(class="flex-container")
+            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="images_clean-alert-box")
+              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+              p The temp ./uploads have been cleaned
+
+            script.
+              if(!{images_cleaned} == true)
+                document.getElementById("images_clean-alert-box").style.display = "block";  
+
+        section(class="section")
+            div(class="section-inner")
+              h2.admin Image Cleaning
+              form(role="form")
+                a(href="/admin/clean_images", class="admin") Clean /uploads        
+
+        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+          ul(class="flex-container")
             div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="newsletter-alert-box")
               a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
               p The newsletter has been sent

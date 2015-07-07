@@ -9,6 +9,20 @@ var emailTemplates = require('email-templates')
 var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
 
+var cloudinary = require('cloudinary');
+var path = require('path');
+
+var multer = require('multer');
+
+cloudinary.config({ 
+  cloud_name: 'codejitsu', 
+  api_key: '818719648838795', 
+  api_secret: 'YTa5Ul_bzlJ4g0jL9ORMUGjxGYs' 
+});
+
+var PostsDAO = require('../posts').PostsDAO;
+
+
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
@@ -255,6 +269,20 @@ module.exports = function(passport,urlencodedParser){
 		res.render('admin/admin_newsletter',{title : 'suraj'});
 	});
 
+	router.get('/newsletter_preveiw',isAuthenticated, function(req, res) {
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+		    var posts = new PostsDAO(db);
+		    posts.getHotPosts(5, 1, function(err, hot_results) {
+		    	if(err) throw err;
+		    	res.render('admin/html_admin', { hot_posts : hot_results });
+		    });
+		});    	
+	
+	});	
+
 	router.get('/newsletter_send',isAuthenticated, function(req, res) {
 	  	var mailOpts, smtpTrans;
 
@@ -277,39 +305,47 @@ module.exports = function(passport,urlencodedParser){
 
 				MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 				    "use strict";
-				    if(err) throw err;	
-				    var cursor = db.collection('email_sub').find({});
-					cursor.each(function(err,ob){
-						if(ob != null){
-							var locals = {
-						      	name : ob.email
-						    };
-						    //var EMAIL = "ravishetty150@gmail.com"; // Email to send.
-						    var EMAIL = ob.email; // Email to send.
-						    // Send a newsletter
-						    template('newsletter', locals, function(err, html, text) {
-						      	if (err) {
-						        	console.log("template error : " +err);
-						      	} else {
-						        	transporter.sendMail({
-							          	from: '忍者コーダー <smtp.mailgun.org>',
-							          	to: "<"+ EMAIL +">",
-							          	subject: 'Weekly Newsletter',
-							          	html: html,
-							          	generateTextFromHTML: true,
-							          	text: text
-						        	}, function(err, responseStatus) {
-						          		if (err) {
-						            		console.log("some : " + err);
-						          		} else {
-							            	console.log("SUCCESS Email sent : " + EMAIL);
-							            	
-						          		}
-						        	});
-						      	}
-						   	});
-						}
-					});
+				    if(err) throw err;
+
+				    var posts = new PostsDAO(db);
+				    posts.getHotPosts(5, 1, function(err, hot_results) {
+
+
+				    	res.render('admin/admin_home', {newsletter_sent : true });
+				    	var cursor = db.collection('email_sub').find({});
+						cursor.each(function(err,ob){
+							if(ob != null){
+								var locals = {
+							      	name : ob.email,
+							      	hot_posts: hot_results
+							    };
+							    //var EMAIL = "ravishetty150@gmail.com"; // Email to send.
+							    var EMAIL = ob.email; // Email to send.
+							    // Send a newsletter
+							    template('newsletter', locals, function(err, html, text) {
+							      	if (err) {
+							        	console.log("template error : " +err);
+							      	} else {
+							        	transporter.sendMail({
+								          	from: '忍者コーダー <smtp.mailgun.org>',
+								          	to: "<"+ EMAIL +">",
+								          	subject: 'Weekly Newsletter',
+								          	html: html,
+								          	generateTextFromHTML: true,
+								          	text: text
+							        	}, function(err, responseStatus) {
+							          		if (err) {
+							            		console.log("some : " + err);
+							          		} else {
+								            	console.log("SUCCESS Email sent : " + EMAIL);
+								            	
+							          		}
+							        	});
+							      	}
+							   	});
+							}
+						});
+				    });	
 					res.render('admin/admin_home', {newsletter_sent : true });
 				});		    
 			}
@@ -317,6 +353,120 @@ module.exports = function(passport,urlencodedParser){
 	});
 
 
+	router.get('/email_manager',function(req,res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+			var posts = new PostsDAO(db);
+			posts.getemails(function(err, em) {
+		        return res.render('admin/admin_email_manager', { emails : em });
+		    });
+		});    
+	});
+
+	router.post('/del_email',function(req,res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+		    for (var i=0; i<= req.body.email_checkbox.length; i++){
+		    	var query = {
+					email : req.body.email_checkbox[i]
+				};
+		    	db.collection("email_sub").remove(query, function(err, items) {
+		            "use strict";
+
+		            if (err) throw err;
+
+		            console.log("Deleted " + req.body.email_checkbox[i] );
+
+		        });;
+		    }
+
+		    var posts = new PostsDAO(db);
+			posts.getemails(function(err, em) {
+		        return res.render('admin/admin_email_manager', { emails : em });
+		    });
+
+		});    
+	});
+
+	router.use(multer({ dest: './uploads/',
+		 rename: function (fieldname, filename) {
+		    return filename+Date.now();
+		  },
+		onFileUploadStart: function (file) {
+		  console.log(file.originalname + ' is starting ...')
+		},
+		onFileUploadComplete: function (file) {
+		  console.log(file.fieldname + ' uploaded to  ' + file.path)
+		}
+	}));
+
+	//cloudinary
+	router.post('/image_upload/posts_short',function(req,res){
+		//console.log("asdadads");
+		//console.log("Req.file ::: " + req.myImage.path);
+		//console.log("Req.file ::: " + req.body);
+/*
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_short/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   console.log(req.body.image);
+
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+
+*/
+	});
+
+	router.post('/image_upload/posts_full',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_full/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+	});
+
+	router.post('/image_upload/posts_others',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_full/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   	var response = {
+			    status  : 200,
+			    success : 'Updated Successfully',
+			    url_path : result.url
+			}
+		   res.end(JSON.stringify(response));
+		},{ public_id: path });
+	});
+
+	router.post('/image_upload/editors',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var editor_name = req.body.editor_name;
+		var path = "Editors/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+	});
 
 
 	router.get('/email_snd',function(req,res){

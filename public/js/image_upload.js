@@ -44,4 +44,16 @@ $(document).ready(function (e) {
              */          
 	     });
 	});
+res.end("File uploaded......");
+			var image = req.body.image.split('\\');
+			var imageName = image[2].split('.');
+			var post_title = req.body.post_title;
+			var path = "Posts_short/" + post_title + "/" + imageName[0];
+			cloudinary.uploader.upload("/uploads/" + image[2], function(result) { 
+			   console.log(result)
+			   console.log(req.body.image);
+
+			   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+			   fileUpload_done = false;
+			},{ public_id: path });
 });
