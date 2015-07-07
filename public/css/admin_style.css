@@ -39,6 +39,86 @@ section a.admin:hover {
   display: none;
 }
 
+section.image-section {
+	height: 1000px;
+}
+
+form.image_upload {
+	width: 48%;
+	border: 2px solid #555;
+	background-color: #EEE;
+	margin-bottom: 20px;
+	padding: 10px;
+	margin-right: 20px;
+	float: left;
+}
+
+form.image_upload_others {
+	width: 98%;
+	border: 2px solid #555;
+	background-color: #EEE;
+	margin-bottom: 20px;
+	padding: 10px;
+	margin-right: 20px;
+	float: left;
+}
+
+form.image_upload img, form.image_upload_others img {
+	margin-top: 10px;
+}
+
+object.image, img.image {
+	float: left;
+	height: 200px;
+	width: 400px;
+	margin-top: -10px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	//border: 2px solid #000;
+}
+
+.photo-box-info {
+	padding: 5px;
+	background: #1565C0;
+	color: #eee;
+	margin-left: -40px;
+  	text-align: center;
+  	word-wrap: break-word;
+	width: 100%;
+	height: auto;
+}
+
+.photo-box-sucess {
+	padding: 5px;
+	background: #4CAF50;
+	color: #eee;
+	margin-left: -40px;
+  	text-align: center;
+  	word-wrap: break-word;
+	width: 100%;
+	height: auto;
+}
+
+.photo-box-error {
+	padding: 5px;
+	background: #D32F2F;
+	color: #eee;
+	margin-left: -40px;
+  	text-align: center;
+  	word-wrap: break-word;
+	width: 100%;
+	height: auto;
+}
+
+.photo-box-sucess a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+.photo-box-sucess a:hover {
+	text-decoration: none;
+	color: #FFF;
+}	
 
 h2.main-title{
 	width: 100%;

@@ -40,6 +40,215 @@ block content
               button(type="submit", class="btn btn-success")  Save 
 
 
+
+
+
+        section(class="section image-section")
+          h2.admin Cloudinary Uploads
+          p 
+            strong Note :
+            |  Please enter the post title before uploading and image.
+          p Copy the link from the returned url for the src of your post images <img> tag.
+          p Place the images under the project Blog/
+          div(class="form-group")
+            label(for="post_title") Post Title
+            input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
+
+          div(class="section-inner")
+            form(role="form", class="image_upload", enctype="multipart/form-data", id="imageUploadForm_short")
+              div(class="form-group")
+                label(for="post_descr") Posts Short 350x150.jpg
+                input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_short")
+
+                p The image that will be shown in the home page
+
+                div(class="main-container")
+                  ul(class="flex-container", id="sub_box_short")
+                    div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info", id="photo-box2")
+                      p Upload an image     
+
+                object(data="/img/editors/asas.jpg", type="image/png",class="image")
+                  img(id="preview_short",class="image", src="http://gsm24unlock.com/images/no_image.gif", alt="your image")
+                
+              button(type="submit", class="btn btn-success", id="upload_btn_short") Upload
+
+            script.
+              function readURL(input){
+                if(input.files && input.files[0]){
+                  var reader = new FileReader();
+                  reader.onload = function (e){
+                    $('#preview_short').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+
+              $("#image_input_short").change(function(){
+                readURL(this);
+              });
+
+
+              $('#upload_btn_short').click(function (event) {
+                $('#imageUploadForm_short').on('submit', function(e) {
+                  e.preventDefault();
+                  $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
+                  var image_path = $('#image_input_short').val();
+                  var img_post_title = $('#img_post_title').val();
+
+                  console.log("selected::::" + image_path);
+
+                  $.ajax({
+                    type: 'post',
+                    dataType: 'json',
+                    url: '/admin/image_upload/posts_short',
+                    data: {
+                      post_title : img_post_title,
+                      image : image_path
+                    },
+                    success:function(response){
+                      if(response.status == 200){
+                        $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>The Image has been uploaded </p></div>');
+                      }else{
+                        $('#sub_box_short').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some error </p></div>');
+                      }
+                    },
+                    error:function(){
+                      $('#sub_box_short').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some error </p></div>');
+                    }
+                  });
+                });  
+              });   
+                
+            
+            form(role="form", class="image_upload", enctype="multipart/form-data", id="imageUploadForm_full")
+              div(class="form-group")
+                label(for="post_descr") Posts Full 350x150.jpg
+                input(type="file",class="form-control", accept="image/gif, image/jpeg, image/png", id="image_input_full")
+
+                p The image that will be shown in the article page
+
+                div(class="main-container")
+                  ul(class="flex-container", id="sub_box_full")
+                    div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info", id="photo-box2")
+                      p Upload an image     
+
+                object(data="/img/editors/asas.jpg", type="image/png",class="image")
+                  img(id="preview_full",class="image", src="http://gsm24unlock.com/images/no_image.gif", alt="your image")
+                
+              button(type="submit", class="btn btn-success", id="upload_btn_full") Upload
+
+            script.
+              function readURL(input){
+                if(input.files && input.files[0]){
+                  var reader = new FileReader();
+                  reader.onload = function (e){
+                    $('#preview_full').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+
+              $("#image_input_full").change(function(){
+                readURL(this);
+              });
+
+
+              $('#upload_btn_full').click(function (event) {
+                $('#imageUploadForm_full').on('submit', function(e) {
+                  e.preventDefault();
+                  $('#sub_box_full').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
+                  var image_path = $('#image_input_full').val();
+                  var img_post_title = $('#img_post_title').val();
+
+                  console.log("selected::::" + image_path);
+
+                  $.ajax({
+                    type: 'post',
+                    dataType: 'json',
+                    url: '/admin/image_upload/posts_full',
+                    data: {
+                      post_title : img_post_title,
+                      image : image_path
+                    },
+                    success:function(response){
+                      if(response.status == 200){
+                        $('#sub_box_full').html('<div class="alert alert-success col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>The Image has been uploaded </p></div>');
+                      }else{
+                        $('#sub_box_full').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
+                      }
+                    },
+                    error:function(){
+                      $('#sub_box_full').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
+                    }
+                  });
+                });  
+              });
+
+            form(role="form", class="image_upload_others", enctype="multipart/form-data", id="imageUploadForm_others")
+              div(class="form-group")
+                label(for="post_descr") Posts Other images
+                input(type="file",class="form-control", accept="image/gif, image/jpeg, image/png", id="image_input_others")
+
+                p The extra images for the post
+
+                div(class="main-container")
+                  ul(class="flex-container", id="sub_box_others")
+                    div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info", id="photo-box2")
+                      p Upload an image     
+
+                object(data="/img/editors/asas.jpg", type="image/png",class="image")
+                  img(id="preview_others",class="image", src="http://gsm24unlock.com/images/no_image.gif", alt="your image")
+                
+              button(type="submit", class="btn btn-success", id="upload_btn_others") Upload
+
+            script.
+              function readURL(input){
+                if(input.files && input.files[0]){
+                  var reader = new FileReader();
+                  reader.onload = function (e){
+                    $('#preview_others').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+
+              $("#image_input_others").change(function(){
+                readURL(this);
+              });
+
+
+              $('#upload_btn_others').click(function (event) {
+                $('#imageUploadForm_others').on('submit', function(e) {
+                  e.preventDefault();
+                  $('#sub_box_others').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
+                  var image_path = $('#image_input_others').val();
+                  var img_post_title = $('#img_post_title').val();
+
+                  console.log("selected::::" + image_path);
+
+                  $.ajax({
+                    type: 'post',
+                    dataType: 'json',
+                    url: '/admin/image_upload/posts_others',
+                    data: {
+                      post_title : img_post_title,
+                      image : image_path
+                    },
+                    success:function(response){
+                      if(response.status == 200){
+                        $('#sub_box_others').html('<div class="alert alert-success col-md-12 col-sm-12 col-xs-12 photo-box-sucess" id="photo-box2"><p>URL: <a href="+ response.url_path +">'+ response.url_path +'</a></p></div>');
+                      }else{
+                        $('#sub_box_others').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
+                      }
+                    },
+                    error:function(){
+                      $('#sub_box_others').html('<div class="alert alert-danger col-md-12 col-sm-12 col-xs-12 photo-box-error" id="photo-box2"><p>There was some Error </p></div>');
+                    }
+                  });
+                });  
+              });      
+
+
         section(class="section")
           h2.admin Description Preview
           div(class="section-inner")

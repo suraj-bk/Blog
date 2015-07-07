@@ -9,6 +9,15 @@ var emailTemplates = require('email-templates')
 var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
 
+var cloudinary = require('cloudinary');
+var path = require('path');
+
+cloudinary.config({ 
+  cloud_name: 'codejitsu', 
+  api_key: '818719648838795', 
+  api_secret: 'YTa5Ul_bzlJ4g0jL9ORMUGjxGYs' 
+});
+
 var PostsDAO = require('../posts').PostsDAO;
 
 
@@ -380,6 +389,69 @@ module.exports = function(passport,urlencodedParser){
 
 		});    
 	});
+
+
+	//cloudinary
+	router.post('/image_upload/posts_short',function(req,res){
+		//console.log("asdadads");
+		//console.log("Req.file ::: " + req.myImage.path);
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_short/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   console.log(req.body.image);
+
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+	});
+
+	router.post('/image_upload/posts_full',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_full/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+	});
+
+	router.post('/image_upload/posts_others',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var post_title = req.body.post_title;
+		var path = "Posts_full/" + post_title + "/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   	var response = {
+			    status  : 200,
+			    success : 'Updated Successfully',
+			    url_path : result.url
+			}
+		   res.end(JSON.stringify(response));
+		},{ public_id: path });
+	});
+
+	router.post('/image_upload/editors',function(req,res){
+
+		var image = req.body.image.split('\\');
+		var imageName = image[2].split('.');
+		var editor_name = req.body.editor_name;
+		var path = "Editors/" + imageName[0];
+		cloudinary.uploader.upload(image[2], function(result) { 
+		   console.log(result)
+		   //console.log(req.body.image);
+		   res.end('{"success" : "Uploaded Successfully", "status" : 200}');
+		},{ public_id: path });
+	});
+
 
 	router.get('/email_snd',function(req,res){
 		res.render('emailer/index');
