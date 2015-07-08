@@ -41,6 +41,7 @@ body
 .main-container .flex-container .flex-item
   border-bottom 1pt solid #e7e7e7
   background #fff
+  margin-bottom 13px
   padding 5px
   color black
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -61,18 +62,18 @@ body
 .flex-container h2.main-titles
   margin-left 15px
   width 100%
-  color #2275b4  
+  color #555
+  font-weight bold  
 
 
 .flex-container a.post-title-link
-  color #2275b4
   margin-top 10px
   margin-bottom 5px  
   text-decoration none
 
 .flex-container a.post-title-link:hover 
-  color #2265A4
-  text-shadow: 0 0 3px #2275b4; 
+  color #333
+  text-shadow: 0 0 1px #777; 
 
 .flex-container a
   text-decoration none   
@@ -80,14 +81,25 @@ body
 .flex-container h2.post-title
   margin-left 5px
   padding-top 0px
+  color #444
   width 100%
   text-decoration none
 
 .flex-container h3.post-title
   margin-top 0
   margin-bottom 0
+  color #777
+  font-weight bold
   width 100%
-  text-decoration none  
+  text-decoration none
+
+.flex-container h6.post-title
+  margin-top 0
+  margin-bottom 0
+  color #777
+  font-weight bold
+  width 100%
+  text-decoration none    
 
 .flex-container h4.post_category
   width 90%
@@ -98,7 +110,18 @@ body
   margin-top 0
   margin-bottom 0
   border-bottom 2px solid #ddd
-  color #aaa  
+  color #aaa 
+
+.flex-container h4.post_category2
+  width 95%
+  padding-bottom 10px
+  padding-top 10px
+  padding-left 0px
+  margin-left 15px
+  margin-top 0
+  margin-bottom 20px
+  border-bottom 2px solid #ddd
+  color #aaa    
 
 @media all and (max-width : 660px)
   .flex-container h2.post-title
@@ -113,19 +136,47 @@ body
 
 .flex-container .subhead
 	color #404040
-	margin-left 5px
+	margin-left 18px
+	padding 0
 	width 100%
 
 .flex-container .subhead li
 	margin-left -4px
-	font-size 9px
+	color #555
+	font-size 10px
+
+.flex-container .subhead ul 
+
+.flex-container .subhead li p
+	padding-left 0
+
+.flex-container .subhead li img
+	-webkit-filter: contrast(20%);
+	width 80%
+	height 80%
 
 @media all and (max-width : 660px)
 	.flex-container .subhead li
 		margin-left -4px
 		font-size 12px		
+
+.flex-container .article_container
+	padding 50px
+
+@media all and (max-width : 660px)
+	.flex-container .article_container
+		padding 5px
 	
-	
+.flex-container .subhead2
+	color #404040
+	margin-left 18px
+	padding 0
+	width 100%
+
+.flex-container .subhead2 li img
+	-webkit-filter: contrast(60%);
+
+
 .flex-container .post-body
   clear left
   margin-top 0px
@@ -156,8 +207,10 @@ body
   padding-left 0px
   padding-right 0px
   height auto
+  width 100%
   padding-bottom 5px
   margin-bottom 15px
+  color #444
   font-size 18px
 
 @media all and (max-width : 660px)
@@ -166,6 +219,10 @@ body
     margin-bottom 20px
     background #fff
     font-size 15px
+
+.grid-element2
+	margin-left 20px
+	margin-bottom 20px
   
 .truncate 
   height 120px
@@ -182,11 +239,17 @@ body
   margin-bottom 20px 
 
 .flex-container .about-body p
-  text-align left  
+  text-align left
+  color #444
+  font-size 17px  
   aligggn left
 
 .flex-container .about-body .about-head
   margin-top 10px  
+
+.flex-container .about-body .dev-name, .flex-container .developer-body .dev-name
+	color #209BC5
+	font-weight bold
 
 .flex-container .about-body .dev-pic
   height 150px
@@ -206,6 +269,8 @@ body
 
 .flex-container .developer-body
   padding 20px
+  color #444
+  font-size 18px 
   float left
   margin-bottom 20px
   margin-right 20px  
@@ -214,6 +279,10 @@ body
   height 150px
   width 150px
   background #B6A78A     
+
+.flex-container .about-body form
+  color #444
+  font-size 18px 
 
 ul.categories 
   list-style: none;
@@ -244,9 +313,10 @@ ul.categories
   text-decoration: none !important
 
 .cat-list 
-  background: #1E824C;
-  border-radius: 3px 0 0 3px;
-  color: #eaeaea;
+  background: #eee;
+  border: 2px #5682A3 solid 
+  color: #5682A3;
+  font-weight 20
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -258,7 +328,7 @@ ul.categories
 
 
 .cat-list::before 
-  background: #eaeaea;
+  background: #5682A3;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -269,13 +339,14 @@ ul.categories
   top: 10px;
 
 .cat-list:hover 
-  background-color: #1E824C;
+  background-color: #a1b9c9;
   opacity 0.8
   color: white;
 
 
 .cat-list:hover::after 
-   border-left-color: #2AA4CF; 
+   border-left-color: #2AA4CF;
+   color: #FFF 
 
   
 ul.tags 
@@ -303,9 +374,9 @@ ul.tags
   background #fff
 
 .tag 
-  background: #1E824C;
-  border-radius: 3px 0 0 3px;
-  color: #fff;
+  background: #EEE;
+  color: #5682A3;
+  border: 2px solid #5682A3
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -316,22 +387,22 @@ ul.tags
   -webkit-transition: color 0.2s;
 
 .tag2 
-  background: #1E824C;
-  border-radius: 3px 0 0 3px;
-  color: #fff;
+  background: #EEE;
+  border 2px solid #DDD
+  color: #888;
   display: inline-block;
   font-size 15px
-  height: 22px;
+  height: 25px;
   line-height: 26px;
-  padding: 0 10px 0 23px;
+  padding: 0 10px 0 10px;
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;  
 
 
-.tag::before,.tag2::before 
-  background: #fff;
+.tag::before
+  background: #AAA;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -340,9 +411,10 @@ ul.tags
   position: absolute;
   width: 6px;
   top: 10px;
+
   
-.tag::after,.tag2::after 
-  background: #fff;
+.tag::after 
+  background: #5682A3;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
   content: '';
@@ -352,28 +424,17 @@ ul.tags
   width: 6px;
   top: 10px;
 
-/*.tag::after 
-  background: #fff;
-  border-bottom: 13px solid transparent;
-  border-left: 10px solid #9EA5AD;
-  border-top: 13px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-*/
 
-.tag:hover,.tag2:hover 
-  background-color: #2AA4CF;
-  color: white;
+.tag:hover 
+  background-color: #a1b9c9;
+  color: white
 
-
-//.tag:hover::after 
-   //border-left-color: #2AA4CF; 
-
+.tag2:hover 
+  background-color: #3DA1D1;
+  color: white  
 
 .tag-count 
-  background: #3EA26C;
+  background: #5682A3;
   color: #fff;
   display: inline-block;
   height: 26px;
@@ -411,8 +472,9 @@ ul.tags
   font-size 14px
 
 .readmore
+  margin-top 4px
   font-size 15px
-  color #2275b4
+  color #3DA1D1
 
 
 .aside-container
@@ -507,11 +569,15 @@ ul.tags
 
 .mycustom-btn
   color #fff
-  padding 8px
+  padding 10px
   background #2AA4CF
   margin-top 20px
-  border-radius 5px
   border 0px
+
+.mycustom-btn:hover
+	 color #2AA4CF
+	 background #FFF
+	 borer 2px solid #2AA4CF 
 
 .aside-container .subscribe .mycustom-btn2
   color #fff
@@ -581,8 +647,7 @@ ul.tags
   -webkit-flex-flow row wrap
 
 .aside-container .hotPosts .hot_links .hot-post-links
-  background #eee
-  color #1E824C
+  color #555
   display block
   text-decoration underline
   margin-top -20px
@@ -696,7 +761,13 @@ ul.tags
 
 
 .alert-box
-  margin 10px
+  margin-left 10px
+  margin-right 10px
+  margin-top 10px
+  margin-bottom 0px
+  background #5682A3
+  color #FFFFFF
+  border 0
   width 100%
   display none
 

@@ -5,76 +5,103 @@ block content
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-          h2.main-titles= post_title
-          ul(class="list-inline col-md-12")
-            li
-              ul(class="list-inline")
-                li
-                  img(src="/img/comment.png") 
-                li
-                  span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
-
-                  script.
-                    var disqus_shortname = 'annappablogtest';
-
-                    (function () {
-                      var s = document.createElement('script'); s.async = true;
-                      s.type = 'text/javascript';
-                      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-                    }());
-
-
-            li
-              ul(class="list-inline")
-                li
-                  img(src="/img/clock.png") 
-                li
-                  p JUNE 12, 2015
-            li
-              ul(class="list-inline")
-                li
-                  img(src="/img/author.png") 
-                li= author_name
-
-          .post-social-icons2
+          .article_container
+            h4(class="col-md-12 post_category2")= post_title
+            h2.main-titles= post_title
+            ul(class="list-inline col-md-12 subhead2")
+              li
                 ul(class="list-inline")
                   li
-                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + post_title, data-size="default")
+                    img(src="/img/comment.png") 
                   li
-                    div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
-                  li
-                    div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
+                    span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
 
-          br
-          h4(class="col-md-12") Tagged with :
-          .tag-body.tags.col-md-12
-            - for(var j=0 ; j< post_tags.length ; j++) {
+                    script.
+                      var disqus_shortname = 'annappablogtest';
+
+                      (function () {
+                        var s = document.createElement('script'); s.async = true;
+                        s.type = 'text/javascript';
+                        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                      }());
+
+
               li
-                a(href="/tags/" + post_tags[j] + "/1", class="tag2")= post_tags[j]
-            - };             
-          
-           script.
-            function putPostBody(){
-              var dom_target = document.getElementById("thePostBody");
-              dom_target.innerHTML = !{post_body};
-            }
+                ul(class="list-inline")
+                  li
+                    img(src="/img/clock.png") 
+                  li
+                    p JUNE 12, 2015
+              li
+                ul(class="list-inline")
+                  li
+                    img(src="/img/author.png") 
+                  li= author_name
 
-          .post-body.col-md-12
-            .pic2.col-md-12
-              img(src="/img/posts_full/default/960x540.jpg")
-            .post-content.col-md-12
-              div(id="thePostBody", class="editor_article") !{post_body}
+            .post-social-icons2
+                  ul(class="list-inline")
+                    li
+                      a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + post_title, data-size="default")
+                    li
+                      div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
+                    li
+                      div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
 
-              script.
-                //putPostBody();
-                
-              
+            br
+            h4(class="col-md-12",style="color:#666;") Tagged with :
+            .tag-body.tags.col-md-12
+              - for(var j=0 ; j< post_tags.length ; j++) {
+                li
+                  a(href="/tags/" + post_tags[j] + "/1", class="tag2")= post_tags[j]
+              - };             
+            
+             script.
+              function putPostBody(){
+                var dom_target = document.getElementById("thePostBody");
+                dom_target.innerHTML = !{post_body};
+              }
 
-          
+            .post-body.col-md-12
+              .pic2.col-md-12
+                img(src="/img/posts_full/default/960x540.jpg")
+              .post-content.col-md-12
+                div(id="thePostBody", class="editor_article") !{post_body}
+
+                script.
+                  //putPostBody();
+        
+        article(class="flex-item col-md-12 col-sm-12 col-xs-12")                 
+          h2.main-titles You might also like
+          - for(var i=0 ; i< 5 ; i++) {
+              article(class="flex-item col-md-2 col-sm-3 col-xs-3 grid-element2")
+                a(class="col-md-12 post-title-link" href="/post/"+post_title)
+                  h6(class="post-title")= post_title
+                .post-body.col-md-12
+                  .pic
+                    img(src="/img/posts_short/default/300x150.jpg")
+                  
+                ul(class="list-inline subhead col-md-12")
+                  li
+                    ul(class="list-inline")
+                      li
+                        img(src="/img/comment.png") 
+                      li
+                        span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
+
+                        script.
+                          var disqus_shortname = 'annappablogtest';
+
+                          (function () {
+                            var s = document.createElement('script'); s.async = true;
+                            s.type = 'text/javascript';
+                            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                          }());
+          - };                
 
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          div(class="disqus", id="disqus_thread")      
+          div(class="disqus", id="disqus_thread")    
 
 
     div(class="secondary col-md-3 col-sm-12 col-xs-12 aside-container")
