@@ -1,30 +1,118 @@
 extends layout
 
+
 block content
-  div(id="message")
-  
-  div(class="container sections-wrapper")
-    div(class="row")
-      div(class="primary col-md-12")
-        h1 Welcome to 忍者コーダー Admin Page
+  #email-wrap
+    .container-fluid
+      .row
+        .col-md-12
+          h1 Email Manager
 
-        section(class="section")
-          h2.admin Newsletter
-          div(class="section-inner")
-            form(role="form")
-                a(href="/admin/newsletter_preveiw", class="admin") Preview
-              form(role="form")
-                a(href="/admin/newsletter_send", class="admin") Send
 
-        section(class="section")
-          h2.admin Emails
-          div(class="email-container")
-            form(role="form", method="post", action="/admin/del_email")
-              - for(var i=0 ; i< emails.length ; i++) {
-                  div(class="checkbox")
-                    label 
-                      input(type="checkbox",name="email_checkbox", value=emails[i].email, class="email-checkbox")
-                      !{emails[i].email}
-              - };
-              div.clear
-              button(type="submit", class="btn btn-primary") Delete
+      .row
+        .col-md-12
+          .col-md-3
+            h1 Email Info
+            .email-box
+              p
+              h4 Total Subscribers : #{emails.length}
+              h4 Total Unsubscribed : 0
+              h4 Service Provider : MailGun
+              //- for(var i=0 ; i< emails.length ; i++) {
+                  .email-list
+                    p
+                      input(type="checkbox",name="email_checkbox", value=emails[i].email, class="email-checkbox1")
+                      &nbsp&nbsp!{emails[i].email}
+              //- };
+
+
+          .col-md-3
+            h1 Options
+            .email-options
+              p These are the available options
+              h1 Send Mail
+              h1 Send Newsletter
+              h1(id="AddEmail") Add Email
+              h1(id="deleteEmail") Delete Email
+              h1 Subscribe text
+              h1 Unsubscribe Text
+
+          .col-md-6
+            h1 Work Area
+            #email-work
+
+      .row
+        .col-md-12
+          #preview
+            h1 Preview
+
+      script.
+        $( document ).ready(function() {
+          $("#deleteEmail").click(function (event) {
+              event.preventDefault();
+            $.getJSON('/admin/email-id' , function(data) {
+                var tbl_body = "<table id='myTable'>";
+                var odd_even = false;
+                $.each(data, function() {
+                  
+                    var a ='';
+                    var tbl_row = "",tab_in='';
+                    $.each(this, function(k , v) {
+                        a=v;
+                        tbl_row += "<td>&nbsp&nbsp" +v+"</td>";
+                    })
+                    tab_in+= '<td><input type="checkbox" name="cb1" value="'+ a +'"></td>'+tbl_row;
+                    tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tab_in+"</tr>";
+                    odd_even = !odd_even;            
+                })
+                tbl_body += '</table><input type="button" class="mycustom-btn" value="Delete" id="delEmail" />';
+                $("#email-work").html(tbl_body);
+            });
+          });
+
+          $("#email-work").on('click','#delEmail',function (event) {
+            var select = new Array();
+            $('#myTable input[type=checkbox]:checked').each(function() { 
+
+              if ($(this).is(':checked')) {
+                select.push(this.value);
+                console.log("checked" + $(this).find('td:eq(1)').text());
+              }
+            });
+            console.log(select);
+            //alert("Number of selected Languages: "+select.length+"\n"+"And, they are: "+select);
+
+            $.ajax({
+                 url:'/admin/del_email',type:'post',
+                 data:{select : select},
+                 success:function(response){
+                    console.log("Done deleting .. "+response);
+                    $('#preview').html('<p>Done</p>');
+                }
+              });
+          });
+
+          $("#AddEmail").click(function (event) {
+            event.preventDefault();
+
+            $("#email-work").html('<input type="text" class="mycustom-btn" id="email-input" /><input type="button" class="mycustom-btn" value="Add" id="AddEmailbtn" />');
+          });
+
+          $("#email-work").on('click', '#AddEmailbtn',function (event) {
+            event.preventDefault();
+            var addedemail = $('#email-input').val();
+            console.log("selected::::" + addedemail);
+            $('#preview').html('<p>Doing Wait</p>');
+            $.ajax({
+              url:'/admin/addEmail',type:'post',
+              data:{sub_email:addedemail},
+              success:function(response){
+                console.log("Done ajax .. "+response);
+                $('#preview').html('<p>Done</p>');
+              }
+            });
+          });
+
+        });
+
+ 

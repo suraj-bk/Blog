@@ -47,6 +47,8 @@
     "nodemailer-sendgrid-transport": "~0.1.0",
     "express-flash": "0.0.2",
     "nodemailer-smtp-transport": "~1.0.3",
-    "email-templates": "~2.0.0-beta.1"
+    "email-templates": "~2.0.0-beta.1",
+    "cloudinary": "~1.2.1",
+    "multer": "~0.1.8"
   }
 }

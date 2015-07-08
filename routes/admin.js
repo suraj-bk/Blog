@@ -367,31 +367,46 @@ module.exports = function(passport,urlencodedParser){
 		});    
 	});
 
+	router.get('/email-id',function(req,res){
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+			var posts = new PostsDAO(db);
+			posts.getemails(function(err, em) {
+		        return res.send(em);
+		    });
+		});    
+	});
+
 	router.post('/del_email',function(req,res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
 		    if(err) throw err;
 
-		    for (var i=0; i<= req.body.email_checkbox.length; i++){
+		    for (var i=0; i<= req.body.select.length; i++){
 		    	var query = {
-					email : req.body.email_checkbox[i]
+					email : req.body.select[i]
 				};
 		    	db.collection("email_sub").remove(query, function(err, items) {
 		            "use strict";
 
 		            if (err) throw err;
 
-		            console.log("Deleted " + req.body.email_checkbox[i] );
+		            console.log("Deleted " + req.body.select[i] );
 
 		        });;
 		    }
 
-		    var posts = new PostsDAO(db);
+		    
+
+		    /*var posts = new PostsDAO(db);
 			posts.getemails(function(err, em) {
 		        return res.render('admin/admin_email_manager', { emails : em });
-		    });
+		    });*/
 
-		});    
+		}); 
+		res.redirect('/admin/email_manager');   
 	});
 
 	router.use(multer({ dest: './uploads/',

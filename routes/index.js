@@ -98,6 +98,16 @@ module.exports = exports = function(app, db) {
 		});
 	});	
 
+	app.post('/admin/addEmail', function(req, res) {
+		db.collection("email_sub").insert({email : req.body.sub_email},function(err,result){
+			if(err){
+				console.log("some error");
+			}
+			console.log("inserted");
+		});
+		res.send('true');
+	});
+
 	app.post('/contact', function(req, res) {
 	  var mailOpts, smtpTrans;
 	  
