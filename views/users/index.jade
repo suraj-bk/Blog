@@ -26,6 +26,8 @@ block content
       ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
             article(class="flex-item col-md-4 col-sm-12 col-xs-12 grid-element")
+              h4(class="col-md-12 post_category")= posts[i].category
+
               a(class="col-md-12 post-title-link" href="/post/"+posts[i].title)
                 h3(class="post-title")= posts[i].title
               ul(class="list-inline subhead col-md-12")
