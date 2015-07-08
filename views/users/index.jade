@@ -71,13 +71,13 @@ block content
                                      
               .post-body.col-md-12
                 .pic
-                  img(src="/img/posts_short/default/300x150.jpg") 
+                  img(src="/img/posts_short/default/300x150.jpg")
                 .post-content.col-md-12
                   span(style="font-size:15px;")= posts[i].title
                   .readmore 
                     a(href="/post/"+posts[i].title) Read more &#8599;
               br
-              h5(class="col-md-12") Tagged with :
+              h5(class="col-md-12", style="margin-top:0px;") Tagged with :
               .tag-body.tags.col-md-12
                 - for(var j=0 ; j< posts[i].tags.length ; j++) {
                   li

@@ -21,13 +21,14 @@ body
 
 .main-container
 	height auto
-	background #fff
+	background #F1F4F9
 	padding-bottom 20px
 	
 .main-container .flex-container 
   padding-left 0px
   margin 0
   width 100%
+  background #F1F4F9
   list-style none
   display -webkit-box
   display -moz-box
@@ -64,7 +65,9 @@ body
 
 
 .flex-container a.post-title-link
-  color #2275b4  
+  color #2275b4
+  margin-top 10px
+  margin-bottom 5px  
   text-decoration none
 
 .flex-container a.post-title-link:hover 
@@ -76,18 +79,26 @@ body
 
 .flex-container h2.post-title
   margin-left 5px
+  padding-top 0px
   width 100%
   text-decoration none
 
-.flex-container h4.post_category
-  width 103%
-  padding-bottom 10px
-  padding-top 10px
-  margin-left -5px
+.flex-container h3.post-title
   margin-top 0
   margin-bottom 0
-  border-bottom 3px solid #777
-  color #777  
+  width 100%
+  text-decoration none  
+
+.flex-container h4.post_category
+  width 90%
+  padding-bottom 10px
+  padding-top 10px
+  padding-left 0px
+  margin-left 15px
+  margin-top 0
+  margin-bottom 0
+  border-bottom 2px solid #ddd
+  color #aaa  
 
 @media all and (max-width : 660px)
   .flex-container h2.post-title
@@ -117,14 +128,14 @@ body
 	
 .flex-container .post-body
   clear left
-  margin-top 15px
+  margin-top 0px
   text-align left 
   
 .flex-container .post-body .pic
   width 100%
   text-align center
   padding 0
-  margin-bottom 20px
+  margin-bottom 10px
   background #F1F4F9
 
 .flex-container .post-body .pic img
@@ -142,10 +153,11 @@ body
     height auto	   
 
 .flex-container .post-body .post-content
-  padding-left 10px
+  padding-left 0px
+  padding-right 0px
   height auto
-  margin-bottom 20px
-  background #fff
+  padding-bottom 5px
+  margin-bottom 15px
   font-size 18px
 
 @media all and (max-width : 660px)
