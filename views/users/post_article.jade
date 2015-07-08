@@ -6,7 +6,7 @@ block content
       ul(class="flex-container")
         article(class="flex-item col-md-12")
           h2.main-titles= post_title
-          ul(class="list-inline subhead col-md-12")
+          ul(class="list-inline col-md-12")
             li
               ul(class="list-inline")
                 li
@@ -37,23 +37,21 @@ block content
                   img(src="/img/author.png") 
                 li= author_name
 
-          .post-social-icons.col-md-12.subhead
-                ul(class="list-inline share")      
-                  //li
-                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[3].title, data-size="default") Tweet
+          .post-social-icons2
+                ul(class="list-inline")
                   li
-                    div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
+                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + post_title, data-size="default")
                   li
-                    div(class="fb-like", data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count", data-action="like", data-show-faces="true", data-share="false", data-width="450", style="width:87px; overflow:hidden; top:-1px; left: 0px;")
+                    div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
                   li
-                    div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", data-width="450", style="width:97px; overflow:hidden; top:-1px; left: 0px;")
+                    div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
 
           br
           h4(class="col-md-12") Tagged with :
           .tag-body.tags.col-md-12
             - for(var j=0 ; j< post_tags.length ; j++) {
               li
-                a(href="/tags/" + post_tags[j], class="tag2")= post_tags[j]
+                a(href="/tags/" + post_tags[j] + "/1", class="tag2")= post_tags[j]
             - };             
           
            script.
@@ -125,7 +123,7 @@ block content
             - for(var i=0 ; i< tags.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                    a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
                   li(class="tag-count")= tags[i].count   
             - };
 

@@ -25,9 +25,9 @@ block content
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
-            article(class="flex-item col-md-12 col-sm-12 col-xs-12")
+            article(class="flex-item col-md-4 col-sm-12 col-xs-12 grid-element")
               a(class="col-md-12 post-title-link" href="/post/"+posts[i].title)
-                h2(class="post-title")= posts[i].title
+                h3(class="post-title")= posts[i].title
               ul(class="list-inline subhead col-md-12")
                 li
                   ul(class="list-inline")
@@ -59,38 +59,31 @@ block content
               .post-social-icons
                 ul(class="list-inline")
                   li
-                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
+                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default")
                   li
                     div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
                   li
                     div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
                   
-
-                  //div(class="share")  
-                    a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, data-size="default") Tweet
-
-                    div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium")
-
-                    div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:97px; overflow:hidden; top:-1px;")
-                  
                   
                                      
               .post-body.col-md-12
-                .pic.col-md-4
+                .pic
                   img(src="/img/posts_short/default/300x150.jpg") 
-                .post-content.col-md-8
-                  span= posts[i].title
+                .post-content.col-md-12
+                  span(style="font-size:15px;")= posts[i].title
                   .readmore 
-                    a(href="/post/"+posts[i].title) Read more ⬈
+                    a(href="/post/"+posts[i].title) Read more &#8599;
               br
-              h4(class="col-md-12") Tagged with :
+              h5(class="col-md-12") Tagged with :
               .tag-body.tags.col-md-12
                 - for(var j=0 ; j< posts[i].tags.length ; j++) {
                   li
-                    a(href="/tags/" + posts[i].tags[j], class="tag2")= posts[i].tags[j]
+                    a(href="/tags/" + posts[i].tags[j] + "/1", class="tag2")= posts[i].tags[j]
                 - };       
         - };
-        div(id="pager", class="text-center")
+
+        div(id="pager", class="text-center col-md-12 col-sm-12 col-xs-12")
 
         script(type="text/javascript", src="/js/jquery.bootpag.min.js")
         script.

@@ -35,7 +35,7 @@ function PostsDAO(db) {
         });
         //callback(Error("insertEntry NYI"), null);
     }*/
-    this.totalPostPerPage = 4;
+    this.totalPostPerPage = 8;
     var totalNumPages = 0;
     this.getPosts = function(num, skip, callback) {
         "use strict";
