@@ -100,7 +100,7 @@ module.exports = function(passport,urlencodedParser){
 				tags : tags,
 				category : req.body.post_category,
 				date: moment().format('MMMM Do YYYY'),
-				time: moment().format('MMMM Do YYYY'),
+				createdOn: moment().valueOf(),
 				published : "false"
 			};
 			db.collection('articles').insert(post,function(err,inserted){
