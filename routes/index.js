@@ -40,6 +40,8 @@ module.exports = exports = function(app, db) {
 
     app.get('/tags/:tag/:pageNo', contentHandler.displayTagByPage);
 
+    app.get('/categories/:category/:pageNo', contentHandler.displayCategoryByPage);
+
     app.get('/search', contentHandler.displayPostsBySearch);
 
 	app.get('/home/about',contentHandler.displayAboutPage);

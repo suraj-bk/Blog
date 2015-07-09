@@ -40,7 +40,7 @@ function PostsDAO(db) {
     this.getPosts = function(num, skip, callback) {
         "use strict";
 
-        posts.find().sort({'created_at.year':-1}).limit(num).skip(skip).toArray(function(err, items) {
+        posts.find().sort({'date':-1}).limit(num).skip(skip).toArray(function(err, items) {
             "use strict";
 
             if (err) return callback(err, null);
@@ -59,7 +59,7 @@ function PostsDAO(db) {
 
     this.getPostsByPage = function(numPostsPerPage, pageNo, callback){
         "use strict";
-        posts.find().sort({'created_at.year':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
+        posts.find().sort({'date':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
             "use strict";
             if (err) return callback(err, null);
             callback(err, items);
@@ -68,7 +68,16 @@ function PostsDAO(db) {
 
     this.getTagByPage = function(numPostsPerPage, pageNo, tag, callback){
         "use strict";
-        posts.find({ tags : tag }).sort({'created_at.year':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
+        posts.find({ tags : tag }).sort({'date':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
+            "use strict";
+            if (err) return callback(err, null);
+            callback(err, items);
+        });
+    }
+
+    this.getCategoryByPage = function(numPostsPerPage, pageNo, cat, callback){
+        "use strict";
+        posts.find({ category : cat }).sort({'date':-1}).limit(numPostsPerPage).skip(numPostsPerPage*(pageNo - 1)).toArray(function(err, items) {
             "use strict";
             if (err) return callback(err, null);
             callback(err, items);
@@ -78,7 +87,7 @@ function PostsDAO(db) {
     this.getHotPosts = function(num, skip, callback) {
         "use strict";
 
-        posts.find().sort({'created_at.year':1}).limit(num).skip(skip).toArray(function(err, items) {
+        posts.find().sort({'date':-1}).limit(num).skip(skip).toArray(function(err, items) {
             "use strict";
 
             if (err) return callback(err, null);
@@ -131,7 +140,21 @@ function PostsDAO(db) {
     this.getPostsByTag = function(tag, num, callback) {
         "use strict";
 
-        posts.find({ tags : tag }).sort({'created_at.date': -1}).limit(num).toArray(function(err, items) {
+        posts.find({ tags : tag }).sort({'date': -1}).limit(num).toArray(function(err, items) {
+            "use strict";
+
+            if (err) return callback(err, null);
+
+            console.log("Found " + items.length + " posts");
+
+            callback(err, items);
+        });
+    }
+
+    this.getPostByCategory = function(cat, num, callback) {
+        "use strict";
+
+        posts.find({ category : cat }).sort({'date': -1}).limit(num).toArray(function(err, items) {
             "use strict";
 
             if (err) return callback(err, null);
@@ -147,8 +170,8 @@ function PostsDAO(db) {
 
         posts.createIndex( { 'title': "text" } );
         console.log(searchQuery);
-        //posts.find({ 'title' : {$regex : searchQuery} }).sort({'created_at.date': -1}).limit(num).toArray(function(err, items) {
-        posts.find({ $text : {$search : searchQuery} }).sort({'created_at.date': -1}).limit(num).toArray(function(err, items) {
+        //posts.find({ 'title' : {$regex : searchQuery} }).sort({'date': -1}).limit(num).toArray(function(err, items) {
+        posts.find({ $text : {$search : searchQuery} }).sort({'date': -1}).limit(num).toArray(function(err, items) {
             "use strict";
 
             if (err) return callback(err, null);
@@ -168,6 +191,20 @@ function PostsDAO(db) {
             if (err) return callback(err, null);
 
             callback(err, post);
+        });
+    }
+
+    this.getPostByCategoryOtherThanTheTitle = function(post_title,cat, num, callback) {
+        "use strict";
+
+        posts.find({ category : cat, title : {$ne : post_title} }).sort({'date': -1}).limit(num).toArray(function(err, items) {
+            "use strict";
+
+            if (err) return callback(err, null);
+
+            console.log("Found " + items.length + " posts");
+
+            callback(err, items);
         });
     }
 /*

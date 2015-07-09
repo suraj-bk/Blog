@@ -109,7 +109,7 @@ block content
             - for(var i=0 ; i< categories.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                    a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
                   li(class="tag-count")= categories[i].count  
             - };         
               
@@ -121,7 +121,7 @@ block content
             - for(var i=0 ; i< tags.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/tags/" + tags[i]._id, class="tag")= tags[i]._id
+                    a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
                   li(class="tag-count")= tags[i].count   
             - };
 

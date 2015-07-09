@@ -1,28 +1,43 @@
 extends layout
 
 block content
-  .row
+  .row        
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
-      ul(class="flex-container")
-        div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="search-alert-box")
-          a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
-          p The Results For Your Search
 
-        script.
-          if(!{search} == true)
-            document.getElementById("search-alert-box").style.display = "block"; 
+      div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+        ul(class="flex-container")
+          div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="search-alert-box")
+            a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+            p The results for your search with keyword "#{search_query}" 
 
-    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
-      ul(class="flex-container")
-        div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="email-alert-box")
-          a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
-          p A Confirmation email has been sent. Please verify!
+          script.
+            if(!{search} == true)
+              document.getElementById("search-alert-box").style.display = "block";
 
-        script.
-          if(!{email_sent} == true)
-            document.getElementById("email-alert-box").style.display = "block";         
+          div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="tag_search-alert-box")
+            a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+            p(id="result-text") The results for the tag - "#{tag_query}" 
 
-    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
+          script.
+            if(!{tag_search} == true)
+              document.getElementById("tag_search-alert-box").style.display = "block";
+
+          div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="cat_search-alert-box")
+            a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+            p The results for the category - "#{cat_query}" 
+
+          script.
+            if(!{cat_search} == true)
+              document.getElementById("cat_search-alert-box").style.display = "block";
+
+          div(class="alert alert-info col-md-9 col-sm-12 col-xs-12 alert-box", id="email-alert-box")
+            a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+            p A Confirmation email has been sent. Please verify!
+
+          script.
+            if(!{email_sent} == true)
+              document.getElementById("email-alert-box").style.display = "block";
+
       ul(class="flex-container")
         - for(var i=0 ; i< posts.length ; i++) {
             article(class="flex-item col-md-4 col-sm-12 col-xs-12 grid-element")
@@ -46,13 +61,15 @@ block content
                           s.type = 'text/javascript';
                           s.src = '//' + disqus_shortname + '.disqus.com/count.js';
                           (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+
+
                         }());
                 li
                   ul(class="list-inline")
                     li
                       img(src="/img/clock.png") 
                     li
-                      p JUNE 12, 2015
+                      p= posts[i].date
                 li
                   ul(class="list-inline")
                     li
@@ -189,7 +206,7 @@ block content
             - for(var i=0 ; i< categories.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                    a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
                   li(class="tag-count")= categories[i].count  
             - };         
               

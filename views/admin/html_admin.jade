@@ -12,7 +12,7 @@ html
 			tr
 				td
 				td
-					h3 Explore this week on 忍者コーダー
+					h4 Explore this week on 忍者コーダー
 					p You are recieving this because you have subscribed
 				td
 
@@ -26,7 +26,7 @@ html
 								td
 									img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193413/logo_wc2dyj.png")
 								td
-									h3(id="logoTitle") 忍者コーダー
+									h4(id="logoTitle") 忍者コーダー
 								td(align="right")
 									h6(class="collapse", class="grey-color") NEWSLETTER
 				td
@@ -42,8 +42,8 @@ html
 						table
 							tr
 								td
-									h1 Popular posts this week
-									h3= hot_posts[0].title
+									h2 Popular posts this week
+									h4= hot_posts[0].title
 									p
 										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193764/Posts_full/default/960x540.jpg")
 									p= hot_posts[0].title
@@ -57,7 +57,7 @@ html
 									td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
 										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193834/Posts_short/default/300x150.jpg")
 									td
-										h4= hot_posts[i].title
+										h6= hot_posts[i].title
 											small= hot_posts[i].author_name
 										p(class="")= hot_posts[i].title
 										a(class="btn", href="/post/"+hot_posts[i].title) Read More &raquo;

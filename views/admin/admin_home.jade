@@ -5,7 +5,8 @@ block content
     div(class="row")
       div(class="primary col-md-12")
         h1 Welcome to 忍者コーダー Admin Page
-        section(class="section")
+        
+        section(class="section col-md-4 home-section")
           div(class="section-inner")
             h2.admin Post
             form(role="form")
@@ -13,41 +14,32 @@ block content
             form(role="form")
               a(href="/admin/mod_post", class="admin") Modify / Delete a Post
 
-        section(class="section")
+        section(class="section col-md-4 home-section")
             div(class="section-inner")
               h2.admin Editor
               form(role="form")
                 a(href="/admin/add_editor", class="admin") Add an Editor
               form(role="form")
-                a(href="/admin/mod_editor", class="admin") Modify / Delete an Editor
+                a(href="/admin/mod_editor", class="admin") Modify / Delete an Editor  
 
-        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
-          ul(class="flex-container")
-            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="images_clean-alert-box")
-              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
-              p The temp ./uploads have been cleaned
-
-            script.
-              if(!{images_cleaned} == true)
-                document.getElementById("images_clean-alert-box").style.display = "block";  
-
-        section(class="section")
+        section(class="section col-md-4 home-section")
             div(class="section-inner")
               h2.admin Image Cleaning
               form(role="form")
-                a(href="/admin/clean_images", class="admin") Clean /uploads        
+                a(href="/admin/clean_images", class="admin") Clean /uploads
 
-        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
-          ul(class="flex-container")
-            div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="newsletter-alert-box")
-              a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
-              p The newsletter has been sent
+            div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+              ul(class="flex-container")
+                div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="images_clean-alert-box")
+                  a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+                  p The temp ./uploads have been cleaned
 
-            script.
-              if(!{newsletter_sent} == true)
-                document.getElementById("newsletter-alert-box").style.display = "block";        
+                script.
+                  if(!{images_cleaned} == true)
+                    document.getElementById("images_clean-alert-box").style.display = "block";
+       
 
-        section(class="section")
+        section(class="section col-md-4 home-section")
             div(class="section-inner")
               h2.admin Newsletter
               form(role="form")
@@ -55,4 +47,74 @@ block content
               form(role="form")
                 a(href="/admin/newsletter_preveiw", class="admin") Preview
               form(role="form")
-                a(href="/admin/newsletter_send", class="admin") Send             
+                a(href="/admin/newsletter_send", class="admin") Send
+
+            div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+              ul(class="flex-container")
+                div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="newsletter-alert-box")
+                  a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+                  p The newsletter has been sent
+
+                script.
+                  if(!{newsletter_sent} == true)
+                    document.getElementById("newsletter-alert-box").style.display = "block";      
+
+        section(class="section col-md-6 analytics")
+          div(class="section-inner")
+            h2.admin Google Analytics
+            section(id="auth-button", class="ga-section")
+            section(id="view-selector", class="ga-section")
+            section(id="timeline", class="ga-section")
+
+            script.
+              (function(w,d,s,g,js,fjs){
+                g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+                js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+                js.src='https://apis.google.com/js/platform.js';
+                fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+              }(window,document,'script'));
+
+
+            script.
+              gapi.analytics.ready(function() {
+
+                var CLIENT_ID = '69363562868-pbm1hgkrg7t5gibrn6o74va43c5f2r48.apps.googleusercontent.com';
+
+                gapi.analytics.auth.authorize({
+                  container: 'auth-button',
+                  clientid: CLIENT_ID,
+                });
+
+                var viewSelector = new gapi.analytics.ViewSelector({
+                  container: 'view-selector'
+                });
+
+                var timeline = new gapi.analytics.googleCharts.DataChart({
+                  reportType: 'ga',
+                  query: {
+                    'dimensions': 'ga:date',
+                    'metrics': 'ga:sessions',
+                    'start-date': '30daysAgo',
+                    'end-date': 'yesterday',
+                  },
+                  chart: {
+                    type: 'LINE',
+                    container: 'timeline'
+                  }
+                });
+
+                gapi.analytics.auth.on('success', function(response) {
+                  viewSelector.execute();
+                });
+
+                viewSelector.on('change', function(ids) {
+                  var newIds = {
+                    query: {
+                      ids: ids
+                    }
+                  }
+
+                  timeline.set(newIds).execute();
+                });
+              });
+                    

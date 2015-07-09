@@ -117,24 +117,24 @@ var jd = "block content"+
         var permalink = req.params.permalink;
 
 
-        posts.getPostByPermalink(permalink, function(err, post) {
+        posts.getPostByPermalink(permalink, function(err, the_post) {
             "use strict";
 
             if (err) return next(err);
-            if (!post) return res.redirect("/post_not_found");
+            if (!the_post) return res.redirect("/post_not_found");
 
             posts.getHotPosts(5, 1, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
-                        return res.render('users/post_article', {
-                            post_title : post.title,
-                            author_name: post.author_name,
-                            post_body: post.body,
-                            post_tags: post.tags,
-                            hot_posts: hot_results,
-                            categories: category_results,
-                            tags: tag_results
-                        });    
+                        posts.getPostByCategoryOtherThanTheTitle(the_post.title,the_post.category,5,function(err, sim_post_results) {
+                            return res.render('users/post_article', {
+                                post : the_post,
+                                hot_posts: hot_results,
+                                categories: category_results,
+                                tags: tag_results,
+                                similar_posts : sim_post_results
+                            });
+                        });        
                     });
                 });
             });    
@@ -194,7 +194,43 @@ var jd = "block content"+
                             if_tag : t,
                             hot_posts: hot_results,
                             categories: category_results,
-                            tags: tag_results
+                            tags: tag_results,
+                            tag_query: tag,
+                            tag_search: true
+                        });    
+                    });
+                });
+            });    
+        });
+    }
+
+    this.displayCategoryByPage = function(req, res, next){
+        "use strict";
+        var cat = req.params.category;
+        var c = req.params.category;
+        db.collection("articles").find({ category : cat }).count(function(error, nbDocs) {
+            totalNumPages =  Math.ceil(nbDocs/totalPostPerPage);
+        });
+        var pageNo = req.params.pageNo;
+        posts.getCategoryByPage(totalPostPerPage, pageNo, cat, function(err, results) {
+            "use strict";
+            if (err) return next(err);
+
+            console.log("kdjlas : "+totalNumPages);
+            posts.getHotPosts(5, 1, function(err, hot_results) {
+                posts.getAllCategories(function(err, category_results) {
+                    posts.getAllTags(function(err, tag_results) {
+                        return res.render('users/index', {
+                            totPages : totalNumPages,
+                            posts: results,
+                            tnum : pageNo,
+                            pnum : 0,
+                            if_tag : c,
+                            hot_posts: hot_results,
+                            categories: category_results,
+                            tags: tag_results,
+                            cat_query: cat,
+                            cat_search: true
                         });    
                     });
                 });
@@ -225,7 +261,8 @@ var jd = "block content"+
                             if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
-                            tags: tag_results
+                            tags: tag_results,
+                            search_query: req.query.q
                         });    
                     });
                 });

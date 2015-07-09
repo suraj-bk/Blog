@@ -11,7 +11,7 @@ block content
           ul(class="flex-container")
             div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="post-alert-box1")
               a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
-              p The post has been deleted
+              p Succesfully removed "!{rem}" post
 
             script.
               if(!{post_deleted} == true)
@@ -23,7 +23,7 @@ block content
             form(role="form", method="post", action="/admin/del_post")
               div(class="form-group")
                 label(for="post_title") Post Title
-                input(type="text", class="form-control", id="post_title", placeholder="Title")
+                input(type="text", class="form-control",name="post_title", id="post_title", placeholder="Title")
               button(type="submit", class="btn btn-success") Delete
               
         div(class="col-md-12 col-sm-12 col-xs-12 main-container")
@@ -43,7 +43,10 @@ block content
             form(role="form", method="post", action="/admin/upd_post")
               div(class="form-group")
                 label(for="post_title") Post Title
-                input(type="text", class="form-control", id="post_title", placeholder="Title")
+                input(type="text", class="form-control",name="post_title", id="post_title", placeholder="Title")
+              div(class="form-group")
+                label(for="desc_short") Short Description
+                textarea(rows="3", class="form-control",name="desc_short", id="desc_short", placeholder="Short Description")
               div(class="form-group")
                 label(for="post_descr") Description
                 textarea(rows="10", class="form-control", id="post_descr", placeholder="Description")  

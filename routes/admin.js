@@ -13,6 +13,8 @@ var cloudinary = require('cloudinary');
 var fs = require('fs');
 var path = require('path');
 
+var moment = require('moment');
+
 var multer = require('multer');
 var fileUpload_done = false;
 
@@ -92,10 +94,13 @@ module.exports = function(passport,urlencodedParser){
 
 			var post = {
 				title : req.body.post_title,
+				desc_short: req.body.desc_short,
 				body : req.body.post_descr,
 				author_name : req.body.post_author,
 				tags : tags,
 				category : req.body.post_category,
+				date: moment().format('MMMM Do YYYY'),
+				time: moment().format('MMMM Do YYYY'),
 				published : "false"
 			};
 			db.collection('articles').insert(post,function(err,inserted){
@@ -133,7 +138,7 @@ module.exports = function(passport,urlencodedParser){
 					return db.close();
 				}
 
-				res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true });
+				res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
 				console.log("Data removed successfully");
 				return db.close();
 			});

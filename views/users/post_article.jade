@@ -6,15 +6,15 @@ block content
       ul(class="flex-container")
         article(class="flex-item col-md-12")
           .article_container
-            h4(class="col-md-12 post_category2")= post_title
-            h2.main-titles= post_title
+            h4(class="col-md-12 post_category2")= post.category
+            h2.main-titles= post.title
             ul(class="list-inline col-md-12 subhead2")
               li
                 ul(class="list-inline")
                   li
                     img(src="/img/comment.png") 
                   li
-                    span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
+                    span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post.title + "#disqus_thread") 0 Comments
 
                     script.
                       var disqus_shortname = 'annappablogtest';
@@ -37,12 +37,12 @@ block content
                 ul(class="list-inline")
                   li
                     img(src="/img/author.png") 
-                  li= author_name
+                  li= post.author_name
 
             .post-social-icons2
                   ul(class="list-inline")
                     li
-                      a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + post_title, data-size="default")
+                      a(class="twitter-share-button", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + post.title, data-size="default")
                     li
                       div(class="g-plusone",data-href="https://www.google.co.in", data-annotation="bubble",data-size="medium", style="width:70px; overflow:hidden; top:-1px;")
                     li
@@ -51,32 +51,37 @@ block content
             br
             h4(class="col-md-12",style="color:#666;") Tagged with :
             .tag-body.tags.col-md-12
-              - for(var j=0 ; j< post_tags.length ; j++) {
+              - for(var j=0 ; j< post.tags.length ; j++) {
                 li
-                  a(href="/tags/" + post_tags[j] + "/1", class="tag2")= post_tags[j]
+                  a(href="/tags/" + post.tags[j] + "/1", class="tag2")= post.tags[j]
               - };             
             
              script.
               function putPostBody(){
                 var dom_target = document.getElementById("thePostBody");
-                dom_target.innerHTML = !{post_body};
+                dom_target.innerHTML = !{post.body};
               }
 
             .post-body.col-md-12
               .pic2.col-md-12
                 img(src="/img/posts_full/default/960x540.jpg")
               .post-content.col-md-12
-                div(id="thePostBody", class="editor_article") !{post_body}
+                div(id="thePostBody", class="editor_article")
+                  div(class="editor_article") !{post.body}
 
                 script.
                   //putPostBody();
         
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")                 
-          h2.main-titles You might also like
-          - for(var i=0 ; i< 5 ; i++) {
-              article(class="flex-item col-md-2 col-sm-3 col-xs-3 grid-element2")
-                a(class="col-md-12 post-title-link" href="/post/"+post_title)
-                  h6(class="post-title")= post_title
+          h3.main-titles You might also like
+          - if(similar_posts.length == 0){
+              article(class="flex-item col-md-2 col-sm-5 col-xs-5 grid-element2")
+                h6(class="post-title") Sorry no articles found
+          - }
+          - for(var i=0 ; i< similar_posts.length ; i++) {
+              article(class="flex-item col-md-2 col-sm-5 col-xs-5 grid-element2")
+                a(class="col-md-12 post-title-link" href="/post/"+ similar_posts[i].title)
+                  h6(class="post-title")= similar_posts[i].title
                 .post-body.col-md-12
                   .pic
                     img(src="/img/posts_short/default/300x150.jpg")
@@ -87,7 +92,7 @@ block content
                       li
                         img(src="/img/comment.png") 
                       li
-                        span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post_title + "#disqus_thread") 0 Comments
+                        span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + similar_posts[i].title + "#disqus_thread") 0 Comments
 
                         script.
                           var disqus_shortname = 'annappablogtest';
@@ -138,7 +143,7 @@ block content
             - for(var i=0 ; i< categories.length ; i++) {
                 ul(class="list-inline")
                   li
-                    a(href="/categories/" + categories[i]._id, class="cat-list")= categories[i]._id
+                    a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
                   li(class="tag-count")= categories[i].count  
             - };         
               
