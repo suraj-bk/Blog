@@ -360,6 +360,76 @@ module.exports = function(passport,urlencodedParser){
 	});
 
 
+	router.post('/AdminNewsletter', function(req, res) {
+	  	var mailOpts, smtpTrans;
+
+		emailTemplates(templatesDir, function(err, template) {
+
+		  	if (err) {
+		    	console.log(err);
+		  	} else {
+			    // ## Send a single email
+			    // Prepare nodemailer transport object
+				var transporter = nodemailer.createTransport(smtpTransport({
+					  service: 'Mailgun',
+					  auth: { 
+					  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
+					  		//'ravishetty150@gmail.com',
+					        pass: 'e2f670eefe44504724a607491d160cb5'
+					        //'nmamitsucks' 
+					    }
+				}));
+
+				MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+				    "use strict";
+				    if(err) throw err;
+				    console.log("collection is : "+ req.body.collection);
+				    var posts = new PostsDAO(db);
+				    posts.getHotPosts(5, 1, function(err, hot_results) {
+
+
+				    	//res.render('admin/admin_home', {newsletter_sent : true });
+				    	var cursor = db.collection(req.body.collection).find({});
+						cursor.each(function(err,ob){
+							if(ob != null){
+								var locals = {
+							      	name : ob.email,
+							      	hot_posts: hot_results
+							    };
+							    //var EMAIL = "ravishetty150@gmail.com"; // Email to send.
+							    var EMAIL = ob.email; // Email to send.
+							    // Send a newsletter
+							    template('newsletter', locals, function(err, html, text) {
+							      	if (err) {
+							        	console.log("template error : " +err);
+							      	} else {
+							        	transporter.sendMail({
+								          	from: 'sample Testing <smtp.mailgun.org>',
+								          	to: "<"+ EMAIL +">",
+								          	subject: 'Weekly Newsletter',
+								          	html: html,
+								          	generateTextFromHTML: true,
+								          	text: text
+							        	}, function(err, responseStatus) {
+							          		if (err) {
+							            		console.log("some : " + err);
+							          		} else {
+								            	console.log("SUCCESS Email sent : " + EMAIL);
+								            	//res.send(true);
+							          		}
+							        	});
+							      	}
+							   	});
+							}
+						});
+				    });	
+					
+				});		    
+			}
+		});
+	});
+
+
 	router.get('/email_manager',function(req,res){
 		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
@@ -382,6 +452,40 @@ module.exports = function(passport,urlencodedParser){
 		        return res.send(em);
 		    });
 		});    
+	});
+
+	router.get('/showSubText',function(req,res){
+		fs = require('fs');
+		var jade = require('jade');
+
+
+		fs.readFile('./template/html.jade', 'utf8', function (err,data) {
+		  if (err) {
+		    return console.log(err);
+		  }
+		  return res.send(data);
+		});
+	});
+
+	router.post('/compileJade',function(req,res){
+		var jade = require('jade');
+		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+		    "use strict";
+		    if(err) throw err;
+
+		    var posts = new PostsDAO(db);
+		    posts.getHotPosts(5, 1, function(err, hot_results) {
+		    	if(err) throw err;
+		    	var fn = jade.compile(req.body.text, {});
+		    	var locals = {
+							      	name : 'suraj',
+							      	hot_posts: hot_results
+							    };
+				var html = fn(locals);
+				console.log(html);
+				return res.send(html);
+		    });
+		});
 	});
 
 	router.post('/del_email',function(req,res){

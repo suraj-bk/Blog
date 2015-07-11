@@ -31,10 +31,10 @@ block content
             .email-options
               p These are the available options
               h1 Send Mail
-              h1 Send Newsletter
+              h1(id="showSubText") View Newsletter
               h1(id="AddEmail") Add Email
               h1(id="deleteEmail") Delete Email
-              h1 Subscribe text
+              h1(id="showSubText1") Subscribe text
               h1 Unsubscribe Text
 
           .col-md-6
@@ -44,12 +44,10 @@ block content
       .row
         .col-md-12
           #preview
-            h1 Preview
+             #html-area
 
       script.
-        $( document ).ready(function() {
-          $("#deleteEmail").click(function (event) {
-              event.preventDefault();
+        function populateEmail(){
             $.getJSON('/admin/email-id' , function(data) {
                 var tbl_body = "<table id='myTable'>";
                 var odd_even = false;
@@ -68,51 +66,120 @@ block content
                 tbl_body += '</table><input type="button" class="mycustom-btn" value="Delete" id="delEmail" />';
                 $("#email-work").html(tbl_body);
             });
-          });
+        }
 
-          $("#email-work").on('click','#delEmail',function (event) {
-            var select = new Array();
-            $('#myTable input[type=checkbox]:checked').each(function() { 
-
-              if ($(this).is(':checked')) {
-                select.push(this.value);
-                console.log("checked" + $(this).find('td:eq(1)').text());
-              }
-            });
-            console.log(select);
-            //alert("Number of selected Languages: "+select.length+"\n"+"And, they are: "+select);
-
-            $.ajax({
-                 url:'/admin/del_email',type:'post',
-                 data:{select : select},
-                 success:function(response){
-                    console.log("Done deleting .. "+response);
-                    $('#preview').html('<p>Done</p>');
-                }
-              });
-          });
-
-          $("#AddEmail").click(function (event) {
+        $("#deleteEmail").click(function (event) {
             event.preventDefault();
-
-            $("#email-work").html('<input type="text" class="mycustom-btn" id="email-input" /><input type="button" class="mycustom-btn" value="Add" id="AddEmailbtn" />');
-          });
-
-          $("#email-work").on('click', '#AddEmailbtn',function (event) {
-            event.preventDefault();
-            var addedemail = $('#email-input').val();
-            console.log("selected::::" + addedemail);
-            $('#preview').html('<p>Doing Wait</p>');
-            $.ajax({
-              url:'/admin/addEmail',type:'post',
-              data:{sub_email:addedemail},
-              success:function(response){
-                console.log("Done ajax .. "+response);
-                $('#preview').html('<p>Done</p>');
-              }
-            });
-          });
-
+            populateEmail();
         });
+
+        $("#email-work").on('click','#delEmail',function (event) {
+          var select = new Array();
+          $('#myTable input[type=checkbox]:checked').each(function() { 
+
+            if ($(this).is(':checked')) {
+              select.push(this.value);
+              console.log("checked" + $(this).find('td:eq(1)').text());
+            }
+          });
+          console.log(select);
+          //alert("Number of selected Languages: "+select.length+"\n"+"And, they are: "+select);
+
+          $.ajax({
+               url:'/admin/del_email',type:'post',
+               data:{select : select},
+               success:function(response){
+                  console.log("Done deleting .. "+response);
+                  populateEmail();
+                  //$('#preview').html('<p>Done</p>');
+              }
+            });
+        });
+
+        $("#AddEmail").click(function (event) {
+          event.preventDefault();
+          $("#email-work").html('<input type="text" class="mycustom-btn" id="email-input" /><input type="button" class="mycustom-btn" value="Add" id="AddEmailbtn" />');
+        });
+
+        $("#email-work").on('click', '#AddEmailbtn',function (event) {
+          event.preventDefault();
+          var addedemail = $('#email-input').val();
+          console.log("selected::::" + addedemail);
+          $('#preview').html('<p>Doing Wait</p>');
+          $.ajax({
+            url:'/admin/addEmail',type:'post',
+            data:{sub_email:addedemail},
+            success:function(response){
+              console.log("Done ajax .. "+response);
+              $('#preview').html('<p>Done</p>');
+            }
+          });
+        });
+
+        $("#showSubText").on('click',function(event){
+          event.preventDefault();
+          $('#email-work').html('<input type="button" class="mycustom-btn" value="See Preview" id="showNewsPreview" /><br />'
+            +'<input type="button" class="mycustom-btn" value="Send Sample to Admin" id="sendToAdmin" /><br />'
+            +'<input type="button" class="mycustom-btn" value="Send to All" id="sendToAll" />');
+        });
+
+
+        $("#email-work").on('click',"#showNewsPreview",function(event){
+          event.preventDefault();
+          $.ajax({
+            url:'/admin/showSubText',type:'get',
+            success:function(response){
+              console.log("Done ajax .. "+response);
+              var dat = response;
+              console.log(dat);
+              $.ajax({
+                   url:'/admin/compileJade',type:'post',
+                   data:{text : dat},
+                   success:function(response){
+                      console.log("Done deleting .. "+response);
+                      //populateEmail();
+                      $('#html-area').html(response);
+                  },
+                  error:function(response){
+                    console.log("Done error .. "+JSON.stringify(response));
+                  }
+                });
+              //$('#html-area').html('<textarea rows="600" cols="500" id="jade-text">'+ response +'</textarea><input type="button" class="mycustom-btn" value="Delete" id="saveJade" />');
+            }
+          });
+        });
+
+        $("#email-work").on('click','#sendToAdmin',function (event) {
+          $.ajax({
+                   url:'/admin/AdminNewsletter',type:'post',
+                   data:{collection : 'adminEmails'},
+                   success:function(response){
+                      console.log("sent emails to admins..");
+                      //$('#html-area').html(response);
+                      //$('#email-work').html('<input type="button" class="mycustom-btn" value="See Preview" id="showNewsPreview" />'
+                        //+'<input type="button" class="mycustom-btn" value="Send Sample to Admin" id="saveJade" />');
+                  },
+                  error:function(response){
+                    console.log("Done error .. "+JSON.stringify(response));
+                  }
+          });
+        });
+
+        $("#email-work").on('click','#sendToAll',function (event) {
+          $.ajax({
+                   url:'/admin/AdminNewsletter',type:'post',
+                   data:{collection : 'email_sub'},
+                   success:function(response){
+                      console.log("sent emails to All people..");
+                      //$('#html-area').html(response);
+                      //$('#email-work').html('<input type="button" class="mycustom-btn" value="See Preview" id="showNewsPreview" />'
+                        //+'<input type="button" class="mycustom-btn" value="Send Sample to Admin" id="saveJade" />');
+                  },
+                  error:function(response){
+                    console.log("Done error .. "+JSON.stringify(response));
+                  }
+          });
+        });
+
 
  
