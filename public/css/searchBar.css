@@ -14,7 +14,6 @@
 .search-box:hover {
   color: white;
   background: #c8c8c8;
-  box-shadow: 0 0 0 5px #3d4752;
 }
 .search-box:hover + label .search-icon {
   color: white;

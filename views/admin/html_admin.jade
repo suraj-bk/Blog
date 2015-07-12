@@ -1,10 +1,11 @@
 html
 	head
-		title 忍者コーダー
+		title Code Like Ninja
 
 		meta(name="viewport", content="width=device-width")
 		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
 
+		link(href='http://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet', type='text/css')
 		link(rel="stylesheet", type="text/css", href="/css/newsletter.css")
 
 	body(bgcolor="#FFFFFF", topmargin="0", leftmargin="0", marginheight="0", marginwidth="0")
@@ -12,21 +13,21 @@ html
 			tr
 				td
 				td
-					h4 Explore this week on 忍者コーダー
+					h4 Explore this week on Code Like Ninja
 					p You are recieving this because you have subscribed
 				td
 
-		table(class="head-wrap", bgcolor="#446382")
+		table(class="head-wrap", bgcolor="#5682A3")
 			tr
 				td
 				td(class="header container", align="")
 					div(class="content")
-						table(bgcolor="#446382")
+						table(bgcolor="#5682A3")
 							tr
 								td
 									img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193413/logo_wc2dyj.png")
 								td
-									h4(id="logoTitle") 忍者コーダー
+									h2(id="logoTitle") Code Like Ninja
 								td(align="right")
 									h6(class="collapse", class="grey-color") NEWSLETTER
 				td
@@ -46,7 +47,7 @@ html
 									h4= hot_posts[0].title
 									p
 										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193764/Posts_full/default/960x540.jpg")
-									p= hot_posts[0].title
+									p= hot_posts[0].desc_short
 
 
 					- for(var i=1 ; i< hot_posts.length ; i++) {
@@ -54,12 +55,12 @@ html
 						div(class="content")
 							table(bgcolor="")
 								tr
-									td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
+									td(class="small", width="30%", style="vertical-align: top; padding-right:10px;")
 										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193834/Posts_short/default/300x150.jpg")
 									td
 										h6= hot_posts[i].title
 											small= hot_posts[i].author_name
-										p(class="")= hot_posts[i].title
+										p(class="")= hot_posts[i].desc_short
 										a(class="btn", href="/post/"+hot_posts[i].title) Read More &raquo;
 
 					- };
@@ -70,8 +71,10 @@ html
 							tr
 								td
 									p(class="callout")
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-										a(href="#") Do it Now! &raquo;
+										| Check out more awesome articles on Code Like Ninja
+										|  
+										|  
+										a(href="/") Lets Go! &raquo;
 
 
 					<!-- content -->
@@ -92,9 +95,9 @@ html
 																		td
 																			h5 Connect with Us:
 																			p(class="")
-																				a(href="#", class="soc-btn fb") Facebook
-																				a(href="#", class="soc-btn tw") Twitter
-																				a(href="#", class="soc-btn gp") Google+
+																				a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929",target="_blank", class="soc-btn fb") Facebook
+																				a(href="https://twitter.com/codelikeninja",target="_blank", class="soc-btn tw") Twitter
+																				a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/",target="_blank", class="soc-btn gp") Google+
 
 															div
 																div(class="column")
@@ -122,11 +125,11 @@ html
 							tr
 								td(align="center")
 									p(class="footer-links")
-										a(href="#") HOME
-										a(href="#") ABOUT
-										a(href="#") CONTACT
-										a(href="#") 
+										a(href="/") HOME
+										a(href="/home/about") ABOUT
+										a(href="/home/contact_us") CONTACT
+										a(href="/verify/unsubscribe") 
 											unsubscribe UNSUBSCRIBE
 							tr
 								td(align="center")
-									p(class="copyright") © 2015  忍者コーダー limited. Trademarks and brands are the property of their respective.
+									p(class="copyright") © 2015  Code Like Ninja limited. Trademarks and brands are the property of their respective.

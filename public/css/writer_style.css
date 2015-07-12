@@ -1,15 +1,15 @@
-.login-wrapper, .main-container {
-	background-color: #1F1F1F;
+.main-container {
+	background-color: #1D1D1F;
 }
 
 .left-div img {
-	max-width: 90%;
+	max-width: 74%;
 }
 
 
 .right-div{
 	margin-top: 90px;
-	background-color: #1F1F1F;
+	background-color: #1D1D1F;
 	padding-right: 2px;
 	color: #EEE;
 }
@@ -35,11 +35,45 @@ h3.error-message {
 	padding-bottom: 10px;
 }
 
+.home-btn{
+  color: #fff;
+  padding: 6px;
+  background: #2AA4CF;
+  border: 0;
+}
+
+.home-btn:hover{
+  background: #89E07F;
+}
+
+section {
+	background : #FFF;
+	padding : 20px;
+	margin-bottom: 20px;
+	height: auto;
+  	width: 100%;
+  	font-family: 'Lato', sans-serif;
+}
+.hey-there{
+	background : #EEEEEE;
+}
+
+
+.h4-info {
+	width : auto;
+}
+
+.col-md-3 form {
+	padding: 0px;
+}
+
+
 .logout-btn{
   float: right;
   color: #fff;
   padding: 6px;
   background: #2AA4CF;
+  margin-top: 20px;
   border: 0;
 }
 
@@ -53,37 +87,8 @@ h3.error-message {
 }    
 
 .logout-btn:hover, .login-btn:hover{
-	 color: #FFF;
-	 background: #DD0000;
-}
-
-.home-btn{
-  color: #fff;
-  padding: 6px;
-  background: #2AA4CF;
-  border: 0;
-}
-
-.home-btn:hover{
-  background: #89E07F;
-}
-
-.hey-there{
-	background : #EEEEEE;
-}
-
-
-.h4-info {
-	width : auto;
-}
-
-section {
-	background : #FFF;
-	padding : 20px;
-	margin-bottom: 20px;
-	height: auto;
-  	width: 100%;
-  	font-family: 'Lato', sans-serif;
+	 color: #2AA4CF;
+	 background: #FFF;
 }
 
 section.analytics {

@@ -44,6 +44,9 @@ MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
     var routes1 = require('./routes/admin')(passport,urlencodedParser);
     app.use('/admin', routes1);
 
+    var routes2 = require('./routes/writer')(passport,urlencodedParser);
+    app.use('/writer', routes2);
+
     routes(app,db);
     app.listen(8000);
     console.log('Express server listening on port 8000');

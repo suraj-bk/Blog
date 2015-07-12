@@ -1,17 +1,19 @@
 doctype html
 html
   head
-    title= appTitle
+    title Code Like Ninja
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
     script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='/css/bootstrap/css/bootstrap-theme.min.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Martel+Sans')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/css/searchBar.css')
     script(type="text/javascript", src="/css/bootstrap/js/bootstrap.min.js")
-    //script(type="text/javascript", src="/js/twitter.js")
-    //script(type="text/javascript", src="/js/facebook.js")
+    script(type="text/javascript", src="/js/twitter.js")
+    script(type="text/javascript", src="/js/facebook.js")
     script(type="text/javascript", src="/js/ads.js")
     link(rel='stylesheet', href='/css/build.css')
     script(src="https://apis.google.com/js/platform.js", async defer)
@@ -19,7 +21,7 @@ html
 
 
   body
-    #wrap
+    #wrap.main
       .container-fluid
         block header
             include ./header.jade

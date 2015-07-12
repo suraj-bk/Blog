@@ -7,12 +7,12 @@ block content
       div(class="primary col-md-12")
         .header
           .col-md-9
-            form(action='/admin/home', method='get')
+            form(action='/writer/writer_acc/home', method='get')
               input(type="submit", class="home-btn", value="<<Home")
           .col-md-3  
-            form(action='/admin/signout', method='get')
+            form(action='/writer/signout', method='get')
               input(type="submit", class="logout-btn", value="Logout")
-        h1 Welcome to Code Like Ninja Admin Page
+        h1 Welcome to Code Like Ninja - Writer Account Page
 
         div(class="col-md-12 col-sm-12 col-xs-12")
           ul(class="flex-container")
@@ -27,7 +27,7 @@ block content
         section(class="section")
           h2.admin Delete Post
           div(class="section-inner")
-            form(role="form", method="post", action="/admin/del_post")
+            form(role="form", method="post", action="/writer/writer_acc/del_post")
               div(class="form-group")
                 label(for="post_title") Post Title
                 input(type="text", class="form-control",name="post_title", id="post_title", placeholder="Title")
@@ -47,7 +47,7 @@ block content
         section(class="section")
           h2.admin Update Post
           div(class="section-inner")
-            form(role="form", method="post", action="/admin/upd_post")
+            form(role="form", method="post", action="/writer/writer_acc/upd_post")
               div(class="form-group")
                 label(for="post_title") Post Title
                 input(type="text", class="form-control",name="post_title", id="post_title", placeholder="Title")

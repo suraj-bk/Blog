@@ -1,18 +1,14 @@
 html
 	head
-		title Code Like Ninja
+		title Code Like Ninja: Subscription confirmed
 
 		meta(name="viewport", content="width=device-width")
 		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
 
+		link(href='http://fonts.googleapis.com/css?family=Oswald:700', rel='stylesheet', type='text/css')
+		link(rel="stylesheet", type="text/css", href="/css/newsletter.css")
+
 	body(bgcolor="#FFFFFF", topmargin="0", leftmargin="0", marginheight="0", marginwidth="0")
-		table(class="demo")
-			tr
-				td
-				td
-					h3 Explore this week on Code Like Ninja
-					p You are recieving this because you have subscribed
-				td
 
 		table(class="head-wrap", bgcolor="#5682A3")
 			tr
@@ -24,7 +20,7 @@ html
 								td
 									img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193413/logo_wc2dyj.png")
 								td
-									h4(id="logoTitle") Code Like Ninja
+									h2(id="logoTitle") Code Like Ninja
 								td(align="right")
 									h6(class="collapse", class="grey-color") NEWSLETTER
 				td
@@ -40,37 +36,11 @@ html
 						table
 							tr
 								td
-									h1 Popular posts this week
-									h3= hot_posts[0].title
-									p
-										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193764/Posts_full/default/960x540.jpg")
-									p= hot_posts[0].desc_short
+									h2= "Subscription " + key
+									h4= msg
 
 
-					- for(var i=1 ; i< hot_posts.length ; i++) {
-						<!-- content -->
-						div(class="content")
-							table(bgcolor="")
-								tr
-									td(class="small", width="20%", style="vertical-align: top; padding-right:10px;")
-										img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193834/Posts_short/default/300x150.jpg")
-									td
-										h4= hot_posts[i].title
-											small= hot_posts[i].author_name
-										p(class="")= hot_posts[i].desc_short
-										a(class="btn", href="/post/"+hot_posts[i].title) Read More &raquo;
-
-					- };
-
-					<!-- content -->
-					div(class="content")
-						table(bgcolor="")
-							tr
-								td
-									p(class="callout")
-										| Check out more awesome articles from this week at Code Like Ninja
-										|  
-										a(href="/") Lets Go! &raquo;
+					
 
 
 					<!-- content -->
@@ -101,17 +71,15 @@ html
 																		tr
 																			td
 																				h5(class="") Contact Info:
-																				p Phone : 
-																					strong 0820-213213
 																				
-																				a(href="emailto:ravishetty150@gmail.com") ravishetty150@gmail.com
+																				a(href="emailto:codelikeninja@gmail.com") codelikeninja@gmail.com
 
 
 															div(class="clear")
 
 
 		<!-- FOOTER -->
-		table(class="footer-wrap")
+		table(class="footer-wrap-subs")
 			tr
 				td
 				td(class="container")
@@ -124,8 +92,6 @@ html
 										a(href="/") HOME
 										a(href="/home/about") ABOUT
 										a(href="/home/contact_us") CONTACT
-										a(href="/verify/unsubscribe") 
-											unsubscribe UNSUBSCRIBE
 							tr
 								td(align="center")
 									p(class="copyright") © 2015  Code Like Ninja limited. Trademarks and brands are the property of their respective.

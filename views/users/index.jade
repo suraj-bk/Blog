@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  .row        
+  .row
+
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
 
       div(class="col-md-12 col-sm-12 col-xs-12 main-container")
@@ -50,7 +51,7 @@ block content
                     li
                       img(src="/img/comment.png") 
                     li
-                      span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + posts[i].title + "#disqus_thread") 0 Comments
+                      span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + posts[i].title + "#disqus_thread") 0 Comments
 
                       script.
                         var disqus_shortname = 'annappablogtest';
@@ -59,9 +60,8 @@ block content
                           s.type = 'text/javascript';
                           s.src = '//' + disqus_shortname + '.disqus.com/count.js';
                           (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-
-
                         }());
+
                 li
                   ul(class="list-inline")
                     li
@@ -79,14 +79,18 @@ block content
                 //<a href="//pinterest.com/pin/create/button/?url={URL}&media={MEDIA}&description={DESCRIPTION}" class="pinterest"><span class="share-count"></span></a>
                 .social-container
                   div(class="t-soc")
-                    .s-pic
-                    div(class="social-count" id="twitter"+i data-count="0", href="https://twitter.com/home?status=Test", target="_blank") 0
+                    a(href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost" + "&hashtags=" + posts[i].tags[0] + "," + posts[i].tags[1] + "&text=Check%20this%20out- " + posts[i].title + "&via=codelikeninja")
+                      .s-pic
+                    div(class="social-count" id="twitter"+i data-count="0", href="https://twitter.com/intent/tweet?text=Check%20this%20out- " + posts[i].title, target="_blank") 0 
                   div(class="f-soc")
-                    .s-pic
-                    div(class="social-count" id="facebook"+i data-count="0" href="https://www.facebook.com/share.php?u=https://www.google.co.in", target="_blank") 0
+                    a(href="https://www.facebook.com/sharer/sharer.php?u=http://stackoverflow.com/", target="_blank")
+                      .s-pic
+                    div(class="social-count" id="facebook"+i data-count="0") 0
                   div(class="p-soc")
-                    .s-pic
-                    div(class="social-count" id="pinterest"+i data-count="0", href="https://plus.google.com/share?url=https://www.google.co.in", target="_blank") 0
+                    a(href="https://plus.google.com/share?url=http://stackoverflow.com/", target="_blank")
+                      .s-pic
+                    div(class="social-count" id="pinterest"+i data-count="0") 0
+
                   
                 script.
                   // Format Number functions
@@ -203,17 +207,17 @@ block content
         .social-ico
           ul(class="list-inline")
             li
-              img(src="/img/twitter.png")
+              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
+                img(src="/img/twitter.png")
             li
-              img(src="/img/google.png")
+              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
+                img(src="/img/google.png")
             li
-              img(src="/img/git.png")
+              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
+                img(src="/img/facebook.png")
             li
-              img(src="/img/facebook.png")
-            li
-              img(src="/img/lin.png")
-            li
-              img(src="/img/em.png")
+              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
+                img(src="/img/pinterest.png")
 
         .subscribe
           div(class="section-inner text-center")  
@@ -222,7 +226,7 @@ block content
               div(class="form-group email-box",id="sub_box")
                 //form(action='/contact', name='contactus', id='contactus', method='post')
                 input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
-                input(type="button", class="mycustom-btn", value="Subscribe" ,id="subM") 
+                input(type="button", class="mycustom-btn", value="Subscribe" ,id="subM",spellcheck="false") 
 
                 div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
                     p Invalid Email-id 
@@ -245,26 +249,28 @@ block content
         script.
           $("#subM").click(function (event) {
             event.preventDefault();
-            var searchIDs = $('#sub_email').val();
-            console.log("selected::::" + searchIDs);
-            $('#sub_box').html('<p>Doing Wait</p>');
-            $.ajax({
-               url:'/contact',type:'post',
-               data:{sub_email:searchIDs},
-               success:function(response){
-                  console.log("Done ajax .. "+response);
-                  $('#sub_box').html('<p>Done</p>');
-              }
-            });
+            if (checkEmail() == true){ 
+              var searchIDs = $('#sub_email').val();
+              console.log("selected::::" + searchIDs);
+              $('#sub_box').html('<p>Please Wait</p>');
+              $.ajax({
+                 url:'/contact',type:'post',
+                 data:{sub_email:searchIDs},
+                 success:function(response){
+                    console.log("Done ajax .. "+response);
+                    $('#sub_box').html('<p>Thanks for signing up!</p>');
+                }
+              });
+            }  
           });
       .facebook
         .heading
           h4 Find us on Facebook 
         .plugin          
-          div(class="fb-page", data-href="https://www.facebook.com/GameOfThrones", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
+          div(class="fb-page", data-href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")
               blockquote(cite="https://www.facebook.com/GameOfThrones")
-                a(href="https://www.facebook.com/facebook") GameOfThrones  
+                a(href="https://www.facebook.com/facebook") 
 
       .category
         .heading
@@ -298,7 +304,7 @@ block content
               ul(class="hot_links")
                 li
                   span ↠
-                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title + " is the best in the world"
+                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title
           - };
 
       .Adbox

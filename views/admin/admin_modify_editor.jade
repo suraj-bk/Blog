@@ -7,9 +7,16 @@ block content
   div(class="container sections-wrapper")
     div(class="row")
       div(class="primary col-md-12")
-        h1 Welcome to 忍者コーダー Admin Page
+        .header
+          .col-md-9
+            form(action='/admin/home', method='get')
+              input(type="submit", class="home-btn", value="<<Home")
+          .col-md-3  
+            form(action='/admin/signout', method='get')
+              input(type="submit", class="logout-btn", value="Logout")
+        h1 Welcome to Code Like Ninja Admin Page
 
-        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+        div(class="col-md-12 col-sm-12 col-xs-12")
           ul(class="flex-container")
             div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="editor-alert-box1")
               a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
@@ -29,7 +36,7 @@ block content
               button(type="submit", class="btn btn-success") Delete
 
 
-        div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+        div(class="col-md-12 col-sm-12 col-xs-12")
           ul(class="flex-container")
             div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="editor-alert-box2")
               a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;

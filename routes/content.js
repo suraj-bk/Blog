@@ -20,7 +20,7 @@ function ContentHandler (db) {
             if (err) return next(err);
             console.log("kdjlas : "+totalNumPages);
 
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -51,7 +51,7 @@ function ContentHandler (db) {
             if (err) return next(err);
 
             console.log("kdjlas : "+totalNumPages);
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -123,7 +123,7 @@ var jd = "block content"+
             if (err) return next(err);
             if (!the_post) return res.redirect("/post_not_found");
 
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         posts.getPostByCategoryOtherThanTheTitle(the_post.title,the_post.category,5,function(err, sim_post_results) {
@@ -151,7 +151,7 @@ var jd = "block content"+
             if (err) return next(err);
             console.log("kdjlas : "+totalNumPages);
 
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -183,7 +183,7 @@ var jd = "block content"+
             if (err) return next(err);
 
             console.log("kdjlas : "+totalNumPages);
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -217,7 +217,7 @@ var jd = "block content"+
             if (err) return next(err);
 
             console.log("kdjlas : "+totalNumPages);
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -249,7 +249,7 @@ var jd = "block content"+
             if (err) return next(err);
             console.log("kdjlas : "+totalNumPages);
 
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/index', {
@@ -279,7 +279,7 @@ var jd = "block content"+
             "use strict";
             if (err) return next(err);
 
-            posts.getHotPosts(5, 1, function(err, hot_results) {
+            posts.getHotPosts(5, 0, function(err, hot_results) {
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         return res.render('users/about', {

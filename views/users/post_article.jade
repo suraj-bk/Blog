@@ -14,7 +14,7 @@ block content
                   li
                     img(src="/img/comment.png") 
                   li
-                    span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + post.title + "#disqus_thread") 0 Comments
+                    span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + post.title + "#disqus_thread") 0 Comments
 
                     script.
                       var disqus_shortname = 'annappablogtest';
@@ -92,7 +92,7 @@ block content
                       li
                         img(src="/img/comment.png") 
                       li
-                        span(class="disqus-comment-count", data-disqus-url="http://192.168.1.4:8000/post/" + similar_posts[i].title + "#disqus_thread") 0 Comments
+                        span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + similar_posts[i].title + "#disqus_thread") 0 Comments
 
                         script.
                           var disqus_shortname = 'annappablogtest';
@@ -116,24 +116,60 @@ block content
         .social-ico
           ul(class="list-inline")
             li
-              img(src="/img/twitter.png")
+              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
+                img(src="/img/twitter.png")
             li
-              img(src="/img/google.png")
+              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
+                img(src="/img/google.png")
             li
-              img(src="/img/git.png")
+              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
+                img(src="/img/facebook.png")
             li
-              img(src="/img/facebook.png")
-            li
-              img(src="/img/lin.png")
-            li
-              img(src="/img/em.png")
+              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
+                img(src="/img/pinterest.png")
 
         .subscribe
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
-              div(class="form-group email-box")
-                input(type=text, class="form-control email", id=email, placeholder="Email")
-                button(type=submit, class="mycustom-btn") Subscribe
+              div(class="form-group email-box",id="sub_box")
+                input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
+                button(type=submit, class="mycustom-btn", ,spellcheck="false",id="subM") Subscribe
+
+                div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
+                    p Invalid Email-id 
+
+                script.
+                  function checkEmail(){
+                    var sub_email = document.getElementById("sub_email").value;
+                    var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
+                    if(p == -1){
+                      document.getElementById("email-alert").style.display = "block";
+                      document.getElementById("sub_email").value="";
+                      document.getElementById("sub_email").focus();
+                      document.getElementById("sub_email").select();
+                      return false;
+                    }else{
+                      document.getElementById("email-alert").style.display = "none";
+                      return true;
+                    }
+                  }         
+        script.
+          $("#subM").click(function (event) {
+            event.preventDefault();
+            if (checkEmail() == true){ 
+              var searchIDs = $('#sub_email').val();
+              console.log("selected::::" + searchIDs);
+              $('#sub_box').html('<p>Please Wait</p>');
+              $.ajax({
+                 url:'/contact',type:'post',
+                 data:{sub_email:searchIDs},
+                 success:function(response){
+                    console.log("Done ajax .. "+response);
+                    $('#sub_box').html('<p>Thanks for signing up!</p>');
+                }
+              });
+            }  
+          });
               
       .category
         .heading
@@ -167,5 +203,5 @@ block content
               ul(class="hot_links")
                 li
                   span ↠
-                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title + " is the best in the world"
-          - };       
+                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title
+          - };

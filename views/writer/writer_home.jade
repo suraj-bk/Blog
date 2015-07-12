@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  div(class="container sections-wrapper")
+    div(class="row")
+      div(class="primary col-md-12")
+        h1 Welcome to Code Like Ninja - Writer Account Page
+        section(class="section col-md-12 col-sm-12 col-xs-12 hey-there")
+          .col-md-9
+            h4(class="h4-info") Hello there writer
+          .col-md-3  
+            form(action='/writer/signout', method='get')
+              input(type="submit", class="logout-btn", value="Logout")
+
+        
+        section(class="section col-md-4 home-section")
+          div(class="section-inner")
+            h2.admin Post
+            form(role="form")
+              a(href="/writer/writer_acc/add_post", class="admin") Add a Post
+            form(role="form")
+              a(href="/writer/writer_acc/mod_post", class="admin") Modify / Delete a Post
+
+        section(class="section col-md-4 home-section")
+            div(class="section-inner")
+              h2.admin Image Cleaning
+              form(role="form")
+                a(href="/writer/writer_acc/clean_images", class="admin") Clean /uploads
+
+            div(class="col-md-12 col-sm-12 col-xs-12")
+              ul(class="flex-container")
+                div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="images_clean-alert-box")
+                  a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
+                  p The temp ./uploads have been cleaned
+
+                script.
+                  if(!{images_cleaned} == true)
+                    document.getElementById("images_clean-alert-box").style.display = "block";

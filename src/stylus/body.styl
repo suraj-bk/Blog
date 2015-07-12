@@ -2,6 +2,9 @@ body
   background #ebeced
   font-family 'Martel Sans', sans-serif
 
+.main
+  background #ebeced
+
 @media screen and (max-width : 760px )
   .row
     margin-top 0px
@@ -38,7 +41,7 @@ body
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  font-family 'Martel Sans', sans-serif 
+  font-family 'Lato', sans-serif 
 
 .main-container .flex-container .flex-item
   border-bottom 1pt solid #e7e7e7
@@ -91,6 +94,7 @@ body
 		width 100%
 
 .flex-container h2.main-titles, h3.main-titles
+  font-family 'Martel Sans', sans-serif
   margin-left 15px
   width 100%
   color #555
@@ -111,6 +115,7 @@ body
   text-decoration none   
 
 .flex-container h2.post-title, .flex-container h6.post-title
+  font-family 'Martel Sans', sans-serif
   margin-left 5px
   padding-top 0px
   color #444
@@ -126,6 +131,7 @@ body
   text-decoration none
 
 .flex-container h6.post-title
+  font-family 'Martel Sans', sans-serif
   margin-top 0
   margin-bottom 0
   color #777
@@ -372,7 +378,7 @@ ul.categories
   top: 10px;
 
 .cat-list:hover 
-  background-color: #a1b9c9;
+  background-color: #5682A3;
   opacity 0.8
   color: white;
 
@@ -393,7 +399,7 @@ ul.tags
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  padding-left 10px;
+  padding-left 5px;
   justify-content right
 
 
@@ -408,7 +414,7 @@ ul.tags
 
 .tag 
   background: #EEE;
-  color: #5682A3;
+  color: #5682A3
   border: 2px solid #5682A3
   display: inline-block;
   height: 26px;
@@ -459,7 +465,7 @@ ul.tags
 
 
 .tag:hover 
-  background-color: #a1b9c9;
+  background-color: #5682A3;
   color: white
 
 .tag2:hover 
@@ -712,7 +718,7 @@ ul.tags
     margin 13px     
 
 .aside-container .facebook
-  height 300px
+  height 250px
   background #F1F4F9
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
@@ -729,7 +735,6 @@ ul.tags
   width 100%
 
 .aside-container .facebook .plugin
-  padding-top 50px
   text-align center 
 
 .page-box
@@ -792,6 +797,10 @@ ul.tags
     background #fff
 
 
+a.social-link:hover
+  filter drop-shadow(2px 2px 3px #777)
+
+
 .disqus
   padding 30px 
 
@@ -835,6 +844,7 @@ div.editor_article blockquote
 
 div.editor_article img
   max-width 100%
+  max-height 500px
   height auto
   padding-bottom 20px  
 

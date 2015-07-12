@@ -5,15 +5,15 @@ block content
     div(class="col-md-8 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-              h2.main-titles About 忍者コーダー
+              h2.main-titles About Code Like Ninja
 
               .about-body.col-md-12
                 p 
-                  | 忍者コーダー was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of 忍者コーダー is to bring you cool, less mainstream, geeky news. 
+                  |  Code Like Ninja was started in 2004 by the almighty online procrastinator Scrivs.
+                  |  The aim of Code Like Ninja is to bring you cool, less mainstream, geeky news. 
                   |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
-                  |  忍者コーダー was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of 忍者コーダー is to bring you cool, less mainstream, geeky news. 
+                  |  Code Like Ninja was started in 2004 by the almighty online procrastinator Scrivs.
+                  |  The aim of v is to bring you cool, less mainstream, geeky news. 
                   |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
 
 
@@ -60,25 +60,25 @@ block content
         .social-ico
           ul(class="list-inline")
             li
-              img(src="/img/twitter.png")
+              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
+                img(src="/img/twitter.png")
             li
-              img(src="/img/google.png")
+              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
+                img(src="/img/google.png")
             li
-              img(src="/img/git.png")
+              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
+                img(src="/img/facebook.png")
             li
-              img(src="/img/facebook.png")
-            li
-              img(src="/img/lin.png")
-            li
-              img(src="/img/em.png")
+              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
+                img(src="/img/pinterest.png")
 
         .subscribe
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
-              div(class="form-group email-box")
+              div(class="form-group email-box",id="sub_box")
                 form(action='/contact', name='contactus', id='contactus', method='post')
                   input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
-                  input(type="submit", class="mycustom-btn2", value="Subscribe")
+                  input(type="submit", class="mycustom-btn2", value="Subscribe", id="subM")
 
                 div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert2")
                     p Invalid Email-id 
@@ -99,7 +99,24 @@ block content
                       document.getElementById("email-alert2").style.display = "none";
                       return true;
                     }
-                  }   
+                  }
+        script.
+          $("#subM").click(function (event) {
+            event.preventDefault();
+            if (checkEmail() == true){ 
+              var searchIDs = $('#sub_email').val();
+              console.log("selected::::" + searchIDs);
+              $('#sub_box').html('<p>Please Wait</p>');
+              $.ajax({
+                 url:'/contact',type:'post',
+                 data:{sub_email:searchIDs},
+                 success:function(response){
+                    console.log("Done ajax .. "+response);
+                    $('#sub_box').html('<p>Thanks for signing up!</p>');
+                }
+              });
+            }  
+          });  
               
       .category
         .heading

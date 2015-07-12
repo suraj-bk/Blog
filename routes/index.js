@@ -64,6 +64,18 @@ module.exports = exports = function(app, db) {
 
 	app.get('/home/:pageNo',contentHandler.displayPostsByPage);
 
+	app.post('/update_comment_count', function(req, res) {
+		var post_title = req.body.post_title;
+		var count = req.body.comment_count;
+
+		var query = { 'title' : post_title };
+		var operator = { '$set' : { 'comment_count' : count } };
+		db.collection("articles").update(query, operator, function(err,updated){
+			if(err) throw err;
+			console.dir("Sucessfuly updates comment count for " + post_title);
+		 });
+	});	
+
 	app.post('/contact_us', function(req, res) {
 
 		var cont_name = req.body.cont_name;
@@ -76,16 +88,14 @@ module.exports = exports = function(app, db) {
 		    service: 'Mailgun',
 			  auth: { 
 			  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
-			  		//'ravishetty150@gmail.com',
-			        pass: 'e2f670eefe44504724a607491d160cb5'
-			        //'nmamitsucks' 
+			        pass: 'e2f670eefe44504724a607491d160cb5' 
 			    }
 		});
 
 		// setup e-mail data with unicode symbols
 		var mailOptions = {
 		    from: cont_name + "<" + cont_email + ">", // sender address
-		    to: 'ravishetty150@gmail.com', // list of receivers
+		    to: 'codelikeninja@gmail.com', // list of receivers
 		    subject: cont_category , // Subject line
 		    text: cont_descr, // plaintext body
 		};
@@ -135,10 +145,8 @@ module.exports = exports = function(app, db) {
 			var transporter = nodemailer.createTransport(smtpTransport({
 				  service: 'Mailgun',
 				  auth: { 
-				  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
-				  		//'ravishetty150@gmail.com',
+				  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org',
 				        pass: 'e2f670eefe44504724a607491d160cb5'
-				        //'nmamitsucks' 
 				    }
 				  }));
 
@@ -253,18 +261,24 @@ function checkincollection(name,str){
 	});
 
 	app.get('/verify/subscription_confirmed',function(req,res){
-		res.write("you are in..");
-		res.end();
+		res.render('email/subscription',{ key: "Confirmed", msg : "Thank you for subscribing"});
 	});
 
 	app.get('/verify/subscription_denied',function(req,res){
-		res.write("you are denied wtf..");
-		res.end();
+		res.render('email/subscription',{ key: "Denied", msg : "Subscription was denied. Please try again"});
 	});
 
 	app.get('/verify/subscription_error',function(req,res){
-		res.write("oops some error");
-		res.end();
+		res.render('email/subscription',{ key: "Error", msg : "Something went wrong. Please try again"});
+	});
+
+	app.get('/verify/unsubscribe',function(req,res){
+		db.collection("email_sub").remove({email : req.email_id},function(err,results){
+			if(err)
+				res.redirect("/verify/subscription_error");
+			
+			res.render('email/unsubscribe');
+		});
 	});
 
     app.use(ErrorHandler);

@@ -19,10 +19,10 @@ block content
 
           .about-body.col-md-12
             p 
-              | Are you looking to get featured on 忍者コーダー?
+              | Are you looking to get featured on Code Like Ninja?
               | Do you have a cool product that you want to share with our readers?
               | We are currently looking for companies that are willing to participate in competitions and 
-              | giveaways here on 忍者コーダー  have an interesting Kickstarter campaign going on then please 
+              | giveaways here on Code Like Ninja  have an interesting Kickstarter campaign going on then please 
               | let us know!. Our competitions are hugely popular with our readers and we promote across the 
               | blog, Facebook, Twitter and also soon Instagram.
 
@@ -40,9 +40,9 @@ block content
                 div(class="form-group")
                   label(for="cont_category") Category
                   select(class="form-control",name="cont_category", id="cont_category")
-                    option(value="忍者コーダー tip") I have a cool tip!
-                    option(value="忍者コーダー bug") Somethings not right!
-                    option(value="忍者コーダー greeting") Just wanted to say hi!
+                    option(value="CLN tip") I have a cool tip!
+                    option(value="CLN bug") Somethings not right!
+                    option(value="CLN greeting") Just wanted to say hi!
                   h5 Please choose the appropriate subject so we can deal with your message faster.
                 div(class="form-group")
                   label(for="cont_descr") Description
@@ -77,25 +77,25 @@ block content
         .social-ico
           ul(class="list-inline")
             li
-              img(src="/img/twitter.png")
+              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
+                img(src="/img/twitter.png")
             li
-              img(src="/img/google.png")
+              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
+                img(src="/img/google.png")
             li
-              img(src="/img/git.png")
+              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
+                img(src="/img/facebook.png")
             li
-              img(src="/img/facebook.png")
-            li
-              img(src="/img/lin.png")
-            li
-              img(src="/img/em.png")
+              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
+                img(src="/img/pinterest.png")
 
         .subscribe
           div(class="section-inner text-center")  
             h5 Subscribe - We dont spam
-              div(class="form-group email-box")
+              div(class="form-group email-box",id="sub_box")
                 form(action='/contact', name='contactus', id='contactus', method='post')
                   input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail2()")
-                  input(type="submit", class="mycustom-btn2", value="Subscribe")
+                  input(type="submit", class="mycustom-btn2", value="Subscribe", id="subM")
 
                 div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert2")
                     p Invalid Email-id 
@@ -116,4 +116,22 @@ block content
                       document.getElementById("email-alert2").style.display = "none";
                       return true;
                     }
-                  }                        
+                  }
+
+          script.
+            $("#subM").click(function (event) {
+              event.preventDefault();
+              if (checkEmail2() == true){ 
+                var searchIDs = $('#sub_email').val();
+                console.log("selected::::" + searchIDs);
+                $('#sub_box').html('<p>Please Wait</p>');
+                $.ajax({
+                   url:'/contact',type:'post',
+                   data:{sub_email:searchIDs},
+                   success:function(response){
+                      console.log("Done ajax .. "+response);
+                      $('#sub_box').html('<p>Thanks for signing up!</p>');
+                  }
+                });
+              }  
+            });                                  

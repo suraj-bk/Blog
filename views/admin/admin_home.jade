@@ -4,7 +4,13 @@ block content
   div(class="container sections-wrapper")
     div(class="row")
       div(class="primary col-md-12")
-        h1 Welcome to 忍者コーダー Admin Page
+        h1 Welcome to Code Like Ninja Admin Page
+        section(class="section col-md-12 col-sm-12 col-xs-12 hey-there")
+          .col-md-9
+            h4(class="h4-info") Hello there admin
+          .col-md-3  
+            form(action='/admin/signout', method='get')
+              input(type="submit", class="logout-btn", value="Logout")
         
         section(class="section col-md-4 home-section")
           div(class="section-inner")
@@ -28,7 +34,7 @@ block content
               form(role="form")
                 a(href="/admin/clean_images", class="admin") Clean /uploads
 
-            div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+            div(class="col-md-12 col-sm-12 col-xs-12")
               ul(class="flex-container")
                 div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="images_clean-alert-box")
                   a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
@@ -49,7 +55,7 @@ block content
               form(role="form")
                 a(href="/admin/newsletter_send", class="admin") Send
 
-            div(class="col-md-12 col-sm-12 col-xs-12 main-container")
+            div(class="col-md-12 col-sm-12 col-xs-12")
               ul(class="flex-container")
                 div(class="alert alert-info col-md-12 col-sm-12 col-xs-12 alert-box", id="newsletter-alert-box")
                   a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;

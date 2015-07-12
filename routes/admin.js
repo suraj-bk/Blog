@@ -26,13 +26,25 @@ cloudinary.config({
 
 var PostsDAO = require('../posts').PostsDAO;
 
+var needsGroup = function(group,req,res,next) {
+    if (req.user && req.user.group === group){
+      console.log("You are a admin");	
+      return next();
+    }
+    else{
+      console.log("You are not a admin");
+      //res.end(401, 'Unauthorized');
+      return;
+    }
+};
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
 	// request and response objects
-	if (req.isAuthenticated())
-		return next();
+	if (req.isAuthenticated()){
+		return needsGroup('admin',req, res, next);
+	}
 	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/admin');
 }
@@ -303,10 +315,8 @@ module.exports = function(passport,urlencodedParser){
 				var transporter = nodemailer.createTransport(smtpTransport({
 					  service: 'Mailgun',
 					  auth: { 
-					  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
-					  		//'ravishetty150@gmail.com',
+					  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org',
 					        pass: 'e2f670eefe44504724a607491d160cb5'
-					        //'nmamitsucks' 
 					    }
 				}));
 
@@ -334,7 +344,7 @@ module.exports = function(passport,urlencodedParser){
 							        	console.log("template error : " +err);
 							      	} else {
 							        	transporter.sendMail({
-								          	from: '忍者コーダー <smtp.mailgun.org>',
+								          	from: 'Code Like Ninja <codelikeninja@gmail.com>',
 								          	to: "<"+ EMAIL +">",
 								          	subject: 'Weekly Newsletter',
 								          	html: html,

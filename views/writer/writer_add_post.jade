@@ -8,12 +8,12 @@ block content
       div(class="primary col-md-12")
         .header
           .col-md-9
-            form(action='/admin/home', method='get')
+            form(action='/writer/writer_acc/home', method='get')
               input(type="submit", class="home-btn", value="<<Home")
           .col-md-3  
-            form(action='/admin/signout', method='get')
+            form(action='/writer/signout', method='get')
               input(type="submit", class="logout-btn", value="Logout")
-        h1 Welcome to Code Like Ninja Admin Page
+        h1 Welcome to Code Like Ninja Writer Page
 
         div(class="col-md-12 col-sm-12 col-xs-12")
           ul(class="flex-container")
@@ -28,7 +28,7 @@ block content
         section(class="section")
           h2.admin New Post
           div(class="section-inner")
-            form(role="form", method="post", action="/admin/add_post")
+            form(role="form", method="post", action="/writer/writer_acc/add_post")
               div(class="form-group")
                 label(for="post_title") Post Title
                 input(type="text", class="form-control",name="post_title", id="post_title", placeholder="Title")
@@ -113,7 +113,7 @@ block content
 
                   $.ajax({
                     type: 'post',
-                    url: '/admin/image_upload/posts_short',
+                    url: '/writer/writer_acc/image_upload/posts_short',
                     dataType: 'json',
                     data: formData,
                     cache: false,
@@ -182,7 +182,7 @@ block content
 
                   $.ajax({
                     type: 'post',
-                    url: '/admin/image_upload/posts_full',
+                    url: '/writer/writer_acc/image_upload/posts_full',
                     dataType: 'json',
                     data: formData,
                     cache: false,
@@ -250,7 +250,7 @@ block content
 
                   $.ajax({
                     type: 'post',
-                    url: '/admin/image_upload/posts_others',
+                    url: '/writer/writer_acc/image_upload/posts_others',
                     dataType: 'json',
                     data: formData,
                     cache: false,
@@ -276,7 +276,7 @@ block content
         section(class="section")
           h2.admin Description Preview
           div(class="section-inner")
-            form(role="form", method="post", action="/admin/html_preview", target="_blank")
+            form(role="form", method="post", action="/writer/writer_acc/html_preview", target="_blank")
               div(class="form-group")
                 label(for="post_descr") Description
                 textarea(rows="30", class="form-control",name="post_descr", id="post_descr", placeholder="Enter a HTML code snippet here")

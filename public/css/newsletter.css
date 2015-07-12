@@ -24,8 +24,10 @@ img#logoImg{
 	width: 70px;
 }
 
-h4#logoTitle {
-	color : #FFFFFF;
+h2#logoTitle {
+	margin-left: 0px;
+	color: #eee;
+	font-family: "Oswald", sans-serif;
 }
 .collapse {
 	color : #CCCCCC;
@@ -229,6 +231,19 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 
 .footer-wrap {
 	background-color: #212a34;
+}
+
+.footer-wrap-subs {
+  background-color: #212a34;
+  padding: 20px 0 20px 10px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  height: 200px;
+  color: #fff;
+  width: 100%;
+  border-top: 6px solid #bbb;
+  margin-top: 10px;
 }
 
 .footer-links,.footer-links a {

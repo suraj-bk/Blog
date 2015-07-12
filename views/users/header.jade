@@ -6,7 +6,7 @@ script(src="/js/responsive-nav.js")
 header
 	a(href="/")
 		div(id="logoImg")
-	h1(id="logoTitle") 忍者コーダー
+	h1(id="logoTitle") Code Like Ninja
 	button(id="mobi-search")
 	nav.nav-collapse
 		ul
@@ -17,18 +17,18 @@ header
 			li.menu-item
 				a(href="/home/contact_us", data-scroll="") CONTACT
 			li.menu-item
-				a(href="/home/donate", data-scroll="") DONATE
-			li.menu-item
 				div(class="search-bar")
 					form(class="search-container", action="/search")
 						input(id="search-box" ,type="text", class="search-box", name="q")
 						label(for="search-box")
 							span(class="glyphicon glyphicon-search search-icon")
 						input(type="submit",id="search-submit")
+
 	div(id="search-div")
 		form(action="/search")
-			input(id="search-text" ,type="text", name="q")
+			input(id="search-text" ,type="text", name="q", placeholder="Search on Code Like Ninja")
 			input(id="mobi-submit" ,type="submit" value="Go")
+		
 
 	script.
 		$("#mobi-search").click(function(){
