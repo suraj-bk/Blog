@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+//var express = require('express');
+//var router = express.Router();
 var bodyParser = require('body-parser');
 var	urlencodedParser = bodyParser.urlencoded({ extended : false });
 var MongoClient = require('mongodb').MongoClient;
@@ -26,30 +26,18 @@ cloudinary.config({
 
 var PostsDAO = require('../posts').PostsDAO;
 
-var needsGroup = function(group,req,res,next) {
-    if (req.user && req.user.group === group){
-      console.log("You are a admin");	
-      return next();
-    }
-    else{
-      console.log("You are not a admin");
-      //res.end(401, 'Unauthorized');
-      return;
-    }
-};
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
 	// request and response objects
-	if (req.isAuthenticated()){
-		return needsGroup('admin',req, res, next);
-	}
+	if (req.isAuthenticated())
+		return next();
 	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/admin');
 }
 
-module.exports = function(passport,urlencodedParser){
+module.exports = function(router,db ,passport ,urlencodedParser){
 
 	/* GET login page. */
 	router.get('/', function(req, res) {
@@ -315,8 +303,10 @@ module.exports = function(passport,urlencodedParser){
 				var transporter = nodemailer.createTransport(smtpTransport({
 					  service: 'Mailgun',
 					  auth: { 
-					  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org',
+					  		user: 'postmaster@sandbox0635edeae6f641ebb9abccac5e396f54.mailgun.org', 
+					  		//'ravishetty150@gmail.com',
 					        pass: 'e2f670eefe44504724a607491d160cb5'
+					        //'nmamitsucks' 
 					    }
 				}));
 
@@ -344,7 +334,7 @@ module.exports = function(passport,urlencodedParser){
 							        	console.log("template error : " +err);
 							      	} else {
 							        	transporter.sendMail({
-								          	from: 'Code Like Ninja <codelikeninja@gmail.com>',
+								          	from: '忍者コーダー <smtp.mailgun.org>',
 								          	to: "<"+ EMAIL +">",
 								          	subject: 'Weekly Newsletter',
 								          	html: html,
