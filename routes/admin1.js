@@ -145,9 +145,7 @@ module.exports = exports = function(db,DB_URL){
 
 	//deleting the post
 	app.post('/del_post',function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
 		    "use strict";
-		    if(err) throw err;
 			var post = {
 				title : req.body.post_title
 			};	
@@ -161,7 +159,6 @@ module.exports = exports = function(db,DB_URL){
 				console.log("Data removed successfully");
 				return db.close();
 			});
-		});	
 	});
 
 	//updating the posts
