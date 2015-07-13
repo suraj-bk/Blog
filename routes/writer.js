@@ -1,102 +1,114 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var	urlencodedParser = bodyParser.urlencoded({ extended : false });
-var MongoClient = require('mongodb').MongoClient;
-var path = require('path')
+module.exports = exports = function(db,DB_URL){
+	var express = require('express')
+  	, app = express()
+  	, passport = require('passport')
+    , expressSession = require('express-session')
+    , flash = require('connect-flash')
+    , bodyParser = require('body-parser')
+	, urlencodedParser = bodyParser.urlencoded({ extended : false })
+	, MongoClient = require('mongodb').MongoClient
+	, path = require('path')
+	, templatesDir   = path.resolve(__dirname, '..', 'template')
+	, emailTemplates = require('email-templates')
+	, nodemailer = require("nodemailer")
+	, smtpTransport = require('nodemailer-smtp-transport')
+	, cloudinary = require('cloudinary')
+	, fs = require('fs')
+	, path = require('path')
+	, moment = require('moment')
+	, multer = require('multer')
+	, mongoose = require('mongoose')
+	, fileUpload_done = false
+	, PostsDAO = require('../posts').PostsDAO
+	, config = require('../config/main-config');  // INCLUDE THE CONFIG FILE
 
-var cloudinary = require('cloudinary');
-var fs = require('fs');
-var path = require('path');
+	//mongoose.connect(DB_URL + 'website');
+	console.log(DB_URL + 'website');
+	//CLOUDINARY CONFIGURATION DETAILS
+	cloudinary.config({ 
+	  cloud_name: config.CLOUD_NAME, 
+	  api_key: config.CLOUD_API_KEY, 
+	  api_secret: config.CLOUD_API_SECRET
+	});
 
-var moment = require('moment');
+	// APP SESSION HANDLING AND PASSPORT AUTHENTICATION
+    app.use(expressSession({secret: 'mySecretKey'}));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());
 
-var multer = require('multer');
-var fileUpload_done = false;
+    // Initialize Passport
+    var initPassport = require('../passport/init');
+    initPassport(passport);
 
-cloudinary.config({ 
-  cloud_name: 'codejitsu', 
-  api_key: '818719648838795', 
-  api_secret: 'YTa5Ul_bzlJ4g0jL9ORMUGjxGYs' 
-});
+    var needsGroup = function(group,req,res,next) {
+	    if (req.user && req.user.group === group){
+	      console.log("You are a writer");	
+	      return next();
+	    }
+	    else{
+	      console.log("You are not a writer");
+	      res.redirect('/writer');
+	    }
+	};
 
-var PostsDAO = require('../posts').PostsDAO;
-
-var needsGroup = function(group,req,res,next) {
-    if (req.user && req.user.group === group){
-      console.log("You are a writer");	
-      return next();
-    }
-    else{
-      console.log("You are not a writer");
-      res.redirect('/writer');
-      //res.end(401, 'Unauthorized');
-    }
-};
+    // FUNCTION TO CHECK AUTHENTICATION
+    var isAuthenticated = function (req, res, next) {
+		if (req.isAuthenticated())
+			return needsGroup('writer',req, res, next);
+		res.redirect('/writer');
+		console.log("gone ......");
+	}
 
 
-var isAuthenticated = function (req, res, next) {
-	// if user is authenticated in the session, call the next() to call the next request handler 
-	// Passport adds this method to request object. A middleware is allowed to add properties to
-	// request and response objects
-	if (req.isAuthenticated())
-		return needsGroup('writer',req, res, next);
-	// if the user is not authenticated then redirect him to the login page
-	res.redirect('/writer');
-	console.log("gone ......");
-}
-
-module.exports = function(passport,urlencodedParser){
-
+    // DEFINING THE ADMIN ROUTES
 	/* GET login page. */
-	router.get('/', function(req, res) {
+	app.get('/', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('writer/index', { message: req.flash('message') });
 	});
 
 	/* Handle Login POST */
-	router.post('/login', passport.authenticate('loginWriter', {
+	app.post('/login', passport.authenticate('loginWriter', {
 		successRedirect: '/writer/writer_acc/home',
 		failureRedirect: '/writer',
 		failureFlash : true  
 	}));
 
 	/* GET Registration Page */
-	router.get('/signup', function(req, res){
+	app.get('/signup', function(req, res){
 		res.render('writer/register',{message: req.flash('message')});
 	});
 
 	/* Handle Registration POST */
-	router.post('/signup', passport.authenticate('signupWriter', {
+	app.post('/signup', passport.authenticate('signupWriter', {
 		successRedirect: '/writer/writer_acc/home',
 		failureRedirect: '/writer/signup',
 		failureFlash : true  
 	}));
 
 	/* Handle Logout */
-	router.get('/signout', function(req, res) {
+	app.get('/signout', function(req, res) {
 		req.logout();
 		res.redirect('/writer');
 	});
 
 	/* GET Home Page */
-	router.get('/writer_acc/home', isAuthenticated, function(req, res){
+	app.get('/writer_acc/home', isAuthenticated, function(req, res){
 		//res.render('home', { user: req.user });
 		res.render('writer/writer_home',{title : 'suraj'});
 	});
 
-	router.get('/writer_acc/add_post',isAuthenticated,function(req, res){
+	app.get('/writer_acc/add_post',isAuthenticated,function(req, res){
 		res.render('writer/writer_add_post',{title : 'suraj'});
 	});
 
-	router.post('/writer_acc/html_preview',isAuthenticated,function(req, res){
+	app.post('/writer_acc/html_preview',isAuthenticated,function(req, res){
 		res.render('writer/writer_preview',{ html_code : req.body.post_descr });
 	});
 
-	router.post('/writer_acc/add_post', urlencodedParser, function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
+	app.post('/writer_acc/add_post', urlencodedParser, function(req, res){
 		    "use strict";
-		    if(err) throw err;
 
 			var tags = req.body.post_tags;
 			tags = tags.split(',');
@@ -115,80 +127,63 @@ module.exports = function(passport,urlencodedParser){
 			db.collection('articles').insert(post,function(err,inserted){
 				if(err) {
 					console.log("Alert");
-					return db.close();
+					return ;
 					
 				}
 				res.render('writer/writer_add_post',{title : 'suraj', post_added : true });
 				console.log("Data inserted successfully");
-				return db.close();
+				return ;
 			});		
-		});
-
 	});
 
-	router.get('/writer_acc/mod_post',isAuthenticated,function(req, res){
+	app.get('/writer_acc/mod_post',isAuthenticated,function(req, res){
 		res.render('writer/writer_modify_post',{title : 'suraj'});
 	});
 
 
 	//deleting the post
-	router.post('/writer_acc/del_post',function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
-		    "use strict";
-		    if(err) throw err;
-
-			var post = {
-				title : req.body.post_title
-			};	
-
-			db.collection('articles').remove(post, function(err,removed){
-				if(err) {
-					console.log("Alert");
-					return db.close();
-				}
-
-				res.render('writer/writer_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
-				console.log("Data removed successfully");
-				return db.close();
-			});
-
-
-		});	
-
+	app.post('/writer_acc/del_post',function(req, res){
+	    "use strict";
+		var post = {
+			title : req.body.post_title
+		};	
+		db.collection('articles').remove(post, function(err,removed){
+			if(err) {
+				console.log("Alert");
+				return;
+			}
+			res.render('writer/writer_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
+			console.log("Data removed successfully");
+			return;
+		});
 	});
 
 	//updating the posts
-	router.post('/writer_acc/upd_post',function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/nodeblog', function(err, db) {
-		    "use strict";
-		    if(err) throw err;
+	app.post('/writer_acc/upd_post',function(req, res){
+	    "use strict";
+		var post = {
+			title : req.body.post_title
+		};
 
-			var post = {
-				title : req.body.post_title
-			};
+		var operator = {
+			'$set' : {
+				body : req.body.post_descr
+			}
+		};	
 
-			var operator = {
-				'$set' : {
-					body : req.body.post_descr
-				}
-			};	
+		db.collection('articles').update(post, operator, function(err,removed){
+			if(err) {
+				console.log("Alert");
+				return;
+			}
 
-			db.collection('articles').update(post, operator, function(err,removed){
-				if(err) {
-					console.log("Alert");
-					return db.close();
-				}
-
-				console.log("Data updated successfully");
-				res.render('writer/writer_modify_post',{title : 'suraj', post_updated : true });
-				return db.close();
-			});
-
-		});	
-
+			console.log("Data updated successfully");
+			res.render('writer/writer_modify_post',{title : 'suraj', post_updated : true });
+			return ;
+		});
 	});
 
-	router.use(multer({ dest: './uploads/',
+	app.use(multer({ dest: './uploads/',
 		rename: function (fieldname, filename) {
 		    return filename+Date.now();
 		},
@@ -201,7 +196,7 @@ module.exports = function(passport,urlencodedParser){
 		}
 	}));
 
-	router.get('/writer_acc/clean_images',isAuthenticated, function(req, res) {
+	app.get('/writer_acc/clean_images',isAuthenticated, function(req, res) {
 		var p = "./uploads/"
 		fs.readdir(p, function(err, list_of_files) {
 			if (err) throw err;
@@ -216,7 +211,7 @@ module.exports = function(passport,urlencodedParser){
 	});	
 
 	//cloudinary
-	router.post('/writer_acc/image_upload/posts_short',function(req,res){
+	app.post('/writer_acc/image_upload/posts_short',function(req,res){
 
 		if(fileUpload_done == true){
 			console.log(req.files);
@@ -238,7 +233,7 @@ module.exports = function(passport,urlencodedParser){
 
 	});
 
-	router.post('/writer_acc/image_upload/posts_full',function(req,res){
+	app.post('/writer_acc/image_upload/posts_full',function(req,res){
 		console.log("asasaasa");
 		if(fileUpload_done == true){
 			console.log(req.files);
@@ -260,7 +255,7 @@ module.exports = function(passport,urlencodedParser){
 		}
 	});
 
-	router.post('/writer_acc/image_upload/posts_others',function(req,res){
+	app.post('/writer_acc/image_upload/posts_others',function(req,res){
 
 		if(fileUpload_done == true){
 			console.log(req.files);
@@ -286,10 +281,6 @@ module.exports = function(passport,urlencodedParser){
 		}
 	});
 
-	return router;
-}
 
-
-
-
-
+  return app;
+};
