@@ -49,6 +49,8 @@
     "nodemailer-smtp-transport": "~1.0.3",
     "email-templates": "~2.0.0-beta.1",
     "cloudinary": "~1.2.1",
-    "multer": "~0.1.8"
+    "multer": "~0.1.8",
+    "body-parser": "~1.13.2",
+    "moment": "~2.10.3"
   }
 }
