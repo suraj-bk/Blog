@@ -145,20 +145,20 @@ module.exports = exports = function(db,DB_URL){
 
 	//deleting the post
 	app.post('/del_post',function(req, res){
-		    "use strict";
-			var post = {
-				title : req.body.post_title
-			};	
+	    "use strict";
+		var post = {
+			title : req.body.post_title
+		};	
 
-			db.collection('articles').remove(post, function(err,removed){
-				if(err) {
-					console.log("Alert");
-					return db.close();
-				}
-				res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
-				console.log("Data removed successfully");
+		db.collection('articles').remove(post, function(err,removed){
+			if(err) {
+				console.log("Alert");
 				return db.close();
-			});
+			}
+			res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
+			console.log("Data removed successfully");
+			return db.close();
+		});
 	});
 
 	//updating the posts
