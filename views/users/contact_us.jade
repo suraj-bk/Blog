@@ -2,7 +2,7 @@ extends layout
 
 block content
   .row
-    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         div(class="alert alert-info col-md-8 col-sm-12 col-xs-12 alert-box", id="email-alert-box")
           a(href="#", class="close", data-dismiss="alert", aria-label="close") &times;
@@ -12,7 +12,7 @@ block content
           if(!{email_sent} == true)
             document.getElementById("email-alert-box").style.display = "block";
 
-    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
           h2.main-titles Contact
@@ -69,69 +69,5 @@ block content
                   }  
     
     
-
-    div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
-      .connect
-        .heading
-          h4 Connect With Us
-        .social-ico
-          ul(class="list-inline")
-            li
-              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
-                img(src="/img/twitter.png")
-            li
-              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
-                img(src="/img/google.png")
-            li
-              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
-                img(src="/img/facebook.png")
-            li
-              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
-                img(src="/img/pinterest.png")
-
-        .subscribe
-          div(class="section-inner text-center")  
-            h5 Subscribe - We dont spam
-              div(class="form-group email-box",id="sub_box")
-                form(action='/contact', name='contactus', id='contactus', method='post')
-                  input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail2()")
-                  input(type="submit", class="mycustom-btn2", value="Subscribe", id="subM")
-
-                div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert2")
-                    p Invalid Email-id 
-
-                script.
-                  function checkEmail2(){
-                    var sub_email = document.getElementById("sub_email").value;
-                    var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
-
-                    if(p == -1){
-                      document.getElementById("email-alert2").style.display = "block";
-                      document.getElementById("sub_email").value="";
-                      document.getElementById("sub_email").focus();
-                      document.getElementById("sub_email").select();
-
-                      return false;
-                    }else{
-                      document.getElementById("email-alert2").style.display = "none";
-                      return true;
-                    }
-                  }
-
-          script.
-            $("#subM").click(function (event) {
-              event.preventDefault();
-              if (checkEmail2() == true){ 
-                var searchIDs = $('#sub_email').val();
-                console.log("selected::::" + searchIDs);
-                $('#sub_box').html('<p>Please Wait</p>');
-                $.ajax({
-                   url:'/contact',type:'post',
-                   data:{sub_email:searchIDs},
-                   success:function(response){
-                      console.log("Done ajax .. "+response);
-                      $('#sub_box').html('<p>Thanks for signing up!</p>');
-                  }
-                });
-              }  
-            });                                  
+    include ./widgets
+                             
