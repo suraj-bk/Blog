@@ -296,6 +296,22 @@ var jd = "block content"+
     }
 
 
+    this.displayContactPage = function(req, res, next) {
+        "use strict";
+        posts.getHotPosts(5, 0, function(err, hot_results) {
+            posts.getAllCategories(function(err, category_results) {
+                posts.getAllTags(function(err, tag_results) {
+                    return res.render('users/contact_us', {
+                        hot_posts: hot_results,
+                        categories: category_results,
+                        tags: tag_results,
+                    });    
+                });
+            });
+        });    
+    }
+
+
 }
 
 module.exports = ContentHandler;
