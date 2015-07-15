@@ -54,9 +54,11 @@ module.exports = exports = function(app, db) {
 		res.render('users/email_sent',{title : 'suraj'});
 	});
 
-	app.get('/home/contact_us',function(req, res){
+	/*app.get('/home/contact_us',function(req, res){
 		res.render('users/contact_us',{title : 'suraj'});
-	});
+	});*/
+
+	app.get('/home/contact_us',contentHandler.displayContactPage);
 
 	app.get('/email/show',contentHandler.displayEmails);
 
