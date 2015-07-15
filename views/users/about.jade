@@ -2,7 +2,7 @@ extends layout
 
 block content
   .row
-    div(class="col-md-8 col-sm-12 col-xs-12 main-container")
+    div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
               h2.main-titles About Code Like Ninja
@@ -52,8 +52,8 @@ block content
                 h5 Follow 
                   a(href="#") @deekshith   
     
-
-    div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
+    include ./widgets
+    //div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
       .connect
         .heading
           h4 Connect With Us
