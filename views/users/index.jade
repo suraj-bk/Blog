@@ -1,5 +1,4 @@
 extends layout
-
 block content
   .row
 
@@ -200,7 +199,9 @@ block content
             else
               window.location.assign("/tags/" + if_tag +"/"+num);
           });
-    div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
+    include ./widgets
+
+    //div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
       .connect
         .heading
           h4 Connect With Us
