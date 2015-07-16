@@ -311,6 +311,13 @@ var jd = "block content"+
         });    
     }
 
+    this.displayHome = function(req, res, next) {
+        "use strict";
+        res.render('users/homepage', {
+
+        });    
+    }
+
 
 }
 

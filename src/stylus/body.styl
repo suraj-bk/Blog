@@ -27,7 +27,9 @@ body
 	background #ebeced
 	padding-bottom 20px
   margin-top 20px 
-	
+  
+
+//-------------------------------------------
 .main-container .flex-container 
   padding-left 0px
   margin 0
@@ -82,16 +84,16 @@ body
 
 
 .main-container .flex-container .grid-element
-	margin-bottom 13px
-	margin-left 10px
-	width 32%
+  margin-bottom 13px
+  margin-left 10px
+  width 32%
 
 
 @media all and (max-width : 660px) 
-	.main-container .flex-container .grid-element
-		margin-left 0px
-		margin-bottom 20px
-		width 100%
+  .main-container .flex-container .grid-element
+    margin-left 0px
+    margin-bottom 20px
+    width 100%
 
 .flex-container h2.main-titles, h3.main-titles
   font-family 'Martel Sans', sans-serif
@@ -171,13 +173,308 @@ body
     margin-left 15px
     font-size 35px
     margin-bottom 0px
-    text-decoration none	  
+    text-decoration none    
 
 .flex-container .subhead
+  color #404040
+  margin-left 18px
+  padding 0
+  width 100%
+
+.flex-container .subhead li
+  margin-left -4px
+  color #555
+  font-size 10px
+
+.flex-container .subhead ul 
+
+.flex-container .subhead li p
+  padding-left 0
+
+.flex-container .subhead li img
+  -webkit-filter: contrast(20%);
+  width 80%
+  height 80%
+
+@media all and (max-width : 660px)
+  .flex-container .subhead li
+    margin-left -4px
+    font-size 12px    
+
+.flex-container .article_container
+  padding 50px
+
+@media all and (max-width : 660px)
+  .flex-container .article_container
+    padding 5px
+  
+.flex-container .subhead2
+  color #404040
+  margin-left 18px
+  padding 0
+  width 100%
+
+.flex-container .subhead2 li img
+  -webkit-filter: contrast(60%);
+
+
+.flex-container .post-body
+  clear left
+  margin-top 0px
+  text-align left 
+  
+.flex-container .post-body .pic
+  width 100%
+  text-align center
+  padding 0
+  margin-bottom 10px
+  background #F1F4F9
+
+.flex-container .post-body .pic img
+  max-width 100%
+  height auto   
+
+.flex-container .post-body .pic2
+  height auto
+  width 100%
+  margin-bottom 20px
+  background #F1F4F9 
+
+.flex-container .post-body .pic2 img
+    max-width 100%
+    height auto    
+
+.flex-container .post-body .post-content
+  padding-left 0px
+  padding-right 0px
+  height auto
+  width 100%
+  padding-bottom 5px
+  margin-bottom 15px
+  color #444
+  font-size 18px
+
+@media all and (max-width : 660px)
+  .flex-container .post-body .post-content
+    padding 0
+    margin-bottom 20px
+    background #fff
+    font-size 15px
+
+.grid-element2
+  margin-left 20px
+  margin-bottom 20px
+  
+.truncate 
+  height 120px
+  white-space normal
+  overflow hidden
+  text-overflow ellipsis
+  //------------------------------------
+
+	
+.main-container .masonry {
+    //margin: 1.5em 0;
+      width : 100%;
+    padding: 0;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    font-size: .85em;
+}
+
+.main-container .masonry .items {
+    display: inline-block;
+    background: #fff;
+    margin: 0 0 1.5em;
+    width: 100%;
+    //height : 200px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow: 2px 2px 4px 0 #ccc;
+}
+
+@media only screen and (min-width: 400px) {
+    .masonry {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .masonry {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+
+@media only screen and (min-width: 1100px) {
+    .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+
+
+
+
+.come-in 
+  -webkit-transform translateY(150px)
+  -webkit-animation come-in 1s ease forwards
+  -webkit-animation-delay 0.2s
+  transform translateY(150px)
+  animation come-in 1s ease forwards
+  animation-delay 0.2s
+
+.come-in:nth-child(odd) 
+  -webkit-animation-duration 1.6s
+
+.already-visible
+  -webkit-transform translateY(0)
+  -webkit-animation none
+  transform translateY(0)
+  animation none  
+
+
+@-webkit-keyframes come-in 
+  to { -webkit-transform: translateY(0); }
+
+@keyframes come-in 
+  to { transform: translateY(0); }
+
+
+.main-container .flex-container .grid-element
+	margin-bottom 13px
+	margin-left 10px
+	width 32%
+
+
+@media all and (max-width : 660px) 
+	.main-container .flex-container .grid-element
+		margin-left 0px
+		margin-bottom 20px
+		width 100%
+
+.flex-container h2.main-titles, h3.main-titles
+  font-family 'Martel Sans', sans-serif
+  margin-left 15px
+  width 100%
+  color #555
+  clear both
+  font-weight bold  
+
+
+.items a.post-title-link
+  margin-top 10px
+  margin-bottom 5px  
+  text-decoration none
+
+.items a.post-title-link:hover 
+  color #333
+  text-shadow: 0 0 1px #777; 
+
+.items a
+  text-decoration none   
+
+.items h2.post-title, .flex-container h6.post-title
+  font-family 'Martel Sans', sans-serif
+  margin-left 5px
+  padding-top 0px
+  color #444
+  width 100%
+  text-decoration none
+
+.items h3.post-title
+  margin-top 0
+  margin-bottom 0
+  color #777
+  font-weight bold
+  width 100%
+  text-decoration none
+  text-align left
+
+.items h6.post-title
+  font-family 'Martel Sans', sans-serif
+  margin-top 0
+  margin-bottom 0
+  color #777
+  font-weight bold
+  width 100%
+  text-decoration none    
+
+.items h4.post_category
+  width 90%
+  padding-bottom 10px
+  padding-top 10px
+  padding-left 0px
+  margin-left 15px
+  margin-top 0
+  margin-bottom 0
+  border-bottom 2px solid #ddd
+  color #aaa 
+
+.items h4.post_category2
+  width 95%
+  padding-bottom 10px
+  padding-top 10px
+  padding-left 0px
+  margin-left 15px
+  margin-top 0
+  clear right
+  margin-bottom 20px
+  border-bottom 2px solid #ddd
+  color #aaa    
+
+@media all and (max-width : 660px)
+  .items h2.post-title
+    margin-left 15px
+    text-decoration none
+
+  .items h3.post-title
+    font-size 35px
+    margin-bottom 0px
+    text-decoration none	 
+    text-align left
+    
+.sub-info
+  color #404040
+  background #fff
+  padding 0
+  width 100%
+  margin-top 5px
+  margin-bottom 2px
+  display inline-block
+ 
+.disqus-comment-count
+  font-size 14px
+  font-family 'Martel Sans', sans-serif
+  margin-left 3px
+  
+.side-icons
+  margin-left 9px
+  
+.author-info
+  font-size 15px
+  text-align left
+  display inline-block
+  
+.author-info a
+  color #1E8BC3
+  font-style bold
+
+
+/*.flex-container .subhead
 	color #404040
-	margin-left 18px
+  background #ff0000
 	padding 0
-	width 100%
+  height 20px  
+	width 100%*/
 
 .flex-container .subhead li
 	margin-left -4px
@@ -216,33 +513,35 @@ body
 	-webkit-filter: contrast(60%);
 
 
-.flex-container .post-body
+.items .post-body
   clear left
   margin-top 0px
   text-align left 
   
-.flex-container .post-body .pic
+.items .post-body .pic
   width 100%
-  text-align center
   padding 0
   margin-bottom 10px
-  background #F1F4F9
+  background #ff00ff
 
-.flex-container .post-body .pic img
+.items .post-body .pic img
   max-width 100%
   height auto	  
 
-.flex-container .post-body .pic2
+.items .post-body .pic2
   height auto
   width 100%
   margin-bottom 20px
   background #F1F4F9 
 
-.flex-container .post-body .pic2 img
+.items .post-body .pic2 img
     max-width 100%
     height auto	   
 
-.flex-container .post-body .post-content
+.items .post-body .post-rem
+  padding 10px
+
+.items .post-body .post-rem .post-content
   padding-left 0px
   padding-right 0px
   height auto
@@ -251,9 +550,10 @@ body
   margin-bottom 15px
   color #444
   font-size 18px
+  text-align left
 
 @media all and (max-width : 660px)
-  .flex-container .post-body .post-content
+  .items .post-body .post-rem .post-content
     padding 0
     margin-bottom 20px
     background #fff
@@ -323,9 +623,9 @@ body
   color #444
   font-size 18px 
 
-ul.categories 
+/*.categories 
   list-style: none;
-  margin-top: 40px;
+  margin-top: 10px;
   overflow: hidden; 
   padding: 0;
   display -webkit-box
@@ -334,8 +634,22 @@ ul.categories
   display -webkit-flex
   display flex
   -webkit-flex-flow row wrap
-  padding-left 10px;
-  justify-content right
+  justify-content right*/
+  
+.categories 
+  padding-left 0px
+  margin 0
+  width 100%
+  overflow hidden
+  background #fff
+  list-style none
+  display -webkit-box
+  display -moz-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+  padding 10px
 
 .post-social-icons
   width auto
@@ -352,21 +666,42 @@ ul.categories
   text-decoration: none !important
 
 .cat-list 
-  background: #eee;
-  border: 2px #5682A3 solid 
-  color: #5682A3;
+  background #1E8BC3
+  //border: 2px #5682A3 solid 
+  //min-width 90px
+  width 90%
+  color #fff
   font-weight 20
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
-  position: relative;
-  margin: 0 -5px 10px 20px
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
+  display inline-block
+  height 30px
+  line-height: 30px
+  //padding: 0 20px 0 23px;
+  position: relative
+  //margin: 0 -5px 10px 20px
+  border-radius 1px
+  margin-left 10px
+  margin-right 10px
+  margin-top 5px
+  text-decoration none
+  -webkit-transition color 0.2s
+  text-align center
+  box-shadow 0 2px 1px #1E8BC3
+  
+.cat-list a
+  color #fff
+  text-decoration none
+  cursor pointer
+  
+.cat-count
+  float right
+  color #ff00ff
+  padding-left 10px
+  padding-right 10px
+  text-decoration none
+  background #2574A9
 
 
-.cat-list::before 
+/*.cat-list::before 
   background: #5682A3;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -375,9 +710,9 @@ ul.categories
   left: 10px;
   position: absolute;
   width: 6px;
-  top: 10px;
+  top: 10px;*/
 
-.cat-list:hover 
+/*.cat-list:hover 
   background-color: #5682A3;
   opacity 0.8
   color: white;
@@ -385,7 +720,7 @@ ul.categories
 
 .cat-list:hover::after 
    border-left-color: #2AA4CF;
-   color: #FFF 
+   color: #FFF */
 
   
 ul.tags 
@@ -488,7 +823,7 @@ ul.tags
   color: white; 
 
 
-.flex-container .tag-body
+.items .tag-body
   margin-top 3px;
   padding 0
   margin 0
@@ -502,7 +837,7 @@ ul.tags
   margin-left 20px
   justify-content right
   
-.flex-container .tag-body .tag-item
+.items .tag-body .tag-item
   padding-left 7px
   padding-right 7px
   color #fff
@@ -519,9 +854,10 @@ ul.tags
 .aside-container
 	border-left 1px solid #e7e7e7
 	height auto
+  margin-top 20px 
  
 .aside-container .category
-  background #f1f4f9
+  background #fff
   margin-top 20px
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -548,7 +884,8 @@ ul.tags
   justify-content space-around
 
 .aside-container .connect
-  background #f1f4f9
+  background #fff 
+  //#f1f4f9
   padding-bottom 10px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -566,7 +903,6 @@ ul.tags
   
 .aside-container .connect .social-ico
   text-align center
-  background #f1f4f9
   color #fff
   
 .aside-container .connect .social
@@ -592,19 +928,65 @@ ul.tags
   border-radius 5px
   
 .aside-container .subscribe
-  height 140px
-  background #f1f4f9
+  height 200px
+  background #fff
   margin-top 30px
-  padding-left 50px
-  padding-right 50px
+  box-shadow 0 2px 1px rgba(0,0,0,.08);
+  //padding-left 50px
+  //padding-right 50px
+    
+.aside-container .subscribe .heading    
+  height auto
+  text-align center
+  background #2f3036
+  float left
+  color #fff
+  margin-bottom 10px
+  width 100%
+  
+.email-form
+  padding 0px
+  margin-left auto
+  margin-right auto
   
 .aside-container .subscribe .email-box
   margin-top 10px
+  justify-content center
 
-.aside-container .subscribe .email
+.aside-container .subscribe .email-input
   width 200px
   float left
   margin-right 5px
+  justify-content center
+  margin-left 50px
+  margin-bottom 5px;
+
+  
+
+.green-button, input[type='submit'] {
+background: #69c773;
+border: 0;
+border-bottom: 3px solid rgba(73,134,18,0.3);
+color: #fff;
+font-weight: 400;
+font-size: 20px;
+transition: border-color 1s;
+text-decoration: none;
+white-space: nowrap;
+cursor:pointer;
+margin-left : 100px;
+
+}
+
+  
+.aside-container .subscribe .name-input
+  width 200px
+  float left
+  margin-right 5px
+  justify-content center
+  margin-left 50px
+  margin-bottom 5px
+
 
 .mycustom-btn
   color #fff
@@ -631,7 +1013,7 @@ ul.tags
 
 .aside-container .tagbox
   height auto
-  background #f1f4f9
+  background #fff
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -662,7 +1044,7 @@ ul.tags
 
 .aside-container .hotPostsbox
   height auto
-  background #f1f4f9
+  background #fff
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   margin-top 30px
   
@@ -702,7 +1084,7 @@ ul.tags
 .aside-container .Adbox
   height 300px
   overflow hidden
-  background #f1f4f9
+  background #fff
   margin-top 30px
   
 .aside-container .Adbox .heading
@@ -718,8 +1100,9 @@ ul.tags
     margin 13px     
 
 .aside-container .facebook
-  height 250px
-  background #F1F4F9
+  min-height 200px
+  height auto
+  background #fff
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -736,6 +1119,7 @@ ul.tags
 
 .aside-container .facebook .plugin
   text-align center 
+  background #fff
 
 .page-box
   padding 5px
@@ -875,6 +1259,7 @@ div.editor_article img
 
 .social-container
   width 95%
+  margin 0
   background #fff
   list-style none
   display -webkit-box
@@ -886,20 +1271,7 @@ div.editor_article img
   height 25px
   margin-bottom 10px
   margin-top 10px
-
-.social-container2
-  width 95%
-  background #fff
-  list-style none
-  display -webkit-box
-  display -moz-box
-  display -ms-flexbox
-  display -webkit-flex
-  display flex
-  -webkit-flex-flow row wrap
-  margin-bottom 10px
-  margin-top 10px
-  margin-left 20px    
+  justify-content flex-start
 
 /*.social-container a {
   float: left;

@@ -1,7 +1,7 @@
 module.exports = {
 	// Main Express Related variables
 	EXPRESS_IP_ADDRESS : process.env.OPENSHIFT_NODEJS_IP   || 'localhost',
-	EXPRESS_PORT_ADDRESS : process.env.OPENSHIFT_NODEJS_PORT || '5555',
+	EXPRESS_PORT_ADDRESS : process.env.OPENSHIFT_NODEJS_PORT || '8000',
 	// MongoDB environment variables for openshift
 	OPENSHIFT_MONGODB_USERNAME : process.env.OPENSHIFT_MONGODB_DB_USERNAME || ' ',
 	OPENSHIFT_MONGODB_PASSWORD : process.env.OPENSHIFT_MONGODB_DB_PASSWORD || ' ',

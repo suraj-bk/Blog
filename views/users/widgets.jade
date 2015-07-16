@@ -17,34 +17,42 @@ block widget
             li
               a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
                 img(src="/img/pinterest.png")
+            li
+              a(href="#", target="_blank")
+                img(src="/img/lin.png")
+            li
+              a(href="#", class="social-link", target="_blank")
+                img(src="/img/stumble.png")
 
-        .subscribe
-          div(class="section-inner text-center")  
-            h5 Subscribe - We dont spam 
+      .subscribe
+        .heading
+          h4 Email Newsletter
+        div(class="section-inner text-center")  
+          h5 Get the latest news in your inbox. 
+        .email-form
+          div(class="form-group email-box",id="sub_box")
+            input(type=text, class="name-input", id="sub_name" , name="sub_name", placeholder="Enter Your Name")
+            input(type=text, class="email-input", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
+            input(type="button", class="green-button", value="Subscribe" ,id="subM",spellcheck="false") 
 
-              div(class="form-group email-box",id="sub_box")
-                //form(action='/contact', name='contactus', id='contactus', method='post')
-                input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
-                input(type="button", class="mycustom-btn", value="Subscribe" ,id="subM",spellcheck="false") 
+          div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
+              p Invalid Email-id 
 
-                div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
-                    p Invalid Email-id 
-
-                script.
-                  function checkEmail(){
-                    var sub_email = document.getElementById("sub_email").value;
-                    var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
-                    if(p == -1){
-                      document.getElementById("email-alert").style.display = "block";
-                      document.getElementById("sub_email").value="";
-                      document.getElementById("sub_email").focus();
-                      document.getElementById("sub_email").select();
-                      return false;
-                    }else{
-                      document.getElementById("email-alert").style.display = "none";
-                      return true;
-                    }
-                  }         
+              script.
+                function checkEmail(){
+                  var sub_email = document.getElementById("sub_email").value;
+                  var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
+                  if(p == -1){
+                    document.getElementById("email-alert").style.display = "block";
+                    document.getElementById("sub_email").value="";
+                    document.getElementById("sub_email").focus();
+                    document.getElementById("sub_email").select();
+                    return false;
+                  }else{
+                    document.getElementById("email-alert").style.display = "none";
+                    return true;
+                  }
+                }         
         script.
           $("#subM").click(function (event) {
             event.preventDefault();
@@ -62,6 +70,27 @@ block widget
               });
             }  
           });
+          function typografy() {
+            var minSize = 10;
+            var maxSize = 20;
+            var colorise = true;
+            var colorArray = ['#446CB3', '#59ABE3', '#3498DB','#3A539B', '#913D88', '#5C97BF'];
+            $('.js_typografy').each(function(){
+                var size = getRandomInt(minSize, maxSize);
+                //size = Math.ceil(size / 10) * 10;
+                var j = getRandomInt(0, colorArray.length - 1);
+                $(this).css('font-size',size);
+                $(this).css('padding-left','3px');
+                $(this).css('color',colorArray[j]);
+            });
+          }
+          function getRandomInt(min, max) {
+              return Math.floor(Math.random() * (max - min + 1)) + min;
+          }
+          //$(document).ready(function () {
+              //typografy();
+          //});
+
       .facebook
         .heading
           h4 Find us on Facebook 
@@ -74,26 +103,40 @@ block widget
       .category
         .heading
           h4 Category
-        .list
-          ul(class="categories")
-            - for(var i=0 ; i< categories.length ; i++) {
-                ul(class="list-inline")
-                  li
-                    a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
-                  li(class="tag-count")= categories[i].count  
-            - };         
+        .categories
+          - for(var i=0 ; i< categories.length ; i++) {
+            .cat-list
+              a(href="/categories/" + categories[i]._id + "/1") #{categories[i]._id}  
+              a(class="cat-count")= categories[i].count 
+              //ul(class="list-inline")
+                li
+                  a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
+                li(class="tag-count")= categories[i].count  
+          - };         
               
       .tagbox
         .heading
           h4 Tags
-        .tags
-          ul(class="tags")
-            - for(var i=0 ; i< tags.length ; i++) {
-                ul(class="list-inline")
-                  li
-                    a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
-                  li(class="tag-count")= tags[i].count   
-            - };
+        .categories
+          //ul(class="tags")
+          #links
+          - for(var i=0 ; i< tags.length ; i++) {
+              a(href="/tags/" + tags[i]._id + "/1" class='js_typografy') #{tags[i]._id}  
+              //a(class="cat-count")= tags[i].count
+              //ul(class="list-inline")
+                li
+                  a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
+                li(class="tag-count")= tags[i].count   
+          - };
+          script.
+            $(document).ready(function () {
+                typografy();
+                /*$('.js_typografy').each(function(){
+                  var rand =  Math.floor((Math.random()*100)+1);
+                  $(this).css('font-size',rand);
+                });*/
+
+            });
 
       .hotPostsbox
         .heading
@@ -136,3 +179,4 @@ block widget
               document.write(unescape("%3cscript type='text/javascript' src='"+sa_protocol+"://sa.entireweb.com/sense2.js'%3e%3c/script%3e"));
           script.
             (adsbygoogle = window.adsbygoogle || []).push({}); 
+            

@@ -37,81 +37,74 @@ block content
           script.
             if(!{email_sent} == true)
               document.getElementById("email-alert-box").style.display = "block";
-      ul(class="flex-container")
+      ul(class="masonry")
         - for(var i=0 ; i< posts.length ; i++) {
-            article(class="flex-item col-md-4 col-sm-12 col-xs-12 grid-element")
-              h4(class="col-md-12 post_category")= posts[i].category
-
-              a(class="col-md-12 post-title-link" href="/post/"+posts[i].title)
-                h3(class="post-title")= posts[i].title
-              ul(class="list-inline subhead col-md-12")
-                li
-                  ul(class="list-inline")
-                    li
-                      img(src="/img/comment.png") 
-                    li
-                      span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + posts[i].title + "#disqus_thread") 0 Comments
-
-                      script.
-                        var disqus_shortname = 'annappablogtest';
-                        (function () {
-                          var s = document.createElement('script'); s.async = true;
-                          s.type = 'text/javascript';
-                          s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-                          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-                        }());
-
-                li
-                  ul(class="list-inline")
-                    li
-                      img(src="/img/clock.png") 
-                    li
-                      p= posts[i].date
-                li
-                  ul(class="list-inline")
-                    li
-                      img(src="/img/author.png") 
-                    li= posts[i].author_name
-
-                .social-container
-                  div(class="social-sharing", data-permalink="http://labs.carsonshold.com/social-sharing-buttons")
-                    script.
-                      var post_link = posts[i].title.
-                    a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(posts[i].title) + "&hashtags=" + posts[i].tags[0] + "," + posts[i].tags[1] + "&text=Check%20this%20out- " + posts[i].title + "&via=codelikeninja", class="share-twitter")
-                      span(class="icon icon-twitter" aria-hidden="true")
-                      span(class="share-title") Tweet
-
-                    a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + posts[i].title, class="share-facebook")
-                      span(class="icon icon-facebook", aria-hidden="true")
-                      span(class="share-title") Share
-
-                    a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURI(posts[i].title), class="share-google")
-                      span(class="icon icon-google", aria-hidden="true")
-                      span(class="share-title") +1
-
-                script.
-                  //$(".social-container div.social-sharing a").each( function() {
-                    //var perma = this.href.replace(/\s/g,'_');
-                    this.href = this.href.replace(/\s/g,'');
-                  });       
+            .items
+              script.
+                //$(".social-container div.social-sharing a").each( function() {
+                  //var perma = this.href.replace(/\s/g,'_');
+                  this.href = this.href.replace(/\s/g,'');
+                });       
                                      
-              .post-body.col-md-12
+              .post-body
                 .pic
-                  img(src="/img/posts_short/default/300x150.jpg")
-                .post-content.col-md-12
-                  span(style="font-size:15px;")= posts[i].desc_short
-                  .readmore
-                    a(href="/post/"+posts[i].title) Read more &#8599;
-              br
-              h5(class="col-md-12", style="margin-top:0px;color:#666;") Tagged with :
-              .tag-body.tags.col-md-12
-                - for(var j=0 ; j< posts[i].tags.length ; j++) {
-                  li
-                    a(href="/tags/" + posts[i].tags[j] + "/1", class="tag2")= posts[i].tags[j]
-                - };       
+                  img(src="/img/posts_short/default/300x150.png")
+                .post-rem
+                  a(class="post-title-link" href="/post/"+posts[i].title)
+                    h3(class="post-title")= posts[i].title
+                  .sub-info
+                    img(src="/img/comments.png")
+                    span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + posts[i].title + "#disqus_thread") 0 Comments
+                    img(src="/img/clock.png" class="side-icons")
+                    span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + posts[i].title + "#disqus_thread")= posts[i].date
+                  .sub-info
+                    p(class="author-info") In 
+                      a(href="#") #{posts[i].category}
+                    p(class="author-info") &nbspby 
+                      a(href="#") #{posts[i].author_name}
+
+                  script.
+                    var disqus_shortname = 'annappablogtest';
+                    (function () {
+                      var s = document.createElement('script'); s.async = true;
+                      s.type = 'text/javascript';
+                      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                    }());
+
+                  .social-container
+                    div(class="social-sharing", data-permalink="http://labs.carsonshold.com/social-sharing-buttons")
+                      script.
+                        var post_link = posts[i].title.
+                      //a 57k
+
+                      a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(posts[i].title) + "&hashtags=" + posts[i].tags[0] + "," + posts[i].tags[1] + "&text=Check%20this%20out- " + posts[i].title + "&via=codelikeninja", class="share-twitter")
+                        span(class="icon icon-twitter" aria-hidden="true")
+                        span(class="share-title") Tweet
+
+                      a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + posts[i].title, class="share-facebook")
+                        span(class="icon icon-facebook", aria-hidden="true")
+                        span(class="share-title") Share
+
+                      a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURI(posts[i].title), class="share-google")
+                        span(class="icon icon-google", aria-hidden="true")
+                        span(class="share-title") +1
+
+                      //a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURI(posts[i].title), class="share-google")
+                        span(class="icon icon-pinterest", aria-hidden="true")
+                        span(class="share-title") Pin
+                  .post-content
+                    span(style="font-size:15px;")= posts[i].desc_short
+                    .readmore
+                      a(href="/post/"+posts[i].title) Read more &#8599;
+                  .tag-body
+                    - for(var j=0 ; j< posts[i].tags.length ; j++) {
+                      li
+                        a(href="/tags/" + posts[i].tags[j] + "/1", class="tag2")= posts[i].tags[j]
+                    - };       
         - };
 
-        div(id="pager", class="text-center col-md-12 col-sm-12 col-xs-12")
+      div(id="pager", class="text-center col-md-12 col-sm-12 col-xs-12")
 
         script(type="text/javascript", src="/js/jquery.bootpag.min.js")
         script.
@@ -134,140 +127,3 @@ block content
           });
     include ./widgets
 
-    //div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
-      .connect
-        .heading
-          h4 Connect With Us
-        .social-ico
-          ul(class="list-inline")
-            li
-              a(href="https://twitter.com/codelikeninja", class="social-link", target="_blank")
-                img(src="/img/twitter.png")
-            li
-              a(href="https://plus.google.com/b/115333740549284826302/115333740549284826302/", class="social-link", target="_blank")
-                img(src="/img/google.png")
-            li
-              a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
-                img(src="/img/facebook.png")
-            li
-              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
-                img(src="/img/pinterest.png")
-
-        .subscribe
-          div(class="section-inner text-center")  
-            h5 Subscribe - We dont spam 
-
-              div(class="form-group email-box",id="sub_box")
-                //form(action='/contact', name='contactus', id='contactus', method='post')
-                input(type=text, class="form-control email", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
-                input(type="button", class="mycustom-btn", value="Subscribe" ,id="subM",spellcheck="false") 
-
-                div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
-                    p Invalid Email-id 
-
-                script.
-                  function checkEmail(){
-                    var sub_email = document.getElementById("sub_email").value;
-                    var p = sub_email.search(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
-                    if(p == -1){
-                      document.getElementById("email-alert").style.display = "block";
-                      document.getElementById("sub_email").value="";
-                      document.getElementById("sub_email").focus();
-                      document.getElementById("sub_email").select();
-                      return false;
-                    }else{
-                      document.getElementById("email-alert").style.display = "none";
-                      return true;
-                    }
-                  }         
-        script.
-          $("#subM").click(function (event) {
-            event.preventDefault();
-            if (checkEmail() == true){ 
-              var searchIDs = $('#sub_email').val();
-              console.log("selected::::" + searchIDs);
-              $('#sub_box').html('<p>Please Wait</p>');
-              $.ajax({
-                 url:'/contact',type:'post',
-                 data:{sub_email:searchIDs},
-                 success:function(response){
-                    console.log("Done ajax .. "+response);
-                    $('#sub_box').html('<p>Thanks for signing up!</p>');
-                }
-              });
-            }  
-          });
-      .facebook
-        .heading
-          h4 Find us on Facebook 
-        .plugin          
-          div(class="fb-page", data-href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
-            div(class="fb-xfbml-parse-ignore")
-              blockquote(cite="https://www.facebook.com/GameOfThrones")
-                a(href="https://www.facebook.com/facebook") 
-
-      .category
-        .heading
-          h4 Category
-        .list
-          ul(class="categories")
-            - for(var i=0 ; i< categories.length ; i++) {
-                ul(class="list-inline")
-                  li
-                    a(href="/categories/" + categories[i]._id + "/1", class="cat-list")= categories[i]._id
-                  li(class="tag-count")= categories[i].count  
-            - };         
-              
-      .tagbox
-        .heading
-          h4 Tags
-        .tags
-          ul(class="tags")
-            - for(var i=0 ; i< tags.length ; i++) {
-                ul(class="list-inline")
-                  li
-                    a(href="/tags/" + tags[i]._id + "/1", class="tag")= tags[i]._id
-                  li(class="tag-count")= tags[i].count   
-            - };
-
-      .hotPostsbox
-        .heading
-          h4 Hot posts
-        .hotPosts
-          - for(var i=0 ; i< hot_posts.length ; i++) {
-              ul(class="hot_links")
-                li
-                  span ↠
-                  a(href="/post/" + hot_posts[i].title, class="hot-post-links")= hot_posts[i].title
-          - };
-
-      .Adbox
-        .heading
-          h4 Advertisement
-        .AdPosts
-          div(class="gooWidget google-ad-square-sidebar showOnlyOnDesktop")
-            ins(class="adsbygoogle adslot", style="display:block", data-ad-client="ca-pub-8776668743582988", data-ad-slot="3860484086")
-
-            script.
-              sa_client = "491e4e741aa3714122af59e5bb82caa2";
-              sa_code = "5efbd25cbc4db6c14c432a4f4ef890b8";
-              sa_protocol = ("https:"==document.location.protocol)?"https":"http";
-              sa_pline = "0";
-              sa_maxads = "4";
-              sa_bgcolor = "F1F4F9";
-              sa_bordercolor = "3EBEF3";
-              sa_superbordercolor = "3EBEF3";
-              sa_linkcolor = "001EB5";
-              sa_desccolor = "000000";
-              sa_urlcolor = "005677";
-              sa_b = "0";
-              sa_format = "rect_300x250";
-              sa_width = "300";
-              sa_height = "250";
-              sa_location = "0";
-              sa_radius = "0";
-              sa_borderwidth = "2";
-              sa_font = "1";
-              document.write(unescape("%3cscript type='text/javascript' src='"+sa_protocol+"://sa.entireweb.com/sense2.js'%3e%3c/script%3e"));
-          script.
-            (adsbygoogle = window.adsbygoogle || []).push({}); 

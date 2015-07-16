@@ -36,6 +36,8 @@ module.exports = exports = function(app, db) {
     // The main page of the blog
     app.get('/', contentHandler.displayMainPage);
 
+    app.get('/home',contentHandler.displayHome);
+
 	app.get("/post/:permalink", contentHandler.displayPostByPermalink);
 
     app.get('/tags/:tag/:pageNo', contentHandler.displayTagByPage);
