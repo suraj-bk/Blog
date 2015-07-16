@@ -153,6 +153,90 @@
     font-size: 18px;
     padding: 0 14px; }
 
+@media all and (max-width : 660px){
+  .social-sharing a {
+    display: inline-block;
+    color: #fff;
+    border-radius: 2px;
+    margin: 0 10px 10px 0;
+    height: 15px;
+    line-height: 15px;
+    text-decoration: none;
+    font-weight: normal; }
+    .social-sharing a:hover {
+      color: #fff; }
+  .social-sharing span {
+    display: inline-block;
+    vertical-align: top;
+    height: 15px;
+    line-height: 15px;
+    font-size: 12px; }
+  .social-sharing .icon {
+    padding: 0 5px 0 10px; }
+    .social-sharing .icon:before {
+      line-height: 15px; }
+  .social-sharing.is-large a {
+    height: 22px;
+    line-height: 22px; }
+    .social-sharing.is-large a span {
+      height: 22px;
+      line-height: 22px;
+      font-size: 14px; }
+    .social-sharing.is-large a .icon {
+      padding: 0 10px 0 18px; }
+      .social-sharing.is-large a .icon:before {
+        line-height: 14px; }
+
+.share-title {
+  font-weight: 200;
+  font-size: 3px;
+  padding-right: 10px; }
+  .is-large .share-title {
+    padding-right: 16px; }
+
+.share-count {
+  position: relative;
+  background-color: white;
+  padding: 0 8px;
+  margin-right: -2px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  border-radius: 0 2px 2px 0;
+  border: 1px solid #ececec;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in; }
+  .share-count.is-loaded {
+    opacity: 1; }
+  .share-count:before, .share-count:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid; }
+  .share-count:before {
+    left: -6px;
+    border-right-color: #ececec; }
+  .share-count:after {
+    left: -5px;
+    border-right-color: white; }
+  a:hover .share-count {
+    background-color: whitesmoke; }
+    a:hover .share-count:after {
+      border-right-color: whitesmoke; }
+  .is-large .share-count {
+    font-size: 12px;
+    padding: 0 14px; }
+}    
+
 /*================ Clean Buttons ================*/
 .social-sharing.is-clean a {
   background-color: #fff;
