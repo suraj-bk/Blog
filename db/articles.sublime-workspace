@@ -1,0 +1,589 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"text",
+				"text-longshadow"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"mag",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"flex",
+				"flex-item"
+			],
+			[
+				"cat",
+				"cat-list"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"con",
+				"config	index.js"
+			],
+			[
+				"OPE",
+				"OPENSHIFT_MONGODB_PORT	main-config.js"
+			],
+			[
+				"loc",
+				"locals	admin.js"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"tb",
+				"tbl_row	admin_email_manager.jade"
+			],
+			[
+				"fla",
+				"flatOneCheckbox"
+			],
+			[
+				"flt",
+				"flatOneCheckbox"
+			],
+			[
+				"col-",
+				"col-md-"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"sear",
+				"search-box"
+			],
+			[
+				"me",
+				"menu-item"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"b-",
+				"b-bun"
+			],
+			[
+				"sub",
+				"subscribe	index.js"
+			],
+			[
+				"encry",
+				"encrypted	index.js"
+			],
+			[
+				"res",
+				"response	index.js"
+			],
+			[
+				"col",
+				"col-md-"
+			],
+			[
+				"post",
+				"posts"
+			],
+			[
+				"cl",
+				"class"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"n",
+				"nbDocs	posts.js"
+			],
+			[
+				"tot",
+				"totalNumPages	posts.js"
+			],
+			[
+				"total",
+				"totalPostPerPage	content.js"
+			],
+			[
+				"cont",
+				"contentHandler	index.js"
+			],
+			[
+				"num",
+				"numPostsPerPage	posts.js"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"i",
+				"id"
+			],
+			[
+				"ul",
+				"ul"
+			],
+			[
+				"m",
+				"margin-top"
+			],
+			[
+				"btn-s",
+				"btn-success"
+			],
+			[
+				"btn-d",
+				"btn-default"
+			],
+			[
+				"inc",
+				"includes"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"var",
+				"vary(field)	response.js"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 369.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": true
+	},
+	"file_history":
+	[
+		"/home/suraj/Blog (copy)/views/users/widgets.jade",
+		"/home/suraj/Blog (copy)/views/users/index.jade",
+		"/home/suraj/Blog (copy)/views/users/layout.jade",
+		"/home/suraj/Blog (copy)/views/users/homepage.jade",
+		"/home/suraj/Blog/views/writer/writer_add_post.jade",
+		"/home/suraj/Blog/src/stylus/admin/home.styl",
+		"/home/suraj/Blog (copy)/src/stylus/header.styl",
+		"/home/suraj/Blog (copy)/views/users/header.jade",
+		"/home/suraj/Blog (copy)/src/stylus/body.styl",
+		"/home/suraj/Blog/src/stylus/body.styl",
+		"/home/suraj/website/src/stylus/body.styl",
+		"/home/suraj/Blog (copy)/src/stylus/body.styl~",
+		"/home/suraj/Downloads/final-problem4 (2)/src/main/java/course/BlogPostDAO.java",
+		"/home/suraj/Blog/config/main-config.js",
+		"/home/suraj/Blog/routes/admin1.js",
+		"/home/suraj/Blog/routes/index.js",
+		"/home/suraj/Blog/index.js",
+		"/home/suraj/Blog/routes/content.js",
+		"/home/suraj/Blog/views/users/homepage.jade",
+		"/home/suraj/Blog/views/users/index.jade",
+		"/home/suraj/Blog/views/users/header.jade",
+		"/home/suraj/Blog/views/users/widgets.jade",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/routes/content.js",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/posts.js",
+		"/home/suraj/website/routes/admin1.js",
+		"/home/suraj/website/public/js/disqus.js",
+		"/home/suraj/Blog/views/users/layout.jade",
+		"/home/suraj/Blog/views/users/about.jade",
+		"/home/suraj/Blog/views/users/contact_us.jade",
+		"/home/suraj/Blog/views/users/post_article.jade",
+		"/home/suraj/Blog/src/stylus/header.styl",
+		"/home/suraj/Blog/db.js",
+		"/media/suraj/New Volume/week_3_schema_design.2b134d7b2a36/homework_3_3_mongoproc/blog/src/main/java/course/BlogPostDAO.java",
+		"/media/suraj/New Volume/week_3_schema_design.2b134d7b2a36/homework_3_3_mongoproc/blog/src/main/resources/freemarker/blog_template.ftl",
+		"/home/suraj/Downloads/final-problem4/src/main/java/course/BlogPostDAO.java",
+		"/home/suraj/Downloads/final-problem4/posts.json",
+		"/home/suraj/Downloads/final-problem4/run.sh",
+		"/home/suraj/website/routes/writer.js",
+		"/home/suraj/website/index.js",
+		"/home/suraj/Blog/routes/admin.js",
+		"/home/suraj/Blog/models/writer.js",
+		"/home/suraj/Blog/models/user.js",
+		"/home/suraj/Blog/passport/login.js",
+		"/home/suraj/Blog/routes/writer.js",
+		"/home/suraj/Blog/routes/users.js",
+		"/home/suraj/website/package.json",
+		"/home/suraj/website/routes/admin.js",
+		"/home/suraj/website/config/main-config.js",
+		"/home/suraj/website/routes/index.js",
+		"/home/suraj/website/db.js",
+		"/home/suraj/website/app.js",
+		"/home/suraj/website/README.md",
+		"/home/suraj/website/server.js",
+		"/home/suraj/Blog/package.json",
+		"/home/suraj/Blog/template/newsletter/html.jade",
+		"/home/suraj/Blog/posts.js",
+		"/home/suraj/.local/share/Trash/files/server.js",
+		"/home/suraj/Blog/views/admin/admin_email_manager.jade",
+		"/home/suraj/Blog/views/admin/layout.jade",
+		"/home/suraj/Blog/public/css/admin_email.css",
+		"/home/suraj/Blog/public/js/template/style.css",
+		"/home/suraj/Blog/template/html.jade",
+		"/home/suraj/website/posts.js",
+		"/home/suraj/.local/share/Trash/files/package.4.json",
+		"/home/suraj/website/index.html",
+		"/home/suraj/online-jade-template-editor/index.html",
+		"/home/suraj/jade-editor/README.md",
+		"/home/suraj/Blog/views/admin/html_admin.jade",
+		"/home/suraj/Blog/template/subscribe/html.jade",
+		"/home/suraj/Downloads/jade-editor-0.2.5/dist/jade-editor.js",
+		"/home/suraj/Downloads/jade-editor-0.2.5/dist/jade-editor.css",
+		"/home/suraj/Blog/public/css/admin_style.css",
+		"/home/suraj/Blog/public/css/build.css",
+		"/home/suraj/Downloads/get_social_counts/get_social_counts/site.css",
+		"/home/suraj/Blog/public/js/twitter.js",
+		"/home/suraj/Downloads/get_social_counts/get_social_counts/get_social_counts.php",
+		"/home/suraj/Downloads/get_social_counts/get_social_counts/index.html",
+		"/home/suraj/Blog/public/js/facebook.js",
+		"/home/suraj/Blog/public/js/responsive-nav.js",
+		"/home/suraj/Blog/src/stylus/navbar.styl",
+		"/home/suraj/Blog/public/js/navbar.js",
+		"/home/suraj/Downloads/fixed-nav-master/css/styles.css",
+		"/home/suraj/Blog/routes/admin_bak.js",
+		"/home/suraj/Blog/db/import.sh",
+		"/home/suraj/Blog/public/css/header.css",
+		"/home/suraj/Responsive-Off-Canvas-Menu/js/main.js",
+		"/home/suraj/Responsive-Off-Canvas-Menu/css/step4.css",
+		"/home/suraj/Responsive-Off-Canvas-Menu/step4.html",
+		"/home/suraj/Responsive-Off-Canvas-Menu/css/step3.css",
+		"/home/suraj/bbb/src/stylus/header.styl",
+		"/home/suraj/Blog/views/email/email.js",
+		"/home/suraj/Blog/views/email/layout.jade",
+		"/home/suraj/Blog/views/email/show.jade",
+		"/home/suraj/Blog/db/edit.json",
+		"/home/suraj/Blog/db/articles.json",
+		"/home/suraj/Blog/db/users.json",
+		"/home/suraj/bbb/routes/index.js",
+		"/home/suraj/Blog/views/email/index.jade",
+		"/home/suraj/Blog/template/subscribe/subscribe.jade",
+		"/home/suraj/Blog/template/subscribe.jade",
+		"/home/suraj/bbb/routes/content.js",
+		"/home/suraj/Downloads/resize-header-on-scroll/index.html",
+		"/home/suraj/Downloads/resize-header-on-scroll/css/style.css",
+		"/home/suraj/Downloads/resize-header-on-scroll/js/classie.js",
+		"/home/suraj/Blog/src/stylus/footer.styl",
+		"/home/suraj/Blog/views/users/footer.jade",
+		"/home/suraj/Blog/views/users/navbar.jade",
+		"/home/suraj/Blog (another copy)/views/users/index.jade",
+		"/home/suraj/Downloads/AnimatedHeader/AnimatedHeader/index.html",
+		"/home/suraj/Blog (copy)/routes/content.js",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/routes/index.js",
+		"/home/suraj/Blog (copy)/src/stylus/navbar.styl",
+		"/home/suraj/Blog/public/css/navbar.css",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/views/blog_template.html",
+		"/home/suraj/Blog (copy)/views/users/post_article.jade",
+		"/home/suraj/Blog (copy)/routes/index.js",
+		"/home/suraj/Blog (copy)/posts.js",
+		"/home/suraj/Blog (copy)/index.js",
+		"/home/suraj/Downloads/week_4_performance.e335ce208d41/homework_4_3/hw4-3/hw4-3/blog/routes/index.js",
+		"/home/suraj/Downloads/week_4_performance.e335ce208d41/homework_4_3/hw4-3/hw4-3/blog/app.js",
+		"/home/suraj/Blog (copy)/routes/users.js",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/app.js",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/users.js",
+		"/home/suraj/Downloads/week_3_schema_design.3413c24896c6/homework_3_3_mongoproc_version/hw3-2and3-3/hw3-2and3-3/blog/routes/error.js",
+		"/home/suraj/Blog (copy)/routes/error.js",
+		"/home/suraj/Downloads/week_4_performance.e335ce208d41/homework_4_3/hw4-3/hw4-3/blog/views/blog_template.html",
+		"/home/suraj/Downloads/week_4_performance.e335ce208d41/homework_4_3/hw4-3/hw4-3/blog/routes/content.js",
+		"/home/suraj/Downloads/week_4_performance.e335ce208d41/homework_4_3/hw4-3/hw4-3/blog/routes/error.js"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"nav-collapse",
+			"background",
+			"writer",
+			".pic",
+			".flex-container .about-body",
+			"flex-container",
+			"subhead",
+			"max-width : 660px",
+			"text-align: center;",
+			"post-title",
+			"text-align: center;",
+			".social",
+			"flex-item",
+			"replace",
+			"category",
+			"row",
+			"update",
+			"MongoC",
+			"err",
+			"router",
+			";",
+			"var",
+			"use",
+			"setupServer",
+			"initialize",
+			"tab",
+			"row",
+			"flec",
+			"list-inline",
+			".post-social-icons",
+			"twitter-share-button",
+			"post-title",
+			"h3",
+			"/tags",
+			"mobi-search",
+			"logoImg",
+			"addClass",
+			"font-family",
+			"font-si",
+			";",
+			":",
+			"}",
+			"{",
+			"position",
+			"nav",
+			"');\n",
+			"length",
+			"urlencodedParser",
+			"number",
+			"+",
+			"after",
+			"social",
+			"cat",
+			"-box-shadow",
+			";",
+			":",
+			"posts[3]",
+			"db",
+			"var ",
+			"url",
+			":",
+			"login",
+			"cursor",
+			"insert",
+			"sorry",
+			"findO",
+			"error",
+			"/welcome",
+			"internal_error",
+			"articleResponse",
+			"./",
+			"(){",
+			"TODO",
+			"PROFILE",
+			"http://"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"item",
+			"row1",
+			"app",
+			"",
+			",",
+			"",
+			" ",
+			"",
+			" ",
+			",",
+			" ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "articles.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
