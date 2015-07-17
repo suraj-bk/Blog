@@ -13,9 +13,19 @@ header
 			li.menu-item
 				a(href="/", data-scroll="") HOME
 			li.menu-item
+				.dropdown.dropdown-hover
+					a CATEGORY 
+						span.arrow-down
+					ul.dropdown-menu
+						- for(var i=0 ; i< categories.length ; i++) {
+							li
+								a(href="#")= categories[i]._id
+						- };				
+			li.menu-item
 				a(href="/home/about", data-scroll="") ABOUT
 			li.menu-item
 				a(href="/home/contact_us", data-scroll="") CONTACT
+				
 			li.menu-item
 				div(class="search-bar")
 					form(class="search-container", action="/search")
@@ -29,6 +39,42 @@ header
 			input(id="search-text" ,type="text", name="q", placeholder="Search on Code Like Ninja")
 			input(id="mobi-submit" ,type="submit" value="Go")
 		
+	script.
+		function DropDown(el) {
+			this.dd = el;
+			this.initEvents();
+		}
+
+		DropDown.prototype = {
+			initEvents: function () {
+				var obj = this;
+
+				// Determine if dropdown is on hover or on click
+				$(".dropdown-hover").mouseenter(function (event) {
+					event.stopPropagation();
+					$(this).addClass("dropdown-active");                
+				});
+
+				$(".dropdown-hover").mouseleave(function () {
+					$(".dropdown").removeClass("dropdown-active");
+				});
+
+				// Toggle .dropdown-active on click
+				obj.dd.on('click', function (event) {
+					event.stopPropagation();
+					$(this).toggleClass('dropdown-active');                
+				});
+			}
+		}
+
+		$(function () {
+			var dd = new DropDown($('.dropdown'));
+			$(document).click(function () {
+				// Remove class from all dropdowns
+				$('.dropdown').removeClass('dropdown-active');
+			});
+		});
+
 
 	script.
 		$("#mobi-search").click(function(){

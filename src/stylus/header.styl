@@ -163,6 +163,9 @@ header.smaller h1#logoTitle
 /* ------------------------------------------
   RESPONSIVE NAV STYLES
 --------------------------------------------- */
+nav.nav-collapse
+  height 1000%
+  overflow visible
 
 .nav-collapse ul 
   margin 0
@@ -386,4 +389,104 @@ header .search-bar
   content "\2261" /* Close icon */
 
 
+.dropdown 
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    width: auto;
 
+
+
+.dropdown .dropdown-menu
+    margin-top 50px 
+    background-color: #C9C9C9;
+    border-radius: inherit;
+    font-weight: inherit;
+    left: 0;
+    margin-left: 0px;
+    color #000
+    opacity: 0;
+    pointer-events: none;
+    padding-top 0px
+    position: absolute;
+    right: 0;
+    text-transform: none;
+    width: 100px;
+    z-index: 99999;
+    
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+
+@media all and (max-width : 660px)
+  .dropdown 
+    width 100%
+    
+  .dropdown .dropdown-menu
+    margin-top 35px 
+    width 100%
+
+.dropdown .dropdown-menu a 
+   text-decoration: none; 
+
+.dropdown .dropdown-menu p 
+    margin: 0; 
+    padding: 10px 15px; 
+
+
+.dropdown .dropdown-menu span
+   line-height: inherit; 
+
+.dropdown ul.dropdown-menu
+  list-style-type: none;
+  background #C9C9C9
+
+.dropdown .dropdown-menu li
+    display: block;
+    width 100%
+
+.dropdown .dropdown-menu li a
+    background #DDD
+    color #5682A3
+    width 100%
+    display: block;
+    padding: 5px 10px;
+    font-weight 30    
+
+.dropdown .dropdown-menu li a:hover
+   background-color: #5682A3
+   color #FFF
+
+.dropdown.dropdown-active .dropdown-menu 
+    opacity: 1;
+    background-color #DDD;
+    color #5682A3
+    pointer-events: auto;
+
+.dropdown .dropdown-menu:after, .dropdown .dropdown-menu:before
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+
+.dropdown .dropdown-menu:after
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #DDD;
+  border-width: 10px;
+  margin-left: -10px;
+
+.arrow-down
+  float right
+  margin-left 10px
+  margin-top 5px
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; 
+  border-top: 5px solid #DDD;
