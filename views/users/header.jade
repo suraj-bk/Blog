@@ -6,7 +6,7 @@ script(src="/js/responsive-nav.js")
 header
 	a(href="/")
 		div(id="logoImg")
-	h1(id="logoTitle") Code Like Ninja
+	div(id="logoTitle") 
 	button(id="mobi-search")
 	nav.nav-collapse
 		ul
@@ -15,11 +15,10 @@ header
 			li.menu-item
 				.dropdown.dropdown-hover
 					a CATEGORY 
-						span.arrow-down
 					ul.dropdown-menu
 						- for(var i=0 ; i< categories.length ; i++) {
 							li
-								a(href="#")= categories[i]._id
+								a(href="/categories/" + categories[i]._id + "/1")= categories[i]._id
 						- };				
 			li.menu-item
 				a(href="/home/about", data-scroll="") ABOUT
