@@ -5,17 +5,26 @@ block content
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
         article(class="flex-item col-md-12")
-              h2.main-titles About Code Like Ninja
+              h2.main-titles About
 
               .about-body.col-md-12
                 p 
-                  |  Code Like Ninja was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of Code Like Ninja is to bring you cool, less mainstream, geeky news. 
-                  |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
-                  |  Code Like Ninja was started in 2004 by the almighty online procrastinator Scrivs.
-                  |  The aim of v is to bring you cool, less mainstream, geeky news. 
-                  |  If it’s cool and Gizmodo or Endgadget don’t have it, this is where you’ll find it.
+                  |  Code Like Ninja was started in 2015 by two passionate developers  Walter and Punk.
+                  |  Its a website for publishing articles on various topics and tutorials on development 
+                  |  technolgies. The aim of Code Like Ninja is to bring you cool, easy to learn tutorials and 
+                  |  tips for you, which could be helpful for your career or can be learnt as a hobby.
 
+                p
+                  |  We are always looking for people who have creative minds and passion for computer science 
+                  |  to join us, write for us. Those who are intrested and would like to become part of Code 
+                  |  Like Ninja, please 
+                  a(href="/home/contact_us") contact us! 
+                p Become a Ninja   
+
+                p
+                  | Stay up to date with the latest by following us on 
+                  a(href="#") Twitter
+                  |  or subscribe to our weekly newsletter.
 
         article(class="flex-item col-md-12")      
               h2(class="main-titles about-head") Editors
@@ -24,8 +33,8 @@ block content
                 .about-body.col-md-12
                   h3(class="dev-name")= editors[i].name
                   .dev-pic.col-md-4
-                    object(data="/img/editors/" + editors[i].name + ".jpg", type="image/png")
-                      img(src="http://gsm24unlock.com/images/no_image.gif")
+                    object(class="circleProfile", data="/img/editors/" + editors[i].name + ".jpg", type="image/png")
+                      img(class="circleProfile", src="http://gsm24unlock.com/images/no_image.gif")
                   .about-content.col-md-8
                     p= editors[i].description
 
@@ -36,21 +45,34 @@ block content
         article(class="flex-item col-md-12")
               h2(class="main-titles about-head") Developers
                   
-              .developer-body
-                h3(class="dev-name") Walter
-                .dev-pic
-                  img(src="/img/devs/Suraj.jpg")
-                h5 Co-founder/Developer
-                h5 Follow 
-                  a(href="#") @codelikeninja
+              .about-body.col-md-12
+                h3(class="dev-name") Walter White
+                .dev-pic.col-md-4
+                  img(class="circleProfile",src="/img/devs/Suraj.jpg")
+                .about-content.col-md-8
+                    h4 Co-founder/Developer
+                    p 
+                      | Walter White is a student of NMAM Institue of Technology and also a freelance web 
+                      | developer & designer. He is the co-founder of Code Like Ninja.
+                    a(class="twitter-follow-button" ,data-size="large", data-show-count="false", data-show-screen-name="false", href="http://twitter.com/codelikeninja") Follow
+                    a(style="margin-left:10px;")
+                      a(class="github-button", href="https://github.com/twitter", data-style="mega", aria-label="Follow @twitter on GitHub") Follow           
               
-              .developer-body
-                h3(class="dev-name") Jessie
-                .dev-pic
-                  img(src="/img/devs/Deekshith.jpg")
-                h5 Co-founder/Developer
-                h5 Follow 
-                  a(href="#") @codelikeninja   
+              .about-body.col-md-12
+                h3(class="dev-name") C.M Punk
+                .dev-pic.col-md-4
+                  img(class="circleProfile", src="/img/devs/Deekshith.jpg")
+                .about-content.col-md-8
+                  h4 Co-founder/Developer
+                  p 
+                    | C.M Punk is a student of NMAM Institue of Technology and also a freelance web 
+                    | developer & designer. He is the co-founder of Code Like Ninja.
+                    | I am WWE fan, Game of thrones junkie and a techie.
+                  a(class="twitter-follow-button" ,data-size="large", data-show-count="false", data-show-screen-name="false", href="http://twitter.com/codelikeninja") Follow
+                  a(style="margin-left:10px;")
+                    a(class="github-button", href="https://github.com/ntkme", data-style="mega", aria-label="Follow @ntkme on GitHub") Follow 
+
+            script(async, defer, id="github-bjs", src="https://buttons.github.io/buttons.js")             
     
     include ./widgets
     //div(class="secondary col-md-4 col-sm-12 col-xs-12 aside-container")
