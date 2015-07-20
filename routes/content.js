@@ -32,7 +32,14 @@ function ContentHandler (db) {
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results,
-                            email_sent: email_sent_value
+                            email_sent: email_sent_value,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -62,7 +69,14 @@ function ContentHandler (db) {
                             if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
-                            tags: tag_results
+                            tags: tag_results,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -132,7 +146,14 @@ var jd = "block content"+
                                 hot_posts: hot_results,
                                 categories: category_results,
                                 tags: tag_results,
-                                similar_posts : sim_post_results
+                                similar_posts : sim_post_results,
+                                title : the_post.title + " - Code Like Ninja",
+                                meta :{
+                                    description : the_post.desc_short,
+                                    keywords : the_post.tags.join(),
+                                    author : the_post.author_name,
+                                    image_link : "http://res.cloudinary.com/codejitsu/image/upload/Posts_short/"+ the_post.title +"/post_short.png"
+                                }
                             });
                         });        
                     });
@@ -162,7 +183,14 @@ var jd = "block content"+
                             if_tag : "",
                             hot_posts: hot_results,
                             categories: category_results,
-                            tags: tag_results
+                            tags: tag_results,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : tag + ",HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -196,7 +224,14 @@ var jd = "block content"+
                             categories: category_results,
                             tags: tag_results,
                             tag_query: tag,
-                            tag_search: true
+                            tag_search: true,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : tag + ",HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -230,7 +265,14 @@ var jd = "block content"+
                             categories: category_results,
                             tags: tag_results,
                             cat_query: cat,
-                            cat_search: true
+                            cat_search: true,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : cat + ",HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -262,7 +304,14 @@ var jd = "block content"+
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results,
-                            search_query: req.query.q
+                            search_query: req.query.q,
+                            title : "Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -287,7 +336,14 @@ var jd = "block content"+
                             hot_posts: hot_results,
                             categories: category_results,
                             tags: tag_results,
-                            email_sent: email_sent_value
+                            email_sent: email_sent_value,
+                            title : "About - Code Like Ninja",
+                            meta :{
+                                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                                keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                                author : "Code Like Ninja",
+                                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                            }
                         });    
                     });
                 });
@@ -305,6 +361,13 @@ var jd = "block content"+
                         hot_posts: hot_results,
                         categories: category_results,
                         tags: tag_results,
+                        title : "Contact - Code Like Ninja",
+                        meta :{
+                            description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                            keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                            author : "Code Like Ninja",
+                            image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+                        }
                     });    
                 });
             });
@@ -314,7 +377,13 @@ var jd = "block content"+
     this.displayHome = function(req, res, next) {
         "use strict";
         res.render('users/homepage', {
-
+            title : "Code Like Ninja",
+            meta :{
+                description : "A website for publishing articles on various topics and tutorials on development technologies.",
+                keywords : "HTML,CSS,Javascript,Jquery,Node.js,Express,MongoDB,SQL,PHP,Ruby,Rails,C#,.NET,MySQL,,Android,Windows,Cloud,Development,App,Design,Web,Photoshop",
+                author : "Code Like Ninja",
+                image_link : "http://res.cloudinary.com/codejitsu/image/upload/logo.png"
+            }
         });    
     }
 

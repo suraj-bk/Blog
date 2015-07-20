@@ -1,14 +1,24 @@
 doctype html
 html
   head
-    title Code Like Ninja
+    title= title
     meta(name="msvalidate.01", content="AF687D475B8C73559DCA0646C3893B71")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
     meta(name="google-site-verification", content="hl6hasljnQDzv-4tQsAyk3vvu8-gBXqBSz_xCc3z2N8")
-    meta(name="description", content="A website for publishing articles on various topics and tutorials on development technolgies.")
-    meta(name="keywords", content="HTML,CSS,XML,JavaScript,Code Ninja,Code Like Ninja, codelikeninja.ml,codelikeninja")
-    meta(name="author", content="Code Ninja")
+    meta(name="title", content=title)
+    meta(name="description", content=meta.description)
+    meta(name="keywords", content=meta.keywords)
+    meta(name="author", content=meta.author)
+
+    meta(name="twitter:card", content="summary")
+    meta(name="twitter:site", content="@codelikeninja")
+    meta(name="twitter:title", content=title)
+    meta(name="twitter:description", content=meta.description)
+    meta(name="twitter:image", content=meta.image_link)    
+
+
     meta(name="msvalidate.01", content="AF687D475B8C73559DCA0646C3893B71")
+
     script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -76,19 +76,18 @@ block content
 
                   .social-container
                     div(class="social-sharing", data-permalink="http://labs.carsonshold.com/social-sharing-buttons")
-                      script.
-                        var post_link = posts[i].title.
-                      //a 57k
 
-                      a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(posts[i].title) + "&hashtags=" + posts[i].tags[0] + "," + posts[i].tags[1] + "&text=Check%20this%20out- " + posts[i].title + "&via=codelikeninja", class="share-twitter")
+                      - var post_link = encodeURI(posts[i].title);
+
+                      a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(post_link.trim()) + "&hashtags=" + posts[i].tags[0] + "," + posts[i].tags[1] + "&text=Check%20this%20out- " + posts[i].title + "&via=codelikeninja", class="share-twitter")
                         span(class="icon icon-twitter" aria-hidden="true")
                         span(class="share-title") Tweet
 
-                      a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + posts[i].title, class="share-facebook")
+                      a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()), class="share-facebook")
                         span(class="icon icon-facebook", aria-hidden="true")
                         span(class="share-title") Share
 
-                      a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURI(posts[i].title), class="share-google")
+                      a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()), class="share-google")
                         span(class="icon icon-google", aria-hidden="true")
                         span(class="share-title") +1
 

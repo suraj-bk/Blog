@@ -30,24 +30,22 @@ block content
                       div(class="fb-share-button", data-href="https://www.google.co.in", data-layout="button_count", style="width:auto; overflow:hidden; top:-1px;")
 
             .social-container2
-              div(class="social-sharing is-large", data-permalink="http://labs.carsonshold.com/social-sharing-buttons/")
-                a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
+              - var post_link = encodeURI(post.title);
+
+              div(class="social-sharing is-large", data-permalink="http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()))
+
+                a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(post_link.trim()) + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
 
                   span(class="icon icon-twitter", aria-hidden="true")
                   span(class="share-title") Tweet
                   span(class="share-count") 0
 
-                a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + post.title, class="share-facebook")
+                a(target="_blank", href="http://www.facebook.com/sharer.php?u=http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()), class="share-facebook")
                   span(class="icon icon-facebook", aria-hidden="true")
                   span(class="share-title") Share
                   span(class="share-count") 0
 
-                a(target="_blank", href="http://pinterest.com/pin/create/button/?url=http://labs.carsonshold.com/social-sharing-buttons&amp;media=http://photos-c.ak.instagram.com/hphotos-ak-xfp1/10369404_682591538475746_1724734234_n.jpg&amp;description=Tina%20the%20dachsund" ,class="share-pinterest")
-                  span(class="icon icon-pinterest", aria-hidden="true")
-                  span(class="share-title") Pin it
-                  span(class="share-count") 0 
-
-                a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml", class="share-google")
+                a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()), class="share-google")
                   span(class="icon icon-google", aria-hidden="true")
                   span(class="share-count") +1 
 
@@ -111,6 +109,8 @@ block content
           - };                
 
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")
-          div(class="disqus", id="disqus_thread")    
+          div(class="disqus", id="disqus_thread")
+
+
 
     include ./widgets
