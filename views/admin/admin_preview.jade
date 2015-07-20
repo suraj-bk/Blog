@@ -2,14 +2,16 @@ extends layout
 
 block content
   div(class="container sections-wrapper")
-    div(class="row")
-      div(class="primary col-md-11")
-        h1 Welcome to Code Like Ninja Admin Page
-        section(class="section")
-          div(class="section-inner")
-            h2.admin Post Preview
+    .row
+      div(class="col-md-9 col-sm-12 col-xs-12 main-container")       
+        ul(class="flex-container")
+          article(class="flex-item col-md-12")
+            .article_container
+              h2.main-titles Here goes the title
 
-            h2.main-title Here goes the title
-            .pic2.col-md-12
-              img(src="/img/posts_full/default/960x540.jpg")
-            div(class="editor_article") !{html_code}
+              post-body.col-md-12
+                .pic2.col-md-12
+                  object(data="http://res.cloudinary.com/codejitsu/image/upload/Posts_full/"+ A RESTful API Using Node.js and Express +"/post_full.png", type="image/png")
+                      img(src="/img/post_full.png")
+                .post-content.col-md-12
+                    div(class="editor_article") !{html_code}

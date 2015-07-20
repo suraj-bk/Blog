@@ -17,7 +17,7 @@ block content
                     span(class="disqus-comment-count", data-disqus-url="http://codelikeninja.ml/post/" + post.title + "#disqus_thread") 0 Comments
 
                     script.
-                      var disqus_shortname = 'annappablogtest';
+                      var disqus_shortname = 'codelikeninja';
 
                       (function () {
                         var s = document.createElement('script'); s.async = true;
@@ -50,7 +50,7 @@ block content
 
             .social-container2
               div(class="social-sharing is-large", data-permalink="http://labs.carsonshold.com/social-sharing-buttons/")
-                a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost" + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
+                a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
 
                   span(class="icon icon-twitter", aria-hidden="true")
                   span(class="share-title") Tweet
@@ -86,7 +86,11 @@ block content
 
             .post-body.col-md-12
               .pic2.col-md-12
-                img(src="/img/posts_full/default/960x540.jpg")
+                object(data="http://res.cloudinary.com/codejitsu/image/upload/Posts_full/"+ post.title +"/post_full.png", type="image/png")
+                      img(src="/img/posts_full/default/960x540.jpg")
+              script.
+                hljs.initHighlightingOnLoad();
+                
               .post-content.col-md-12
                 div(id="thePostBody", class="editor_article")
                   div(class="editor_article") !{post.body}
@@ -117,7 +121,7 @@ block content
                         span(class="disqus-comment-count", data-disqus-url="http://localhost:8000/post/" + similar_posts[i].title + "#disqus_thread") 0 Comments
 
                         script.
-                          var disqus_shortname = 'annappablogtest';
+                          var disqus_shortname = 'codelikeninja';
 
                           (function () {
                             var s = document.createElement('script'); s.async = true;

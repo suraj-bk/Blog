@@ -41,6 +41,19 @@ module.exports = exports = function(db,DB_URL){
     var initPassport = require('../passport/init');
     initPassport(passport);
 
+    app.use(multer({ dest: './uploads/',
+		rename: function (fieldname, filename) {
+		    return filename+Date.now();
+		},
+		onFileUploadStart: function (file) {
+		  	console.log(file.originalname + ' is starting ...');
+		},
+		onFileUploadComplete: function (file) {
+		  	console.log(file.fieldname + ' uploaded to  ' + file.path);
+		  	fileUpload_done = true;
+		}
+	}));
+    
     var needsGroup = function(group,req,res,next) {
 		if (req.user && req.user.group === group){
 		  console.log("You are a admin");	
@@ -114,15 +127,15 @@ module.exports = exports = function(db,DB_URL){
 
 	app.post('/add_post', urlencodedParser, function(req, res){
 	    "use strict";
-		var tags = req.body.post_tags;
+		var tags = req.body.post_tags.trim();
 		tags = tags.split(',');
 		var post = {
-			title : req.body.post_title,
+			title : req.body.post_title.trim(),
 			desc_short: req.body.desc_short,
 			body : req.body.post_descr,
-			author_name : req.body.post_author,
+			author_name : req.body.post_author.trim(),
 			tags : tags,
-			category : req.body.post_category,
+			category : req.body.post_category.trim(),
 			date: moment().format('MMMM Do YYYY'),
 			createdOn: moment().valueOf(),
 			published : "false"
@@ -147,17 +160,17 @@ module.exports = exports = function(db,DB_URL){
 	app.post('/del_post',function(req, res){
 	    "use strict";
 		var post = {
-			title : req.body.post_title
+			title : req.body.post_title.trim()
 		};	
 
 		db.collection('articles').remove(post, function(err,removed){
 			if(err) {
-				console.log("Alert");
-				return db.close();
+				console.log("Could delete");
+				return;
 			}
 			res.render('admin/admin_modify_post',{title : 'suraj', post_deleted : true ,rem : removed });
 			console.log("Data removed successfully");
-			return db.close();
+			return;
 		});
 	});
 
@@ -166,7 +179,7 @@ module.exports = exports = function(db,DB_URL){
 	    "use strict";
 
 		var post = {
-			title : req.body.post_title
+			title : req.body.post_title.trim()
 		};
 
 		var operator = {
@@ -175,13 +188,13 @@ module.exports = exports = function(db,DB_URL){
 			}
 		};	
 
-		db.collection('articles').update(post, operator, function(err,removed){
+		db.collection('articles').update(post, operator, function(err,updated){
 			if(err) {
-				console.log("Alert");
+				console.log("Sorry couldnt update");
 				return;
 			}
 
-			console.log("Data updated successfully");
+			console.log("Data updated successfully for " + updated + " documents");
 			res.render('admin/admin_modify_post',{title : 'suraj', post_updated : true });
 			return;
 		});
@@ -197,9 +210,9 @@ module.exports = exports = function(db,DB_URL){
 	app.post('/add_editor', urlencodedParser, function(req, res){
 	    "use strict";
 		var editor = {
-			name : req.body.editor_name,
+			name : req.body.editor_name.trim(),
 			description : req.body.editor_descr,
-			social : { twitter: req.body.editor_twitter }
+			social : { twitter: req.body.editor_twitter.trim() }
 		};
 		db.collection('editors').insert(editor,function(err,inserted){
 			if(err) {
@@ -222,12 +235,12 @@ module.exports = exports = function(db,DB_URL){
 	app.post('/del_editor',function(req, res){
 	    "use strict";
 		var editor = {
-			name : req.body.editor_name
+			name : req.body.editor_name.trim()
 		};	
 
 		db.collection('editors').remove(editor, function(err,removed){
 			if(err) {
-				console.log("Alert");
+				console.log("Couldnt delete");
 				return;
 			}
 
@@ -241,7 +254,7 @@ module.exports = exports = function(db,DB_URL){
 	app.post('/upd_editor',function(req, res){
 	    "use strict";
 		var editor = {
-			name : req.body.editor_name
+			name : req.body.editor_name.trim()
 		};
 
 		var operator = {
@@ -252,7 +265,7 @@ module.exports = exports = function(db,DB_URL){
 
 		db.collection('editors').update(editor, operator, function(err,removed){
 			if(err) {
-				console.log("Alert");
+				console.log("Couldnt update");
 				return ;
 			}
 
@@ -467,19 +480,6 @@ module.exports = exports = function(db,DB_URL){
 		res.redirect('/admin/email_manager');   
 	});
 
-	app.use(multer({ dest: './uploads/',
-		rename: function (fieldname, filename) {
-		    return filename+Date.now();
-		},
-		onFileUploadStart: function (file) {
-		  	console.log(file.originalname + ' is starting ...');
-		},
-		onFileUploadComplete: function (file) {
-		  	console.log(file.fieldname + ' uploaded to  ' + file.path);
-		  	fileUpload_done = true;
-		}
-	}));
-
 	app.get('/clean_images',isAuthenticated, function(req, res) {
 		var p = "./uploads/"
 		fs.readdir(p, function(err, list_of_files) {
@@ -518,7 +518,6 @@ module.exports = exports = function(db,DB_URL){
 	});
 
 	app.post('/image_upload/posts_full',function(req,res){
-		console.log("asasaasa");
 		if(fileUpload_done == true){
 			console.log(req.files);
 
@@ -569,7 +568,6 @@ module.exports = exports = function(db,DB_URL){
 
 		if(fileUpload_done == true){
 			console.log(req.files);
-			res.end("File uploaded......");
 
 			var originalImageName = req.files.myImage.originalname;
 			originalImageName = originalImageName.split('.')[0];

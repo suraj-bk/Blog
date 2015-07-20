@@ -1,5 +1,5 @@
 /* * * CONFIGURATION VARIABLES * * */
-var disqus_shortname = 'annappablogtest';
+var disqus_shortname = 'codelikeninja';
 
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function() {

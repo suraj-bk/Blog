@@ -546,8 +546,8 @@ module.exports = function(router,db ,passport ,urlencodedParser){
 	});	
 
 	//cloudinary
-	router.post('/image_upload/posts_short',function(req,res){
-
+	router.post('/image_upload/posts_short',isAuthenticated,function(req,res){
+		console.log("asasaasa1");
 		if(fileUpload_done == true){
 			console.log(req.files);
 
@@ -568,8 +568,9 @@ module.exports = function(router,db ,passport ,urlencodedParser){
 
 	});
 
-	router.post('/image_upload/posts_full',function(req,res){
-		console.log("asasaasa");
+	router.post('/image_upload/posts_full',isAuthenticated,function(req,res){
+		console.log("asasaasa2");
+		console.log(req.files);
 		if(fileUpload_done == true){
 			console.log(req.files);
 
@@ -591,6 +592,7 @@ module.exports = function(router,db ,passport ,urlencodedParser){
 	});
 
 	router.post('/image_upload/posts_others',function(req,res){
+		console.log("Hello");
 
 		if(fileUpload_done == true){
 			console.log(req.files);

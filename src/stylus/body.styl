@@ -230,9 +230,15 @@ body
   margin-bottom 10px
   background #F1F4F9
 
-.flex-container .post-body .pic img
+.flex-container .post-body .pic img, .flex-container .post-body .pic object
   max-width 100%
+  width 100%
   height auto   
+
+.post-body .pic object
+  max-width 100%
+  width 100%
+  height auto
 
 .flex-container .post-body .pic2
   height auto
@@ -240,7 +246,7 @@ body
   margin-bottom 20px
   background #F1F4F9 
 
-.flex-container .post-body .pic2 img
+.flex-container .post-body .pic2 img, .flex-container .post-body .pic2 object
     max-width 100%
     height auto    
 
@@ -1215,24 +1221,75 @@ a.social-link:hover
 	text-align left
 	align left 
 
-div.editor_article
-	height auto
-  	width 100%
+div.editor_article{
+  color: #555;
+  font-size: 19px;
+}
+div.editor_article ul{
+  font-size: 19px;
+}
 
-div.editor_article p
-  height auto
-  width 100%
-  text-align left
-  align left
+div.editor_article p {
+  text-align: left;
+  font-size: 19px;
+  font-weight: lighter;
+  align: left;
+  margin-bottom: 20px;
+}
 
-div.editor_article blockquote
-  background-color #efefef  
+div.editor_article h3 {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #DDD;
+}
 
-div.editor_article img
-  max-width 100%
-  max-height 500px
-  height auto
-  padding-bottom 20px  
+div.editor_article pre {
+  margin-bottom: 20px;
+  border: 0;
+  font-size: 14px;
+  padding-left: 20px;
+}
+  
+div.editor_article blockquote{
+  background-color: #F8F8F8;
+  border-left: 6px solid #4EABF1;
+  font-size: 14px;
+  font-style: oblique;  
+}
+
+
+div.editor_article img,div.editor_article object{
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;  
+}
+
+div.editor_article img.left{
+  max-width: 40%;
+  height: auto;
+  margin-right: 20px;
+  float: left; 
+}
+
+div.editor_article img.right{
+  max-width: 40%;
+  height: auto;
+  margin-left: 20px;
+  float: right; 
+}    
+
+@media all and (max-width : 660px)
+  div.editor_article img
+      width 100%
+      max-width: 100%;
+      height: auto;
+
+  div.editor_article img.left
+    max-width: 100%;
+    margin-left: 0px;
+
+  div.editor_article img.right
+    max-width: 100%;
+    margin-right: 0px;
 
 
 

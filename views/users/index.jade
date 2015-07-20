@@ -48,7 +48,8 @@ block content
                                      
               .post-body
                 .pic
-                  img(src="http://res.cloudinary.com/codejitsu/image/upload/v1436193834/Posts_short/default/300x150.jpg")
+                  object(data="http://res.cloudinary.com/codejitsu/image/upload/Posts_short/"+ posts[i].title +"/post_short.png", type="image/png")
+                      img(src="/img/posts_full/default/960x540.jpg")
                 .post-rem
                   a(class="post-title-link" href="/post/"+posts[i].title)
                     h3(class="post-title")= posts[i].title
@@ -64,7 +65,7 @@ block content
                       a(href="#") #{posts[i].author_name}
 
                   script.
-                    var disqus_shortname = 'annappablogtest';
+                    var disqus_shortname = 'codelikeninja';
                     (function () {
                       var s = document.createElement('script'); s.async = true;
                       s.type = 'text/javascript';

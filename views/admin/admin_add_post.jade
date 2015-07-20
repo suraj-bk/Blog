@@ -66,7 +66,8 @@ block content
                 label(for="post_title") Post Title
                 input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
               div(class="form-group")
-                label(for="post_descr") Posts Short 350x150.jpg
+                label(for="post_descr") Posts Short
+                p (Name- post_short, Size - 500x300 ,  Extension- .png)
                 input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_short")
 
                 p The image that will be shown in the home page
@@ -107,7 +108,7 @@ block content
                 $('#imageUploadForm_short').on('submit', function(e) {
                   e.preventDefault();
 
-                  var formData = new FormData($('form')[1]);
+                  var formData = new FormData($('form')[3]);
 
                   $('#sub_box_short').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
@@ -141,7 +142,8 @@ block content
                 label(for="post_title") Post Title
                 input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
               div(class="form-group")
-                label(for="post_descr") Posts Full 350x150.jpg
+                label(for="post_descr") Posts Full
+                p (Name- post_full, Size - 1024x28 ,  Extension- .png)
                 input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_full")
 
                 p The image that will be shown in the article page
@@ -176,7 +178,7 @@ block content
                 $('#imageUploadForm_full').on('submit', function(e) {
                   e.preventDefault();
 
-                  var formData = new FormData($('form')[2]);
+                  var formData = new FormData($('form')[4]);
 
                   $('#sub_box_full').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
@@ -210,6 +212,7 @@ block content
                 input(type="text", class="form-control",name="img_post_title", id="img_post_title", placeholder="Post Title")
               div(class="form-group")
                 label(for="post_descr") Posts Other images
+                p (Size - 1024x28 ,  Extension- .png)
                 input(type="file",class="form-control", name="myImage", accept="image/gif, image/jpeg, image/png", id="image_input_others")
 
                 p The extra images for the post
@@ -244,7 +247,7 @@ block content
                 $('#imageUploadForm_others').on('submit', function(e) {
                   e.preventDefault();
 
-                  var formData = new FormData($('form')[3]);
+                  var formData = new FormData($('form')[5]);
 
                   $('#sub_box_others').html('<div class="alert alert-info col-md-12 col-sm-12 col-xs-12 photo-box-info" id="photo-box2"><p>Please Wait Uploading .... </p></div>');
 
