@@ -52,11 +52,13 @@ body
   padding 5px
   color black
   //box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  box-shadow 0 2px 1px rgba(0,0,0,.08);
+  //box-shadow 0 2px 1px rgba(0,0,0,.08);
+  box-shadow: 2px 2px 4px 0 #ccc;
   border-radius: 2px;
 
 .main-container .flex-container .flex-item:nth-child(even)
     margin-right 0
+    padding-left 10px
 
 .come-in 
   -webkit-transform translateY(150px)
@@ -97,11 +99,14 @@ body
 
 .flex-container h2.main-titles, h3.main-titles
   font-family 'Martel Sans', sans-serif
-  margin-left 15px
   width 100%
   color #555
   clear both
-  font-weight bold  
+  font-weight bold 
+  margin-left 15px 
+  
+.flex-container .article_container h2.main-titles, h3.main-titles
+  margin-left 0px
 
 
 .flex-container a.post-title-link
@@ -369,7 +374,6 @@ body
 
 .flex-container h2.main-titles, h3.main-titles
   font-family 'Martel Sans', sans-serif
-  margin-left 15px
   width 100%
   color #555
   clear both
@@ -456,9 +460,9 @@ body
   margin-top 5px
   margin-bottom 2px
   display inline-block
+  font-size 14px
  
 .disqus-comment-count
-  font-size 14px
   font-family 'Martel Sans', sans-serif
   margin-left 3px
   
@@ -471,6 +475,17 @@ body
   display inline-block
   
 .author-info a
+  color #1E8BC3
+  font-style bold
+  
+
+.article_container .author-info
+  font-size 18px
+  text-align left
+  display inline-block
+  
+.article_container .author-info a
+  font-size 18px
   color #1E8BC3
   font-style bold
 
@@ -501,13 +516,18 @@ body
 	.flex-container .subhead li
 		margin-left -4px
 		font-size 12px		
+    
+    
 
 .flex-container .article_container
-	padding 50px
+	padding 20px
 
 @media all and (max-width : 660px)
 	.flex-container .article_container
 		padding 5px
+  
+  .flex-container .article_container .author-info
+    font-size 15px  
 	
 .flex-container .subhead2
 	color #404040
@@ -528,6 +548,7 @@ body
   width 100%
   padding 0
   margin-bottom 10px
+  background-size 100% 100%
   background #fff
 
 .items .post-body .pic img
@@ -1346,7 +1367,6 @@ div.editor_article img.right{
   -webkit-flex-flow row wrap
   margin-bottom 5px
   margin-top 10px
-  margin-left 20px
   justify-content flex-startight 40px  
 
 /*.social-container a {

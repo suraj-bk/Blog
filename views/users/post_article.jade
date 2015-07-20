@@ -4,40 +4,21 @@ block content
   .row
     div(class="col-md-9 col-sm-12 col-xs-12 main-container")
       ul(class="flex-container")
-        article(class="flex-item col-md-12")
+        article(class="flex-item")
           .article_container
-            h4(class="col-md-12 post_category2")= post.category
             h2.main-titles= post.title
-            ul(class="list-inline col-md-12 subhead2")
-              li
-                ul(class="list-inline")
-                  li
-                    img(src="/img/comment.png") 
-                  li
-                    span(class="disqus-comment-count", data-disqus-url="http://codelikeninja.ml/post/" + post.title + "#disqus_thread") 0 Comments
+            .sub-info
+              img(src="/img/comments.png")
+              span(class="disqus-comment-count", data-disqus-url="http://codelikeninja.ml/post/" + post.title + "#disqus_thread") 0 Comments
+              img(src="/img/clock.png" class="side-icons")
+              span &nbsp#{post.date}
 
-                    script.
-                      var disqus_shortname = 'codelikeninja';
-
-                      (function () {
-                        var s = document.createElement('script'); s.async = true;
-                        s.type = 'text/javascript';
-                        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-                        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-                      }());
-
-
-              li
-                ul(class="list-inline")
-                  li
-                    img(src="/img/clock.png") 
-                  li
-                    p= post.date
-              li
-                ul(class="list-inline")
-                  li
-                    img(src="/img/author.png") 
-                  li= post.author_name
+            .sub-info
+              p(class="author-info") In&nbsp
+                a(href="#") #{post.category}
+              p(class="author-info") &nbspby&nbsp&nbsp
+                img(src="/img/author.png") 
+                a(href="#") &nbsp#{post.author_name}
 
             //.post-social-icons2
                   ul(class="list-inline")
@@ -71,6 +52,18 @@ block content
                   span(class="share-count") +1 
 
             br
+            
+
+            .post-body
+              .pic2
+                object(data="http://res.cloudinary.com/codejitsu/image/upload/Posts_full/"+ post.title +"/post_full.png", type="image/png")
+                      img(src="/img/posts_full/default/960x540.jpg")
+              .post-content
+                div(id="thePostBody", class="editor_article")
+                  div(class="editor_article") !{post.body}
+
+                script.
+                  //putPostBody();
             h4(class="col-md-12",style="color:#666;") Tagged with :
             .tag-body.tags.col-md-12
               - for(var j=0 ; j< post.tags.length ; j++) {
@@ -83,20 +76,6 @@ block content
                 var dom_target = document.getElementById("thePostBody");
                 dom_target.innerHTML = !{post.body};
               }
-
-            .post-body.col-md-12
-              .pic2.col-md-12
-                object(data="http://res.cloudinary.com/codejitsu/image/upload/Posts_full/"+ post.title +"/post_full.png", type="image/png")
-                      img(src="/img/posts_full/default/960x540.jpg")
-              script.
-                hljs.initHighlightingOnLoad();
-                
-              .post-content.col-md-12
-                div(id="thePostBody", class="editor_article")
-                  div(class="editor_article") !{post.body}
-
-                script.
-                  //putPostBody();
         
         article(class="flex-item col-md-12 col-sm-12 col-xs-12")                 
           h3.main-titles You might also like

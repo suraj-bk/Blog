@@ -57,12 +57,13 @@ block content
                     img(src="/img/comments.png")
                     span(class="disqus-comment-count", data-disqus-url="http://codelikeninja.ml/post/" + posts[i].title + "#disqus_thread") 0 Comments
                     img(src="/img/clock.png" class="side-icons")
-                    span(class="disqus-comment-count", data-disqus-url="http://codelikeninja.ml/post/" + posts[i].title + "#disqus_thread")= posts[i].date
+                    span &nbsp#{posts[i].date}
                   .sub-info
                     p(class="author-info") In 
                       a(href="#") #{posts[i].category}
-                    p(class="author-info") &nbspby 
-                      a(href="#") #{posts[i].author_name}
+                    p(class="author-info") &nbspby&nbsp
+                      img(src="/img/author.png") 
+                      a(href="#") &nbsp#{posts[i].author_name}
 
                   script.
                     var disqus_shortname = 'codelikeninja';
