@@ -1,0 +1,40 @@
+.flex-container .about-body
+  float left
+  margin-left 5px
+  margin-bottom 20px
+
+.flex-container .about-body p
+  text-align left
+  color #444
+  font-size 17px  
+  aligggn left
+
+.flex-container .about-body .about-head
+  margin-top 10px  
+
+.flex-container .about-body .dev-name, .flex-container .developer-body .dev-name
+	color #209BC5
+	font-weight bold
+
+.flex-container .about-body .dev-pic
+  height 150px
+  padding-left 0px
+  border 0
+  width 150px
+
+.flex-container .about-body .about-content
+  background #fff
+  font-size 15px
+
+@media all and (max-width : 660px)
+	.flex-container .about-body .about-content
+	  margin-top 10px
+	  margin-left -10px    
+
+.flex-container .developer-body
+  padding 20px
+  color #444
+  font-size 18px 
+  float left
+  margin-bottom 20px
+  margin-right 20px  

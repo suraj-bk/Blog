@@ -1,6 +1,12 @@
 var PostsDAO = require('../posts').PostsDAO;
 var EditorsDAO = require('../editors').EditorsDAO;
 var url = require('url');
+var BitlyAPI = require("node-bitlyapi");
+var Bitly = new BitlyAPI({
+    client_id: "540a31d8a6d06e741d73f009a69b8ea18e907025",
+    client_secret: "63f1c19e72f877fda5df9e1b6e6809cdad1db182"  
+});
+Bitly.setAccessToken("a755e4fd2d16a92993d3aae868513666c00ca33a");
 
 function ContentHandler (db) {
     "use strict";
@@ -141,20 +147,26 @@ var jd = "block content"+
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         posts.getPostByCategoryOtherThanTheTitle(the_post.title,the_post.category,5,function(err, sim_post_results) {
-                            return res.render('users/post_article', {
-                                post : the_post,
-                                hot_posts: hot_results,
-                                categories: category_results,
-                                tags: tag_results,
-                                similar_posts : sim_post_results,
-                                title : the_post.title + " - Code Like Ninja",
-                                meta :{
-                                    description : the_post.desc_short,
-                                    keywords : the_post.tags.join(),
-                                    author : the_post.author_name,
-                                    image_link : "http://res.cloudinary.com/codejitsu/image/upload/Posts_short/"+ the_post.title +"/post_short.png"
-                                }
+                            Bitly.shortenLink("https://codelikeninja.ml/post/"+the_post.title, function(err, shortURL) {
+                                console.log("Short URL : " + typeof shortURL);
+                                var short_url = JSON.parse(shortURL);
+                                return res.render('users/post_article', {
+                                    post : the_post,
+                                    hot_posts: hot_results,
+                                    categories: category_results,
+                                    tags: tag_results,
+                                    similar_posts : sim_post_results,
+                                    title : the_post.title + " - Code Like Ninja",
+                                    short_url: short_url.data.url,
+                                    meta :{
+                                        description : the_post.desc_short,
+                                        keywords : the_post.tags.join(),
+                                        author : the_post.author_name,
+                                        image_link : "http://res.cloudinary.com/codejitsu/image/upload/Posts_short/"+ the_post.title +"/post_short.png"
+                                    }
+                                });
                             });
+                            
                         });        
                     });
                 });

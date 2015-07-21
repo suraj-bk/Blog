@@ -20,6 +20,9 @@ block content
                 img(src="/img/author.png") 
                 a(href="#") &nbsp#{post.author_name}
 
+                script.
+                  alert(short_url);
+
             //.post-social-icons2
                   ul(class="list-inline")
                     li
@@ -34,7 +37,7 @@ block content
 
               div(class="social-sharing is-large", data-permalink="http://codelikeninja.ml/post/" + encodeURIComponent(post_link.trim()))
 
-                a(target="_blank", href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodelikeninja.ml%2Fpost%2F" + encodeURIComponent(post_link.trim()) + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
+                a(target="_blank", href="https://twitter.com/intent/tweet?url=" + encodeURI(short_url) + "&hashtags=" + post.tags[0] + "," + post.tags[1] + "&text=Check%20this%20out- " + post.title + "&via=codelikeninja", class="share-twitter")
 
                   span(class="icon icon-twitter", aria-hidden="true")
                   span(class="share-title") Tweet

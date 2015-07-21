@@ -2,7 +2,7 @@ block widget
   div(class="col-md-3 col-sm-12 col-xs-12 aside-container")
       .connect
         .heading
-          h4 Connect With Us
+          h5 Connect With Us
         .social-ico
           ul(class="list-inline")
             li
@@ -14,25 +14,16 @@ block widget
             li
               a(href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", class="social-link", target="_blank")
                 img(src="/img/facebook.png")
-            li
-              a(href="https://in.pinterest.com/codelikeninja/", class="social-link", target="_blank")
-                img(src="/img/pinterest.png")
-            li
-              a(href="#", target="_blank")
-                img(src="/img/lin.png")
-            li
-              a(href="#", class="social-link", target="_blank")
-                img(src="/img/stumble.png")
 
       .subscribe
         .heading
-          h4 Email Newsletter
+          h5 Email Newsletter
         div(class="section-inner text-center")  
-          h5 Get the latest news in your inbox. 
+          h5(style="color:#888;") Get the latest news in your inbox 
         .email-form
           div(class="form-group email-box",id="sub_box")
-            input(type=text, class="name-input", id="sub_name" , name="sub_name", placeholder="Enter Your Name")
-            input(type=text, class="email-input", id="sub_email" , name="sub_email", placeholder="Email", onchange="checkEmail()")
+            input(type=text, class="name-input", id="sub_name" , name="sub_name", placeholder="Your Name")
+            input(type=text, class="email-input", id="sub_email" , name="sub_email", placeholder="Your Email", onchange="checkEmail()")
             input(type="button", class="green-button", value="Subscribe" ,id="subM",spellcheck="false") 
 
           div(class="alert alert-danger col-md-8 col-sm-12 col-xs-12 incorrect-alert-box", id = "email-alert")
@@ -59,13 +50,13 @@ block widget
             if (checkEmail() == true){ 
               var searchIDs = $('#sub_email').val();
               console.log("selected::::" + searchIDs);
-              $('#sub_box').html('<p>Please Wait</p>');
+              $('#sub_box').html('<p style="color:#888;">Please Wait</p>');
               $.ajax({
                  url:'/contact',type:'post',
                  data:{sub_email:searchIDs},
                  success:function(response){
                     console.log("Done ajax .. "+response);
-                    $('#sub_box').html('<p>Thanks for signing up!</p>');
+                    $('#sub_box').html('<h3 style="color:#888;">Thanks for signing up!</h3>');
                 }
               });
             }  
@@ -77,10 +68,10 @@ block widget
             var colorArray = ['#446CB3', '#59ABE3', '#3498DB','#3A539B', '#913D88', '#5C97BF'];
             $('.js_typografy').each(function(){
                 var size = getRandomInt(minSize, maxSize);
-                //size = Math.ceil(size / 10) * 10;
+                //size = Math.ceil(size / 10) * 10
                 var j = getRandomInt(0, colorArray.length - 1);
                 $(this).css('font-size',size);
-                $(this).css('padding-left','3px');
+                $(this).css('padding-left','5px');
                 $(this).css('color',colorArray[j]);
             });
           }
@@ -93,7 +84,7 @@ block widget
 
       .facebook
         .heading
-          h4 Find us on Facebook 
+          h5 Find us on Facebook 
         .plugin          
           div(class="fb-page", data-href="https://www.facebook.com/pages/Code-Like-Ninja/849805705099929", data-small-header="false", data-adapt-container-width="true", data-hide-cover="false", data-show-facepile="true", data-show-posts="false")
             div(class="fb-xfbml-parse-ignore")
@@ -102,7 +93,7 @@ block widget
 
       .category
         .heading
-          h4 Category
+          h5 Category
         .categories
           - for(var i=0 ; i< categories.length ; i++) {
             .cat-list
@@ -116,7 +107,7 @@ block widget
               
       .tagbox
         .heading
-          h4 Tags
+          h5 Tags
         .categories
           //ul(class="tags")
           #links
@@ -140,7 +131,7 @@ block widget
 
       .hotPostsbox
         .heading
-          h4 Hot posts
+          h5 Hot posts
         .hotPosts
           - for(var i=0 ; i< hot_posts.length ; i++) {
               ul(class="hot_links")
@@ -151,7 +142,7 @@ block widget
 
       //.Adbox
         .heading
-          h4 Advertisement
+          h5 Advertisement
         .AdPosts
           div(data-WRID="WRID-143719719763248221", data-widgetType="bestSellers", data-responsive="yes", data-class="affiliateAdsByFlipkart",height="250", width="300")
 

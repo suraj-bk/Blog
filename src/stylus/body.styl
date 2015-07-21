@@ -385,9 +385,11 @@ body
   margin-bottom 5px  
   text-decoration none
 
-.items a.post-title-link:hover 
-  color #333
-  text-shadow: 0 0 1px #777; 
+.items a.post-title-link h3
+  color #5E5E7A
+
+.items a.post-title-link:hover h3
+  color #4E4E5A
 
 .items a
   text-decoration none   
@@ -451,6 +453,10 @@ body
     margin-bottom 0px
     text-decoration none	 
     text-align left
+
+.post-rem img
+  color #9DA8B0
+  margin-right 5px
     
 .sub-info
   color #404040
@@ -480,14 +486,30 @@ body
   
 
 .article_container .author-info
-  font-size 18px
+  font-size 16px
   text-align left
+  margin-right 2px
   display inline-block
-  
+
+.author-info
+  color #9DA8B0
+  font-weight bold
+  font-size 15px
+
+
+.author-info a ,.sub-info span
+  font-size 14px
+  font-weight bold
+  color #6A6E88
+
+
+.author-info a:hover  
+  color #0E6BA3
+
 .article_container .author-info a
-  font-size 18px
-  color #1E8BC3
-  font-style bold
+  font-size 16px
+  font-weight bold
+  color #0E6BA3
 
 
 /*.flex-container .subhead
@@ -600,15 +622,13 @@ body
 
 
 .flex-container .about-body
-  float left
   margin-left 5px
-  margin-bottom 20px 
+  margin-bottom 20px
 
 .flex-container .about-body p
   text-align left
   color #444
-  font-size 17px  
-  aligggn left
+  font-size 17px
 
 .flex-container .about-body .about-head
   margin-top 10px  
@@ -626,11 +646,17 @@ body
 .flex-container .about-body .about-content
   background #fff
   font-size 15px
+  margin-left 10px
 
 @media all and (max-width : 660px)
+  .flex-container .about-body
+    text-align center
+
+  .flex-container .about-body .dev-pic
+    margin-left 30%
+
 	.flex-container .about-body .about-content
-	  margin-top 10px
-	  margin-left -10px    
+	  margin-top 10px   
 
 .flex-container .developer-body
   padding 20px
@@ -638,7 +664,7 @@ body
   font-size 18px 
   float left
   margin-bottom 20px
-  margin-right 20px  
+  margin-right 20px   
 
 .flex-container .circleProfile
   border-radius: 50%;
@@ -695,12 +721,12 @@ body
   text-decoration: none !important
 
 .cat-list 
-  background #888
-  //border: 2px #5682A3 solid 
+  background #999
+  //border: 2px #455D6C solid 
   //min-width 90px
   width 90%
   color #fff
-  font-weight 20
+  font-weight bold
   display inline-block
   height 30px
   line-height: 30px
@@ -714,7 +740,7 @@ body
   text-decoration none
   -webkit-transition color 0.2s
   text-align center
-  box-shadow 0 2px 1px #1E8BC3
+  box-shadow 0 2px 1px #455D6C
   
 .cat-list a
   color #fff
@@ -727,7 +753,7 @@ body
   padding-left 10px
   padding-right 10px
   text-decoration none
-  background #2574A9
+  background #657D8C
 
 
 /*.cat-list::before 
@@ -742,8 +768,7 @@ body
   top: 10px;*/
 
 .cat-list:hover 
-  background-color: #5682A3;
-  opacity 0.8
+  background-color: #777;
   color: white;
 /*
 
@@ -874,11 +899,15 @@ ul.tags
   margin-right 8px
   font-size 14px
 
-.readmore
+.readmore a
   margin-top 4px
   font-size 15px
-  color #3DA1D1
+  font-size 12px
+  color #2A5473
+  font-weight bold
 
+.readmore a:hover
+  color #3A7493
 
 .aside-container
 	border-left 1px solid #e7e7e7
@@ -886,7 +915,7 @@ ul.tags
   margin-top 20px 
  
 .aside-container .category
-  background #fff
+  background #F3F3F3
   margin-top 20px
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
   //-moz-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -895,7 +924,7 @@ ul.tags
 .aside-container .category .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   width 100%
@@ -913,7 +942,7 @@ ul.tags
   justify-content space-around
 
 .aside-container .connect
-  background #fff 
+  background #F3F3F3 
   //#f1f4f9
   padding-bottom 10px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
@@ -924,7 +953,7 @@ ul.tags
 .aside-container .connect .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   margin-bottom 10px
@@ -957,8 +986,8 @@ ul.tags
   border-radius 5px
   
 .aside-container .subscribe
-  height 200px
-  background #fff
+  height 230px
+  background #F3F3F3
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //padding-left 50px
@@ -967,7 +996,7 @@ ul.tags
 .aside-container .subscribe .heading    
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   margin-bottom 10px
@@ -980,10 +1009,16 @@ ul.tags
   
 .aside-container .subscribe .email-box
   margin-top 10px
+  padding-left 5%
+  padding-right 5%
   justify-content center
 
+.aside-container .subscribe input
+  border 0
+  padding 7px
+
 .aside-container .subscribe .email-input
-  width 200px
+  width 70%
   float left
   margin-right 5px
   justify-content center
@@ -993,23 +1028,32 @@ ul.tags
   
 
 .green-button, input[type='submit'] {
-background: #69c773;
+background: #17B570;
 border: 0;
 border-bottom: 3px solid rgba(73,134,18,0.3);
 color: #fff;
-font-weight: 400;
-font-size: 20px;
+font-weight: 300;
+font-size: 18px;
+width 70%
 transition: border-color 1s;
 text-decoration: none;
 white-space: nowrap;
 cursor:pointer;
-margin-left : 100px;
+margin-top 10px
+margin-left : 50px;
 
 }
+.green-button:hover, input[type='submit']:hover
+  background: #12915A;
+  -webkit-transition  all 0.5s
+  -moz-transition  all 0.5s
+  -ms-transition  all 0.5s
+  -o-transition  all 0.5s
+  transition  all 0.5s  
 
   
 .aside-container .subscribe .name-input
-  width 200px
+  width 70%
   float left
   margin-right 5px
   justify-content center
@@ -1042,7 +1086,7 @@ margin-left : 100px;
 
 .aside-container .tagbox
   height auto
-  background #fff
+  background #F00
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -1052,7 +1096,7 @@ margin-left : 100px;
 .aside-container .tagbox .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   width 100% 
@@ -1073,14 +1117,14 @@ margin-left : 100px;
 
 .aside-container .hotPostsbox
   height auto
-  background #fff
+  background #F3F3F3
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   margin-top 30px
   
 .aside-container .hotPostsbox .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   width 100% 
@@ -1099,7 +1143,7 @@ margin-left : 100px;
   -webkit-flex-flow row wrap
 
 .aside-container .hotPosts .hot_links .hot-post-links
-  color #555
+  color #666
   display block
   text-decoration underline
   margin-top -20px
@@ -1107,19 +1151,19 @@ margin-left : 100px;
   font-size 18px
 
 .aside-container .hotPosts .hot_links .hot-post-links:hover
-  color #000 
+  color #444 
 
 
 .aside-container .Adbox
   height 300px
   overflow hidden
-  background #fff
+  background #F3F3F3
   margin-top 30px
   
 .aside-container .Adbox .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   width 100% 
@@ -1131,7 +1175,7 @@ margin-left : 100px;
 .aside-container .facebook
   min-height 200px
   height auto
-  background #fff
+  background #F3F3F3
   margin-top 30px
   box-shadow 0 2px 1px rgba(0,0,0,.08);
   //-webkit-box-shadow 3px 3px 39px -4px rgba(0,0,0,0.51)
@@ -1141,7 +1185,7 @@ margin-left : 100px;
 .aside-container .facebook .heading
   height auto
   text-align center
-  background #2f3036
+  background #455D6C
   float left
   color #fff
   width 100%
@@ -1219,11 +1263,10 @@ a.social-link:hover
 
 
 .alert-box
-  margin-left 0px
-  margin-right 10px
+  border-radius 0px
   margin-top 10px
   margin-bottom 10px
-  background #5682A3
+  background #455D6C
   color #FFFFFF
   border 0
   width 100%

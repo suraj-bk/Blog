@@ -23,14 +23,14 @@ block content
 
                 p
                   | Stay up to date with the latest by following us on 
-                  a(href="#") Twitter
+                  a(href="https://twitter.com/codelikeninja", target="_blank") Twitter
                   |  or subscribe to our weekly newsletter.
 
         article(class="flex-item col-md-12")      
               h2(class="main-titles about-head") Editors
               
               - for(var i=0 ; i< editors.length ; i++) {    
-                .about-body.col-md-12
+                .about-body.col-md-12.col-xs-12
                   h3(class="dev-name")= editors[i].name
                   .dev-pic.col-md-4
                     object(class="circleProfile", data="http://res.cloudinary.com/codejitsu/image/upload/Editors/" + editors[i].name + ".jpg")

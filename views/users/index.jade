@@ -91,13 +91,10 @@ block content
                         span(class="icon icon-google", aria-hidden="true")
                         span(class="share-title") +1
 
-                      //a(target="_blank", href="http://plus.google.com/share?url=http://codelikeninja.ml/post/" + encodeURI(posts[i].title), class="share-google")
-                        span(class="icon icon-pinterest", aria-hidden="true")
-                        span(class="share-title") Pin
                   .post-content
                     span(style="font-size:15px;")= posts[i].desc_short
                     .readmore
-                      a(href="/post/"+posts[i].title) Read more &#8599;
+                      a(href="/post/"+posts[i].title) READ MORE &#8599;
                   .tag-body
                     - for(var j=0 ; j< posts[i].tags.length ; j++) {
                       li
