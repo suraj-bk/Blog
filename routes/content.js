@@ -147,7 +147,7 @@ var jd = "block content"+
                 posts.getAllCategories(function(err, category_results) {
                     posts.getAllTags(function(err, tag_results) {
                         posts.getPostByCategoryOtherThanTheTitle(the_post.title,the_post.category,5,function(err, sim_post_results) {
-                            Bitly.shortenLink("https://codelikeninja.ml/post/"+the_post.title, function(err, shortURL) {
+                            Bitly.shortenLink("http://codelikeninja.ml/post/"+the_post.title, function(err, shortURL) {
                                 console.log("Short URL : " + typeof shortURL);
                                 var short_url = JSON.parse(shortURL);
                                 return res.render('users/post_article', {
